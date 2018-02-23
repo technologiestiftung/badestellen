@@ -42,6 +42,7 @@ html, body{
   padding:0;
   margin:0;
   background-image:url(../images/head_mobile@2x.png);
+  background-size:1200px 50px;
   background-position: top right;
   background-repeat: no-repeat;
 }
@@ -89,6 +90,7 @@ h1{
   height:27px;
   background-position: center;
   background-repeat: no-repeat;
+  background-size:27px 27px;
   cursor:pointer;
 }
 
@@ -110,6 +112,8 @@ h1{
 
 #legend img{
   margin:0 5px 0 10px;
+  width:14px;
+  height:auto;
 }
 
 #measure{

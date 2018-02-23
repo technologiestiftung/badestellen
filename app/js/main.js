@@ -17,7 +17,7 @@ map.on('load', function(e){
 
       items.append('img').attr('src', function(d){
         return './images/state_'+d.properties.state+'@2x.png';
-      });
+      }).attr('width',18).attr('height',18);
       items.append('span').html(function(d){
         var date = new Date(d.properties.date);
         return '<span>'+d.properties.title+'</span> (' + date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100) + ')';
