@@ -16,7 +16,7 @@ map.on('load', function(e){
     });
 
       items.append('img').attr('src', function(d){
-        return './images/state_'+d.properties.state+'.png';
+        return './images/state_'+d.properties.state+'@2x.png';
       });
       items.append('span').html(function(d){
         var date = new Date(d.properties.date);

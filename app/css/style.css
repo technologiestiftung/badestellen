@@ -41,7 +41,7 @@ html, body{
   width:100%;
   padding:0;
   margin:0;
-  background-image:url(../images/head_mobile.png);
+  background-image:url(../images/head_mobile@2x.png);
   background-position: top right;
   background-repeat: no-repeat;
 }
@@ -81,7 +81,7 @@ h1{
   margin:5px 10px 0 0;
   background-position: center;
   background-repeat: no-repeat;
-  background-image:url(../images/close.png);
+  background-image:url(../images/close@2x.png);
 }
 
 .marker{
@@ -92,9 +92,9 @@ h1{
   cursor:pointer;
 }
 
-.marker.gruen{ background-image:url(../images/marker_gruen.png); }
-.marker.rot{ background-image:url(../images/marker_rot.png); }
-.marker.orange{ background-image:url(../images/marker_orange.png); }
+.marker.gruen{ background-image:url(../images/marker_gruen@2x.png); }
+.marker.rot{ background-image:url(../images/marker_rot@2x.png); }
+.marker.orange{ background-image:url(../images/marker_orange@2x.png); }
 
 #legend{
   margin-top:10px;
