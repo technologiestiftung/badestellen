@@ -1,0 +1,255 @@
+/*
+font-family: 'Open Sans', sans-serif;
+font-family: 'Heebo', sans-serif;
+*/
+
+html, body{ 
+  margin:0; 
+  padding:0; 
+  border:0; 
+  width:100%; 
+  height:100%; 
+  font-family: 'Open Sans', sans-serif;
+}
+
+*{
+  outline: none;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 3px;
+    border-left: 0;
+    background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-track {
+    background: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #253276;
+    border-radius: 0;
+}
+
+#header{
+  position:fixed;
+  z-index:99;
+  top:0;
+  left:0;
+  height:50px;
+  width:100%;
+  padding:0;
+  margin:0;
+  background-image:url(../images/head_mobile.png);
+  background-position: top right;
+  background-repeat: no-repeat;
+}
+
+h1{
+  color:#253276;
+  float:left;
+  font-size:18px;
+  margin:5px 0 0 10px;
+  padding:0;
+}
+
+#logo{
+  float:right;
+  width:70px;
+  height:auto;
+  margin:10px 7px 0 0;
+}
+
+#map{
+  width:100%;
+  height:50%;
+  max-height:500px;
+  border-bottom:2px solid #253276;
+}
+
+#detail{
+  display: none;
+}
+
+#closebtn{
+  float:right;
+  text-indent:300px;
+  width:20px;
+  height:20px;
+  cursor: pointer;
+  margin:5px 10px 0 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image:url(../images/close.png);
+}
+
+.marker{
+  width:27px;
+  height:27px;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor:pointer;
+}
+
+.marker.gruen{ background-image:url(../images/marker_gruen.png); }
+.marker.rot{ background-image:url(../images/marker_rot.png); }
+.marker.orange{ background-image:url(../images/marker_orange.png); }
+
+#legend{
+  margin-top:10px;
+  float:left;
+  font-size:12px;
+}
+
+#legend ul, #legend li{
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+#legend img{
+  margin:0 5px 0 10px;
+}
+
+#measure{
+  line-height:18px;
+  margin:10px 10px 0 0;
+  float:right;
+  font-size:12px;
+}
+
+#measure a{
+  text-decoration: none;
+  font-style:italic;
+  color:#253276;
+}
+
+#measure a:hover{
+  text-decoration: underline;
+}
+
+h2{
+  clear:both;
+  margin:0;
+  padding:0;
+  font-size:18px;
+  padding:20px 10px 0 10px;
+}
+
+.subline{
+  font-size:14px;
+  padding:0 10px 5px 10px;
+  display: block;
+}
+
+#list ul, #list li{
+  list-style: none;
+  margin:0;
+  padding:0;
+}
+
+#list img{
+  float:left;
+  margin:7.5px 10px 0 10px;
+}
+
+#list li{
+  cursor: pointer;
+  font-size:12px;
+  color:#999;
+  line-height:32px;
+}
+
+#list li span span{
+  font-size:14px;
+  color:#000;
+}
+
+#list li:nth-child(odd){
+  background-color:rgba(0,0,0,0.05);
+}
+
+#loading{
+  text-align: center;
+  font-size:14px;
+  margin:20px 0 0 0;
+}
+
+#detail{
+  padding-bottom:50px;
+}
+
+.modul-headline h4,
+.modul-text_bild h4,
+.modul-headline h2,
+.modul-headline h3,
+.modul-text_bild h2,
+.modul-text_bild h3{
+  font-weight:bold;
+  font-size:16px;
+  color:#000;
+  margin:0;
+  padding:20px 10px 0 10px;
+}
+
+.body a{
+  text-decoration: none;
+  color:#253276;
+  font-style: italic;
+}
+
+.body a:hover{
+  text-decoration: underline;
+}
+
+.body p{
+  font-size:14px;
+  padding:5px 10px 0 10px;
+  margin:0;
+}
+
+.body ul,
+.body li{
+  font-size:14px;
+}
+
+#detail>.html5-header.header,
+.body>*:first-child .html5-header.header,
+.body>.html5-header.modul-headline:first-child{
+  background-color:#253276;
+}
+
+.body>.html5-header:first-child h3,
+.body>*:first-child .html5-header.header h2,
+.body>*:first-child .html5-header.header h3,
+.body>.html5-header.modul-headline:first-child h2,
+#detail>.html5-header.header h1{
+  display: block;
+  color:#fff;
+  margin:0;
+  padding:0;
+  float:none;
+}
+
+.body>.html5-header:first-child h3,
+.body>*:first-child .html5-header.header h2,
+.body>*:first-child .html5-header.header h3,
+.body>.html5-header.modul-headline:first-child h2{font-size:16px; font-weight: normal; padding:3px 0 5px 10px;}
+#detail>.html5-header.header h1{font-size:18px; padding:5px 0 0 10px;}
+
+.main-image img{
+  width:100%;
+  height: auto;
+}
+
+.caption{
+  padding:0 10px;
+  font-size:10px;
+  color:rgba(0,0,0,0.8);
+}
+
+.modul-text_bild .header h3{
+  background:none;
+  color:#000;
+}

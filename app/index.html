@@ -1,0 +1,90 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="de"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Berliner Badestellen</title>
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!--<link type="text/plain" rel="author" href="humans.txt" />
+  <link rel="manifest" href="site.webmanifest" />
+  <link rel="apple-touch-icon" href="icon/icon.png" />
+
+  <link rel="icon" type="image/png" href="icon/favicon-alpha-32x32.png" sizes="32x32" />
+  <link rel="icon" type="image/png" href="icon/favicon-alpha-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/x-icon" href="icon/favicon.ico" />
+  <link rel="icon" type="image/png" href="icon/favicon-alpha-32x32.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="icon/favicon.ico" />-->
+
+  <!-- FACEBOOK -->
+  <!--<meta property="og:url" content="">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="">
+  <meta property="og:image" content="/icon/social_media.jpg">
+  <meta property="og:description" content="">
+  <meta property="og:site_name" content="">-->
+
+  <!-- TWITTER -->
+  <!--<meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@TSBBerlin">
+  <meta name="twitter:creator" content="@TSBBerlin">
+  <meta name="twitter:url" content="">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:description" content="">
+  <meta name="twitter:image" content="/icon/social_media.jpg">-->
+
+  <!-- CANONICAL URL -->
+  <!--<link rel="canonical" href="">-->
+  <!--<link rel="shortlink" href="tsblab.de/projects/PROJECT">-->
+
+  <meta name="theme-color" content="#253276">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="icon/ms-icon-144x144.png">
+
+
+  <link href="https://fonts.googleapis.com/css?family=Contrail+One|Open+Sans:300,300i,700" rel="stylesheet">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.css' rel='stylesheet' />
+  <link href='./css/style.css' rel='stylesheet' />
+</head>
+<body>
+  <div id="header">
+    <h1>Berliner Badestellen</h1>
+    <img src="images/logo_berlin.png" id="logo" alt="Berlin.de" />
+  </div>
+  <div id="map"></div>
+  <div id="content">
+    <div id="detail"></div>
+    <div id="home">
+      <div id="legend">
+        <ul>
+          <li><img src="./images/legend_gruen.png" alt="">Zum Baden geeignet</li>
+          <li><img src="./images/legend_orange.png" alt="">Vom Baden wird abgeraten</li>
+          <li><img src="./images/legend_rot.png" alt="">Badeverbot</li>
+        </ul>
+      </div>
+      <div id="measure">
+        Basierend auf den letzten<br />
+        Messungen des Landesamt für<br />
+        Gesundheit und Soziales.<br />
+        <a href="#">Mehr&nbsp;erfahren&nbsp;»</a>
+      </div>
+
+      <h2>Übersicht Badegewässer</h2>
+      <span class="subline">Datum der letzten Messung in Klammern</span>
+      <div id="list">
+        <ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
