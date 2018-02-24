@@ -99,6 +99,10 @@ h1{
 .marker.rot{ background-image:url(../images/marker_rot@2x.png); }
 .marker.orange{ background-image:url(../images/marker_orange@2x.png); }
 
+.marker.gruen.inactive,
+.marker.rot.inactive,
+.marker.orange.inactive{ background-image:url(../images/marker_inactive@2x.png); }
+
 #legend{
   margin-top:10px;
   float:left;
@@ -111,10 +115,16 @@ h1{
   padding:0;
 }
 
+#legend li{
+  line-height: 18px;
+  clear:both;
+}
+
 #legend img{
-  margin:0 5px 0 10px;
+  margin:1.5px 5px 0 10px;
   width:14px;
   height:auto;
+  float:left;
 }
 
 #measure{
@@ -240,7 +250,7 @@ h2{
 .body>.html5-header:first-child h3,
 .body>*:first-child .html5-header.header h2,
 .body>*:first-child .html5-header.header h3,
-.body>.html5-header.modul-headline:first-child h2{font-size:16px; font-weight: normal; padding:3px 0 5px 10px;}
+.body>.html5-header.modul-headline:first-child h2{font-size:16px; font-weight: normal; padding:0 0 10px 10px;}
 #detail>.html5-header.header h1{font-size:18px; padding:5px 0 0 10px;}
 
 .main-image img{

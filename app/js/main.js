@@ -7,12 +7,14 @@ var map = new mapboxgl.Map({
   zoom: 10
 });
 
+var locations = {}
+
 map.on('load', function(e){
   d3.json('../data/all.min.geojson', function(err, data){
 
     var items = d3.select('#list ul').selectAll('li').data(data.features).enter().append('li').append('a').on('click', function(){
       var d = d3.select(this).datum();
-      openDetails(d.properties.id);
+      openDetails(d.properties.id, true);
     });
 
       items.append('img').attr('src', function(d){
@@ -28,12 +30,14 @@ map.on('load', function(e){
       return b.geometry.coordinates[1]-a.geometry.coordinates[1];
     });
 
-    data.features.forEach(function(marker) {
+    data.features.forEach(function(marker, i) {
+      locations[marker.properties.id] = marker.geometry.coordinates;
 
       var el = document.createElement('div');
       el.className = 'marker '+marker.properties.state;
+      el.setAttribute("id", "marker_"+marker.properties.id);
       el.addEventListener('click', function(){ 
-        openDetails(marker.properties.id);
+        openDetails(marker.properties.id, false);
       }); 
 
       var m = new mapboxgl.Marker(el, {offset:[-2,-8.5]})
@@ -53,7 +57,14 @@ map.fitBounds(
   }
 );
 
-function openDetails(id){
+function openDetails(id, zoom){
+  if(zoom){ 
+    map.flyTo({ center: locations[id], zoom:14 });
+  }else{
+    map.flyTo({ center: locations[id] });
+  }
+  d3.selectAll('.marker').classed('inactive',true);
+  d3.select('#marker_'+id).classed('inactive',false);
   d3.select('#home').style('display','none');
   d3.selectAll('#detail *').remove();
   d3.select('#detail').style('display','block').html('<div id="loading">Informationen werden geladen...</div>');
@@ -66,6 +77,7 @@ function openDetails(id){
     d3.select('#detail').html(data.properties.details.html)
 
     d3.select('#detail h1').append('a').attr('id','closebtn').text('schließen').on('click', function(){
+      d3.selectAll('.marker').classed('inactive',false);
       d3.select('#detail').style('display','none');
       d3.select('#home').style('display','block');
     });
