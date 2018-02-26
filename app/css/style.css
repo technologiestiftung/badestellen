@@ -71,6 +71,8 @@ h1{
 
 #detail{
   display: none;
+  width:100%;
+  overflow-x:hidden;
 }
 
 #closebtn{
