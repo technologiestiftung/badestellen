@@ -1,0 +1,7 @@
+{
+	"path":"/uploads/",
+	"port":3535,
+	"users":[
+		{"user": "user", "pwd": "password"}
+	]
+}
