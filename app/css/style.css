@@ -456,6 +456,39 @@ h2{
 }
 
 @media screen and (max-width: 1023px) {
+  #list{
+    margin-top:15px;
+  }
+
+  #list li{
+    background-image:none !important;
+    float:none;
+    height:auto;
+  }
+
+  #list li a{
+    width:auto;
+    height: auto;
+    display: block;
+  }
+
+  #list li span.outer{
+    width:auto;
+    height:auto;
+    display: inline;
+    padding:0;
+  }
+
+  #list img.stateimg,
+  #list img.stateimg.substate {
+    height: 10px;
+  }
+
+  #list li span span span{
+    background:none;
+    color:#000;
+  }
+
   #legend li{
     clear:both;
   }
