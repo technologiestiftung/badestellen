@@ -57,7 +57,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgb(230, 233, 229)"
+        "fill-color": "rgb(215, 228, 210)"
       }
     },
     {
@@ -74,7 +74,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgb(194, 200, 202)",
+        "fill-color": "rgb(177, 198, 205)",
         "fill-antialias": true
       }
     },
@@ -206,7 +206,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgb(220,224,220)",
+        "fill-color": "rgb(215, 228, 210)",
         "fill-opacity": {
           "base": 1,
           "stops": [
@@ -236,7 +236,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "hsl(195, 17%, 78%)"
+        "line-color": "rgb(177, 198, 205)"
       }
     },
     {

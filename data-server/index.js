@@ -35,8 +35,21 @@ app.post('/upload', (req, res, next) => {
 
         if(valid){
           for(let filename in files){
+            let data = fs.readFileSync(files[filename].path, 'utf8')
+            switch(cuser){
+              case 'kwb':
+                //Add to the database
+                //Cache data in the system
+              break;
+              case 'bwb':
+                //Update the details
+              break;
+              case 'lageso':
+                //Current badestellen info
+              break;
+            }
 
-            console.log('UPLOAD COMPLETE', fs.readFileSync(files[filename].path, 'utf8'))
+            //TODO: If processing is done, make sure the temporary files are deleted
           }
 
           return res.status(200).json({ uploaded: true })
@@ -48,6 +61,11 @@ app.post('/upload', (req, res, next) => {
       
     })
 })
+
+//TODO: Emergency interface for overrides
+
+//TODO: Add interfaces to query the data
+//TODO: Static access to cached data
 
 app.listen(config.port, function() {
  console.log("Listening on " + config.port);

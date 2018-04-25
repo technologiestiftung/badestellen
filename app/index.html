@@ -53,35 +53,74 @@
   <link href='./css/style.css' rel='stylesheet' />
 </head>
 <body>
-  <div id="header">
-    <h1>Berliner Badestellen</h1>
-    <img src="images/logo_berlin@2x.png" id="logo" alt="Berlin.de" />
+  <div id="splash">
+    <div>
+      <img src="images/splash@2x.gif" width="53" height="53" /><br />
+      <strong>Berliner Badestellen</strong><br />
+      <span class="small">werden geladen...</span>
+    </div>
   </div>
-  <div id="map"></div>
-  <div id="content">
-    <div id="detail"></div>
-    <div id="home">
-      <div id="legend">
-        <ul>
-          <li><img src="./images/legend_gruen@2x.png" alt="">Zum Baden geeignet</li>
-          <li><img src="./images/legend_orange@2x.png" alt="">Vom Baden wird abgeraten</li>
-          <li><img src="./images/legend_rot@2x.png" alt="">Badeverbot</li>
-        </ul>
-      </div>
-      <div id="measure">
-        Basierend auf den letzten<br />
-        Messungen des Landesamt für<br />
-        Gesundheit und Soziales.<br />
-        <a href="#">Mehr&nbsp;erfahren&nbsp;»</a>
-      </div>
+  <div id="container">
+    <div class="topnav" id="myTopnav">
+      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+      <a href="index.html" class="home active">Berliner Badestellen</a>
+      <a href="info.html">Messverfahren</a>
+      <img src="images/be-berlin.svg" alt="be Berlin Logo" id="logo" />
+    </div>
+    <div id="map"></div>
+    <div id="content">
+      <div id="detail"></div>
+      <div id="home">
+        <div id="legend">
+          <ul>
+            <li><img src="./images/legend_gruen@2x.png" alt="">Zum Baden geeignet</li>
+            <li><img src="./images/legend_orange@2x.png" alt="">Vom Baden wird abgeraten</li>
+            <li><img src="./images/legend_rot@2x.png" alt="">Badeverbot</li>
+          </ul>
+        </div>
+        <div id="measure">
+          Basierend auf den letzten<br class="responsive-break" />
+          Messungen des Landesamt für<br />
+          Gesundheit und Soziales.<br class="responsive-break" />
+          <a href="#">Mehr&nbsp;erfahren&nbsp;»</a>
+        </div>
 
-      <h2>Übersicht Badegewässer</h2>
-      <span class="subline">Datum der letzten Messung in Klammern</span>
-      <div id="list">
+        <div id="list-container">
+          <h2>Übersicht Badegewässer</h2>
+          <span class="subline">Datum der letzten Messung in Klammern</span>
+          <div id="list">
+            <ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="telefon">
+        <h2>Badegewässertelefon</h2>
         <ul>
+          <li>Sie wollen sich über die hygienische Qualität der Berliner Flüsse und Seen informieren?</li>
+          <li>Sie wollen Informationen zur Qualität Ihrer Lieblingsbadestelle in der Stadt?</li>
+          <li>Sie wollen Näheres zum Untersuchungsprogramm und zur aktuellen Bewertung von Badestellen in Berlin wissen?</li>
+          <li>Sie wollen wissenschaftliche Erkenntnisse über die Hygiene einer Berliner Badestelle so rasch wie möglich erfahren?</li>
+          <li>Sie wollen wissen, warum in Berliner Gewässern so viele Algen vorkommen und ob man sich davor in Acht nehmen muss?</li>
         </ul>
+        <p>Dann rufen Sie uns einfach an.</p>
+        <p>Während der offiziellen Badesaison vom 15. Mai bis zum 15. September eines jeden Jahres sind wir für Sie am Badegewässertelefon unter <strong><a href="tel:+4930902295555">(030)&nbsp;90229&nbsp;5555</a></strong> während der Servicezeiten von <strong>8:00&nbsp;–&nbsp;15:00&nbsp;Uhr</strong> erreichbar. Außerhalb der Servicezeiten erfolgt eine Tonbandansage zu den Berliner Badestellen.</p>
+        <p>Auskünfte erhalten sie auch über die Nummer des Berliner <strong>Bürgertelefons <a href="tel:+4930115">115</a></strong> in der Zeit von <strong>8:00&nbsp;-&nbsp;18:00&nbsp;Uhr</strong>.</p>
+      </div>
+      <div id="footer">
+        <h2>Partnernetzwerk</h2>
+        <a href="#"><img src="images/partner/lageso.png" alt="Landesamt für Gesundheit und Soziales Berlin" style="margin-right:37px;" /></a>
+        <a href="#"><img src="images/partner/bwb.png" alt="Berliner Wasserbetriebe" style="margin-right:14px;" /></a>
+        <a href="#"><img src="images/partner/kwb.png" alt="Kompetenzzentrum Wasser Berlin" /></a><br />
+        <a href="#"><img src="images/partner/flusshygiene.png" alt="Flusshygiene" style="margin-right:20px;" /></a>
+        <a href="#"><img src="images/partner/tsb.png" alt="Technologiestiftung Berlin" /></a><br />
+        <a href="#"><img src="images/partner/bmbf.jpg" alt="BMBF" style="margin-right:15px;" /></a>
+        <a href="#"><img src="images/partner/ReWaM_NaWaM.png" alt="ReWaM NaWaM" /></a>
       </div>
     </div>
+  </div>
+  <div id="footnote">
+    <a href="#">Kontakt</a> | <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | Copyright 2018
   </div>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>

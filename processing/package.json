@@ -18,9 +18,12 @@
   "homepage": "https://github.com/technologiestiftung/badestellen#readme",
   "dependencies": {
     "cheerio": "^1.0.0-rc.2",
+    "d3": "^5.1.0",
     "fs": "0.0.1-security",
-    "request": "^2.83.0",
+    "proj4": "^2.4.4",
+    "request": "^2.85.0",
     "request-promise": "^4.2.2",
-    "request-promise-native": "^1.0.5"
+    "request-promise-native": "^1.0.5",
+    "sharp": "^0.20.1"
   }
 }
