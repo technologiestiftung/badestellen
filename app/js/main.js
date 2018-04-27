@@ -3,8 +3,6 @@ var updateMapContainer = debounce(function() {
   map.resize();
 }, 250);
 
-window.addEventListener("resize", updateMapContainer);
-
 function debounce(func, wait, immediate) {
   var timeout;
   return function() {
@@ -22,84 +20,96 @@ function debounce(func, wait, immediate) {
 
 var map, locations = {}, gData = null, gKeys = {};
 
-d3.csv('../processing/data/new.csv', function(err, data){
+if(d3.selectAll('#map').size()>0){
 
-  gData = data;
+  window.addEventListener("resize", updateMapContainer);
 
-  data.forEach(function(d,i){
-    gKeys[d.detail_id] = i;
-  });
+  d3.csv('../processing/data/new.csv', function(err, data){
 
-  var items = d3.select('#list ul').selectAll('li').data(data).enter().append('li').style('background-image', function(d){
-      return 'url(../processing/images/'+d.id+'.jpg)';
-    }).append('a').on('click', function(){
-    var d = d3.select(this).datum();
-    openDetails(d.detail_id, true);
-  }).append('span').attr('class','outer');
+    gData = data;
 
-    items.append('img').attr('class', function(d){
-      return 'stateimg state-'+d.state+((d.name.indexOf(d.gewaesser)>=0)?'':' substate'); 
-    }).attr('src', './images/trans.gif');
-
-    items.append('span').html(function(d){
-      var textTitle = '<span>';
-
-      if(d.name.indexOf(d.gewaesser)>=0){
-        textTitle += d.name;
-      }else{
-        textTitle += d.name+'</span><br class="unresposive-break" /><span class="unresponsive-sub">'+d.gewaesser;
-      }
-
-      textTitle += '</span>';
-      return textTitle;
+    data.forEach(function(d,i){
+      gKeys[d.detail_id] = i;
     });
 
+    var items = d3.select('#list ul').selectAll('li').data(data).enter().append('li').style('background-image', function(d){
+        return 'url(../processing/images/'+d.id+'.jpg)';
+      }).append('a').on('click', function(){
+      var d = d3.select(this).datum();
+      openDetails(d.detail_id, true);
+    }).append('span').attr('class','outer');
 
-  data.sort(function(a,b){
-    return b.lng - a.lng;
+      items.append('img').attr('class', function(d){
+        return 'stateimg state-'+d.state+((d.name.indexOf(d.gewaesser)>=0)?'':' substate'); 
+      }).attr('src', './images/trans.gif');
+
+      items.append('span').html(function(d){
+        var textTitle = '<span>';
+
+        if(d.name.indexOf(d.gewaesser)>=0){
+          textTitle += d.name;
+        }else{
+          textTitle += d.name+'</span><br class="unresposive-break" /><span class="unresponsive-sub">'+d.gewaesser;
+        }
+
+        textTitle += '</span>';
+        return textTitle;
+      });
+
+
+    data.sort(function(a,b){
+      return b.lng - a.lng;
+    });
+
+    d3.select('#splash').transition()
+      .duration(200)
+      .style('opacity',0)
+      .on('end', function(){
+        d3.select('#splash').remove();
+      });
+
+    map = new mapboxgl.Map({
+      container: 'map',
+      style: 'style.json',
+      center: [13.4244,52.5047],
+      zoom: 10
+    });
+
+    map.addControl(new mapboxgl.NavigationControl(),'bottom-left');
+
+    map.fitBounds(
+      [[13.0790332437,52.3283651024],[13.7700526861,52.6876624308]],
+      {
+        offset: [0, 50],
+        speed:999
+      }
+    );
+
+    updateMapContainer();
+
+    data.forEach(function(marker, i) {
+      locations[marker.detail_id] = [marker.lat,marker.lng];
+
+      var el = document.createElement('div');
+      el.className = 'marker '+marker.state;
+      el.setAttribute("id", "marker_"+marker.detail_id);
+      el.addEventListener('click', function(){ 
+        openDetails(marker.detail_id, false);
+      }); 
+
+      var m = new mapboxgl.Marker(el, {offset:[-2,-8.5]})
+        .setLngLat([marker.lat,marker.lng])
+        .addTo(map);
+    });
   });
-
+}else{
   d3.select('#splash').transition()
     .duration(200)
     .style('opacity',0)
     .on('end', function(){
       d3.select('#splash').remove();
     });
-
-  map = new mapboxgl.Map({
-    container: 'map',
-    style: 'style.json',
-    center: [13.4244,52.5047],
-    zoom: 10
-  });
-
-  map.addControl(new mapboxgl.NavigationControl(),'bottom-left');
-
-  map.fitBounds(
-    [[13.0790332437,52.3283651024],[13.7700526861,52.6876624308]],
-    {
-      offset: [0, 50],
-      speed:999
-    }
-  );
-
-  updateMapContainer();
-
-  data.forEach(function(marker, i) {
-    locations[marker.detail_id] = [marker.lat,marker.lng];
-
-    var el = document.createElement('div');
-    el.className = 'marker '+marker.state;
-    el.setAttribute("id", "marker_"+marker.detail_id);
-    el.addEventListener('click', function(){ 
-      openDetails(marker.detail_id, false);
-    }); 
-
-    var m = new mapboxgl.Marker(el, {offset:[-2,-8.5]})
-      .setLngLat([marker.lat,marker.lng])
-      .addTo(map);
-  });
-});
+}
 
 function openDetails(id, zoom){
   if(zoom){ 
@@ -141,10 +151,15 @@ function openDetails(id, zoom){
               '    '+data.name_lang+'<br>'+
               '    '+data.strasse+'<br>'+
               '    '+data.plz+' '+data.stadt+'<br><br />'+
-              '    <a href="map:.."><img src="./images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;Route berechnen</a><br /><br />'+
-              '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+(locations[id][0].toFixed(6)+'').replace('.','')+'@Y='+(locations[id][1].toFixed(6)+'').replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;Anfahrt mit der BVG</a><br /><br />'+
-              '    Wasserqualität: '+ stufentext[data.state] + 
-              '    Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+
+              '    <a href="map:.."><img src="./images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;<span>Route berechnen</span></a><br />'+
+              '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+parseFloat(locations[id][0]).toFixed(6).toString().replace('.','')+'@Y='+parseFloat(locations[id][1]).toFixed(6).toString().replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;<span>Anfahrt mit der BVG</span></a><br />'+
+              '    <h3>Wasserqualität</h3>'+ 
+              '    <span class="stufen-icon stufen-'+data.state+'"></span>'+stufentext[data.state]+' <span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ ')</span>' +
+              '    <span class="eu-ranks"><img class="eu-class" src="./images/eu-signs/excellent@2x.png" width="92" height="81" alt="Ausgezeichnete Badegewässerqualität" />' +
+              '    <img src="./images/eu-signs/legend_excellent@2x.png" width="49" height="14" alt="Ausgezeichnet" />&nbsp;Ausgezeichnet<br />' +
+              '    <img class="first" src="./images/eu-signs/legend_good@2x.png" width="49" height="14" alt="Gut" />&nbsp;Gut<br />' +
+              '    <img src="./images/eu-signs/legend_sufficient@2x.png" width="49" height="14" alt="Ausreichend" />&nbsp;Ausreichend<br />' +
+              '    <img src="./images/eu-signs/legend_poor@2x.png" width="49" height="14" alt="Mangelhaft" />&nbsp;Mangelhaft</span>' +
               '  </div>'+
               '  <div class="detail-addon">'+
               '    <h3 class="title">Weitere Angaben zur Badesstelle</h3>'+
@@ -207,9 +222,9 @@ function openDetails(id, zoom){
               '    '+data.gesundheitsamt_name+'<br />'+
               '    '+data.gesundheitsamt_zusatz+'<br />'+
               '    '+data.gesundheitsamt_strasse+'<br />'+
-              '    '+data.gesundheitsamt_plz+' '+data.gesundheitsamt_stadt+'<br />'+
-              '    <a href="mailto:'+data.gesundheitsamt_mail+'"><img src="./images/signs/email@2x.png" width="30" height="30" alt="Email" />&nbsp;'+data.gesundheitsamt_mail+'</a><br />'+
-              '    <a href="tel:'+data.gesundheitsamt_telefon+'"><img src="./images/signs/phone@2x.png" width="30" height="30" alt="Telefon" />&nbsp;'+data.gesundheitsamt_telefon+'</a>'+
+              '    '+data.gesundheitsamt_plz+' '+data.gesundheitsamt_stadt+'<br /><br />'+
+              '    <a href="mailto:'+data.gesundheitsamt_mail+'"><img src="./images/signs/email@2x.png" width="30" height="30" alt="Email" />&nbsp;<span>'+data.gesundheitsamt_mail+'</span></a><br />'+
+              '    <a href="tel:'+data.gesundheitsamt_telefon+'"><img src="./images/signs/phone@2x.png" width="30" height="30" alt="Telefon" />&nbsp;<span>'+data.gesundheitsamt_telefon+'</span></a>'+
               '  </div>'+
               '</div>';
 
@@ -221,7 +236,11 @@ function openDetails(id, zoom){
       d3.select('#detail').style('display','none');
       d3.select('#home').style('display','block');
   });
+
+  document.documentElement.scrollTop = 0;
+
 }
+
 
 /*
  * Responsive Menu Button

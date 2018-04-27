@@ -58,6 +58,10 @@ html, body{
   margin-bottom:8px;
 }
 
+#content.nomap{
+  padding-top:70px;
+}
+
 .small{
   font-size:12px;
 }
@@ -128,6 +132,17 @@ h1{
   font-size:18px;
   margin:5px 0 0 10px;
   padding:0;
+}
+
+.nomap h1, .nomap h2{
+  float:none;
+  margin:0;
+  padding: 0 40px;
+}
+
+.nomap p{
+  margin:20px 40px;
+  max-width:550px;
 }
 
 #logo{
@@ -261,8 +276,11 @@ h2{
   height:60px;
 }
 
+.stufen-icon.stufen-gruen,
 #list img.stateimg.state-gruen{ background-color:#97B014; }
+.stufen-icon.stufen-rot,
 #list img.stateimg.state-rot{ background-color:#E20026; }
+.stufen-icon.stufen-orange,
 #list img.stateimg.state-orange{ background-color:#F49F00; }
 
 #list li{
@@ -362,6 +380,19 @@ h2{
   font-size:14px;
 }
 
+#detail h3{
+  padding-bottom:10px;
+  margin-bottom:0;
+}
+
+.stufen-icon{
+  float:left;
+  width:18px;
+  height:18px;
+  border:1px solid #000;
+  margin-right:5px;
+}
+
 .detail-header{
   background-color:#253276;
 }
@@ -398,6 +429,7 @@ h2{
 
 .detail-location{
   float:left;
+  max-width:45%;
 }
 
 .detail-addon{
@@ -427,6 +459,37 @@ h2{
   float:left;
   margin:0 0 0 0;
   max-width:45%;
+}
+
+.detail-location a, .detail-amt a{
+  text-decoration: none;
+  color:#000;
+  font-style: italic;
+  clear:both;
+  display: block;
+}
+
+.detail-location a:hover span, .detail-amt a:hover span{
+  text-decoration: underline;
+}
+
+.detail-location a img, .detail-amt a img{
+  margin:-3px 3px 0 0;
+  float:left;
+}
+
+.eu-class{
+  float:left;
+}
+
+.eu-ranks{
+  font-size:12px;
+  display: block;
+  padding-top:15px;
+}
+
+.eu-ranks img{
+  margin-right:10px;
 }
 
 .caption{
@@ -471,9 +534,10 @@ h2{
     margin:0 0 20px 0;
   }
 
-  .detail-addon, .detail-amt{
+  .detail-addon, .detail-amt, .detail-location{
     float:none;
     width:auto;
+    clear:both;
     max-width: 100%;
     margin:40px 20px 0 20px;
   }
@@ -522,7 +586,7 @@ h2{
   }
 
   .topnav a:not(.home) {display: none;}
-  .topnav a.icon {
+  .topnav a.icon{
     float: left;
     display: block;
     padding:9px 11px 7px 15px;
@@ -573,6 +637,14 @@ h2{
     display: inline;
   }
 
+  .topnav a:hover {
+    padding-bottom:5px;
+  }
+
+  .topnav a.icon:hover{
+    padding-bottom:7px;
+  }
+
   h2{
     padding-top:20px;
   }
@@ -601,5 +673,13 @@ h2{
 
   #list img.stateimg{
     margin:7.5px 10px 0 10px;
+  }
+
+  .nomap h1, .nomap h2{
+    padding: 0 20px;
+  }
+
+  .nomap p{
+    margin:20px;
   }
 }
