@@ -407,9 +407,26 @@ h2{
   margin: 0 20px;
 }
 
+.detail-addon ul, .detail-addon li{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.detail-addon li{
+  clear:both;
+  padding-bottom:10px;
+}
+
+.detail-addon li img{
+  float:left;
+  margin:-4px 3px 10px 0 ;
+}
+
 .detail-amt{
   float:left;
   margin:0 0 0 0;
+  max-width:45%;
 }
 
 .caption{
@@ -449,9 +466,16 @@ h2{
 }
 
 @media screen and (max-width: 768px) {
-  .detail-image img{
+  .detail-image{
     width:100%;
-    height: auto;
+    margin:0 0 20px 0;
+  }
+
+  .detail-addon, .detail-amt{
+    float:none;
+    width:auto;
+    max-width: 100%;
+    margin:40px 20px 0 20px;
   }
 }
 
@@ -551,6 +575,11 @@ h2{
 
   h2{
     padding-top:20px;
+  }
+
+  #footer{
+    margin:0 20px;
+    padding:0;
   }
 
   #footer img{

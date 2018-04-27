@@ -141,61 +141,63 @@ function openDetails(id, zoom){
               '    '+data.name_lang+'<br>'+
               '    '+data.strasse+'<br>'+
               '    '+data.plz+' '+data.stadt+'<br><br />'+
-              '    <a href="map:..">Route berechnen</a><br /><br />'+
-              '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X=13179795@Y=52463124@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch">Anfahrt mit der BVG</a><br /><br />'+
-              '    Wasserqualität: '+ stufentext[data.state] +((data.cyano_moeglich)?'<br /><span class="small">(Möglicherweise Algen)</span>':'')+ '<br />' + 
+              '    <a href="map:.."><img src="./images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;Route berechnen</a><br /><br />'+
+              '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+(locations[id][0].toFixed(6)+'').replace('.','')+'@Y='+(locations[id][1].toFixed(6)+'').replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;Anfahrt mit der BVG</a><br /><br />'+
+              '    Wasserqualität: '+ stufentext[data.state] + 
               '    Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+
               '  </div>'+
               '  <div class="detail-addon">'+
               '    <h3 class="title">Weitere Angaben zur Badesstelle</h3>'+
               '    <ul>';
 
-              if(data.wasserrettung_durch_hilfsorganisationen_dlrg_oder_asb){
-                html += '<li>Wasserrettung durch DLRG oder ASB</li>';
+              if(data.cyano_moeglich){
+                html += '<li><img src="./images/signs/cyano@2x.png" width="30" height="30" alt="Cyanobakterien massenhaft möglich (Blaualgen)" />&nbsp;Cyanobakterien massenhaft möglich (Blaualgen)</li>';
               }
 
-              if(data.rettungsschwimmer){
-                html += '<li>Rettungsschwimmer</li>';
+              if(data.wasserrettung_durch_hilfsorganisationen_dlrg_oder_asb || data.rettungsschwimmer){
+                html += '<li><img src="./images/signs/rescue@2x.png" width="30" height="30" alt="Wasserrettung zeitweise" />&nbsp;Wasserrettung zeitweise</li>';
               }
 
               if(!data.barrierefrei){
-                html += '<li>Nicht barrierefrei</li>';
+                html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Nicht barrierefrei" />&nbsp;Nicht barrierefrei</li>';
+              }else{
+                html += '<li><img src="./images/signs/barrierefrei@2x.png" width="30" height="30" alt="Barrierefrei" />&nbsp;Barrierefrei</li>';
               }
 
               if(!data.barrierefrei_zugang){
-                html += '<li>Zugang zum Wasser nicht barrierefrei</li>';
+                html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Zugang zum Wasser nicht barrierefrei" />&nbsp;Zugang zum Wasser nicht barrierefrei</li>';
+              }else{
+                html += '<li><img src="./images/signs/barrierefrei@2x.png" width="30" height="30" alt="Barrierefreier Zugang zum Wasser" />&nbsp;Barrierefreier Zugang zum Wasser</li>';
               }
 
               if(data.restaurant){
-                html += '<li>Restaurant</li>';
+                html += '<li><img src="./images/signs/restaurant@2x.png" width="30" height="30" alt="Restaurant" />&nbsp;Restaurant</li>';
               }
 
               if(data.imbiss){
-                html += '<li>Imbiss</li>';
+                html += '<li><img src="./images/signs/imbiss@2x.png" width="30" height="30" alt="Imbiss" />&nbsp;Imbiss</li>';
               }
 
               if(data.parken){
-                html += '<li>Parkmöglichkeiten</li>';
+                html += '<li><img src="./images/signs/parken@2x.png" width="30" height="30" alt="Parkmöglichkeiten" />&nbsp;Parkmöglichkeiten</li>';
               }
 
               if(data.wc){
-                html += '<li>WC verfügbar</li>';
+                html += '<li><img src="./images/signs/toilette@2x.png" width="30" height="30" alt="WC verfügbar" />&nbsp;WC verfügbar</li>';
                 if(!data.barrierefrei_wc){
-                  html += '<li>WC ist nicht barrierefrei</li>';
+                  html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li>';
                 }
               }else if(data.wc_mobil){
-                html += '<li>Mobiles WC verfügbar</li>';
+                html += '<li><img src="./images/signs/toilette@2x.png" width="30" height="30" alt="Mobiles WC verfügbar" />&nbsp;Mobiles WC verfügbar</li>';
                 if(!data.barrierefrei_wc){
-                  html += '<li>WC ist nicht barrierefrei</li>';
+                  html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li>';
                 }
-              }else{
-                html += '<li>Kein WC verfügbar</li>';
               }
 
               if(data.hundeverbot){
-                html += '<li>Hundeverbot</li>';
+                html += '<li><img src="./images/signs/hundeverbot@2x.png" width="30" height="30" alt="Hundeverbot" />&nbsp;Hundeverbot</li>';
               }else{
-                html += '<li>Kein Hundeverbot</li>';
+                html += '<li><img src="./images/signs/hundeverbot-not@2x.png" width="30" height="30" alt="Kein Hundeverbot" />&nbsp;Kein Hundeverbot</li>';
               }
 
       html += '    </ul>'+
@@ -206,8 +208,8 @@ function openDetails(id, zoom){
               '    '+data.gesundheitsamt_zusatz+'<br />'+
               '    '+data.gesundheitsamt_strasse+'<br />'+
               '    '+data.gesundheitsamt_plz+' '+data.gesundheitsamt_stadt+'<br />'+
-              '    <a href="mailto:'+data.gesundheitsamt_mail+'">'+data.gesundheitsamt_mail+'</a><br />'+
-              '    <a href="tel:'+data.gesundheitsamt_telefon+'">'+data.gesundheitsamt_telefon+'</a>'+
+              '    <a href="mailto:'+data.gesundheitsamt_mail+'"><img src="./images/signs/email@2x.png" width="30" height="30" alt="Email" />&nbsp;'+data.gesundheitsamt_mail+'</a><br />'+
+              '    <a href="tel:'+data.gesundheitsamt_telefon+'"><img src="./images/signs/phone@2x.png" width="30" height="30" alt="Telefon" />&nbsp;'+data.gesundheitsamt_telefon+'</a>'+
               '  </div>'+
               '</div>';
 
