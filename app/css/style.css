@@ -167,11 +167,15 @@ h1{
 #closebtn{
   float:right;
   text-indent:300px;
-  width:20px;
   height:20px;
+  min-width:200px;
+  display: block;
   cursor: pointer;
-  margin:5px 10px 0 0;
-  background-position: center;
+  margin:0 10px 8px 0;
+  text-align: right;
+  padding:0 30px 2px 0;
+  color:#fff;
+  background-position: right;
   background-repeat: no-repeat;
   background-size:20px 20px;
   background-image:url(../images/close@2x.png);
@@ -280,14 +284,22 @@ h2{
 }
 
 .stufen-icon.stufen-gruen,
-#list img.stateimg.state-gruen{ background-color:#97B014; }
-#list img.stateimg.state-gruen{ background-image: url('../images/icon_gruen@2x.png'); }
+#list img.stateimg.state-gruen{ 
+  background-color:#97B014;
+  background-image: url('../images/icon_gruen@2x.png');
+}
+
 .stufen-icon.stufen-rot,
-#list img.stateimg.state-rot{ background-color:#E20026; }
-#list img.stateimg.state-rot{ background-image: url('../images/icon_rot@2x.png'); }
+#list img.stateimg.state-rot{ 
+  background-color:#E20026; 
+  background-image: url('../images/icon_rot@2x.png');
+}
+
 .stufen-icon.stufen-orange,
-#list img.stateimg.state-orange{ background-color:#F49F00; }
-#list img.stateimg.state-orange{ background-image: url('../images/icon_orange@2x.png'); }
+#list img.stateimg.state-orange{ 
+  background-color:#F49F00;
+  background-image: url('../images/icon_orange@2x.png'); 
+}
 
 #list li{
   width:300px;
@@ -397,10 +409,13 @@ h2{
 
 .stufen-icon{
   float:left;
-  width:18px;
-  height:18px;
-  border:1px solid #000;
+  width:40px;
+  height:34px;
   margin-right:5px;
+  margin-top:-5px;
+  background-position: center;
+  background-size:40px 34px;
+  background-repeat: no-repeat;
 }
 
 .detail-header{
@@ -418,12 +433,22 @@ h2{
 }
 
 .detail-header h2{
-  clear:both;
+  clear:left;
   font-weight:normal;
   font-size:16px;
-  float:none;
+  float:left;
   padding-top:0;
   padding-bottom:5px;
+}
+
+hr.closer{
+  clear:both;
+  width:100%;
+  border:none;
+  background:transparent;
+  height:1px;
+  margin:0;
+  padding:0;
 }
 
 .detail-image{
@@ -479,6 +504,11 @@ h2{
   display: block;
 }
 
+.detail-amt p.small{
+  margin:0;
+  padding:0;
+}
+
 .detail-location a:hover span, .detail-amt a:hover span{
   text-decoration: underline;
 }
@@ -486,6 +516,27 @@ h2{
 .detail-location a img, .detail-amt a img{
   margin:-3px 3px 0 0;
   float:left;
+}
+
+.prediction{
+  display: block;
+  clear:both;
+  padding-top:10px;
+}
+
+.prediction a{
+  display: inline;
+  clear:none;
+}
+
+.prediction a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.prediction img{
+  float:left;
+  margin: 0 10px 40px 5px;
 }
 
 .eu-class{

@@ -148,8 +148,10 @@ function openDetails(id, zoom){
   var date = new Date(data.date);
 
   var html =  '<div class="detail-header">'+
-              '  <h1>'+data.name_lang+'</h1><a id="closebtn">schließen</a>'+
+              '  <h1>'+data.name_lang+'</h1>'+
               '  <h2>'+data.bezirk+'</h2>'+
+              '  <a id="closebtn">zurück&nbsp;zur&nbsp;Übersicht</a>'+
+              '  <hr class="closer" />'+
               '</div>'+
               '<div class="detail-body">'+
               '  <div class="detail-image">'+
@@ -165,11 +167,7 @@ function openDetails(id, zoom){
               '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+parseFloat(locations[id][0]).toFixed(6).toString().replace('.','')+'@Y='+parseFloat(locations[id][1]).toFixed(6).toString().replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;<span>Anfahrt mit der BVG</span></a><br />'+
               '    <h3>Wasserqualität</h3>'+ 
               '    <span class="stufen-icon stufen-'+data.state+'"></span>'+stufentext[data.state]+' <span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ ')</span>' +
-              '    <span class="eu-ranks"><img class="eu-class" src="./images/eu-signs/excellent@2x.png" width="92" height="81" alt="Ausgezeichnete Badegewässerqualität" />' +
-              '    <img src="./images/eu-signs/legend_excellent@2x.png" width="49" height="14" alt="Ausgezeichnet" />&nbsp;Ausgezeichnet<br />' +
-              '    <img class="first" src="./images/eu-signs/legend_good@2x.png" width="49" height="14" alt="Gut" />&nbsp;Gut<br />' +
-              '    <img src="./images/eu-signs/legend_sufficient@2x.png" width="49" height="14" alt="Ausreichend" />&nbsp;Ausreichend<br />' +
-              '    <img src="./images/eu-signs/legend_poor@2x.png" width="49" height="14" alt="Mangelhaft" />&nbsp;Mangelhaft</span>' +
+              ((data.prediction=='true')?'<span class="prediction"><img src="./images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="#">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'') + 
               '  </div>'+
               '  <div class="detail-addon">'+
               '    <h3 class="title">Weitere Angaben zur Badesstelle</h3>'+
@@ -228,6 +226,14 @@ function openDetails(id, zoom){
       html += '    </ul>'+
               '  </div>'+
               '  <div class="detail-amt">'+
+              '    <h3 class="title">EU-Einstufung</h3>'+
+              '    <p class="small">Auswertung der letzten vier Jahre.</p>'+
+              '    <span class="eu-ranks"><img class="eu-class" src="./images/eu-signs/excellent@2x.png" width="92" height="81" alt="Ausgezeichnete Badegewässerqualität" />' +
+              '    <img src="./images/eu-signs/legend_excellent@2x.png" width="49" height="14" alt="Ausgezeichnet" />&nbsp;Ausgezeichnet<br />' +
+              '    <img class="first" src="./images/eu-signs/legend_good@2x.png" width="49" height="14" alt="Gut" />&nbsp;Gut<br />' +
+              '    <img src="./images/eu-signs/legend_sufficient@2x.png" width="49" height="14" alt="Ausreichend" />&nbsp;Ausreichend<br />' +
+              '    <img src="./images/eu-signs/legend_poor@2x.png" width="49" height="14" alt="Mangelhaft" />&nbsp;Mangelhaft</span><br />' +
+
               '    <h3 class="title">Zuständiges Gesundheitsamt</h3>'+
               '    '+data.gesundheitsamt_name+'<br />'+
               '    '+data.gesundheitsamt_zusatz+'<br />'+
