@@ -266,10 +266,13 @@ h2{
 #list img.stateimg{
   float:left;
   /*margin:-23px 5px 5px 8px;*/
-  width:15px;
+  width:40px;
   height:34px;
   border:none;
   outline:none;
+  background-position: center;
+  background-size:40px 34px;
+  background-repeat: no-repeat;
 }
 
 #list img.stateimg.substate{
@@ -278,10 +281,13 @@ h2{
 
 .stufen-icon.stufen-gruen,
 #list img.stateimg.state-gruen{ background-color:#97B014; }
+#list img.stateimg.state-gruen{ background-image: url('../images/icon_gruen@2x.png'); }
 .stufen-icon.stufen-rot,
 #list img.stateimg.state-rot{ background-color:#E20026; }
+#list img.stateimg.state-rot{ background-image: url('../images/icon_rot@2x.png'); }
 .stufen-icon.stufen-orange,
 #list img.stateimg.state-orange{ background-color:#F49F00; }
+#list img.stateimg.state-orange{ background-image: url('../images/icon_orange@2x.png'); }
 
 #list li{
   width:300px;
@@ -289,6 +295,7 @@ h2{
   float:left;
   margin:15px;
   background-size:300px 200px;  
+  cursor:pointer;
 }
 
 #list li a{
@@ -298,13 +305,16 @@ h2{
   cursor: pointer;
   font-size:12px;
   color:#999;
+  cursor:pointer;
 }
 
 #list li a:hover{
   background-color:rgba(37,15,118,0.5);
+  cursor:pointer;
 }
 
 #list li span.outer{
+  cursor:pointer;
   width:300px;
   height:110px;
   padding-bottom:10px;
@@ -569,7 +579,8 @@ h2{
 
   #list img.stateimg,
   #list img.stateimg.substate {
-    height: 10px;
+    height: 34px;
+    margin:0;
   }
 
   #list li span span span{
@@ -669,10 +680,6 @@ h2{
     width:100%;
     margin:0;
     line-height:32px;
-  }
-
-  #list img.stateimg{
-    margin:7.5px 10px 0 10px;
   }
 
   .nomap h1, .nomap h2{

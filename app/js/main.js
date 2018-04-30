@@ -26,13 +26,26 @@ if(d3.selectAll('#map').size()>0){
 
   d3.csv('../processing/data/new.csv', function(err, data){
 
+    data.sort(function(a,b){
+      return b.lng - a.lng;
+    });
+
     gData = data;
 
     data.forEach(function(d,i){
       gKeys[d.detail_id] = i;
     });
 
-    var items = d3.select('#list ul').selectAll('li').data(data).enter().append('li').style('background-image', function(d){
+    var listData = (JSON.parse(JSON.stringify(data))).sort(function(a,b){
+      if(a.name<b.name){
+        return -1;
+      }else if(a.name>b.name){
+        return 1;
+      }
+      return 0;
+    });
+
+    var items = d3.select('#list ul').selectAll('li').data(listData).enter().append('li').style('background-image', function(d){
         return 'url(../processing/images/'+d.id+'.jpg)';
       }).append('a').on('click', function(){
       var d = d3.select(this).datum();
@@ -56,10 +69,6 @@ if(d3.selectAll('#map').size()>0){
         return textTitle;
       });
 
-
-    data.sort(function(a,b){
-      return b.lng - a.lng;
-    });
 
     d3.select('#splash').transition()
       .duration(200)
@@ -112,6 +121,7 @@ if(d3.selectAll('#map').size()>0){
 }
 
 function openDetails(id, zoom){
+  console.log(id);
   if(zoom){ 
     map.flyTo({ center: locations[id], zoom:14 });
   }else{
