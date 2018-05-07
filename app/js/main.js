@@ -84,13 +84,15 @@ if(d3.selectAll('#map').size()>0){
       zoom: 10
     });
 
-    map.on('sourcedata', function(event){
-      console.log('sourcedata', event);
+    map.on('error', function(event){
+      if(event.sourceId == 'openmaptiles'){
+        map.setStyle('tile_style.json');
+      }
     });
 
-    map.on('error', function(event){
-      console.log('error', event);
-    });
+    /*
+
+    */
 
     map.addControl(new mapboxgl.NavigationControl(),'bottom-left');
 
