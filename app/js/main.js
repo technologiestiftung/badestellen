@@ -147,6 +147,15 @@ function openDetails(id, zoom){
 
   var date = new Date(data.date);
 
+  var location_link = 'https://maps.google.com/maps?daddr='+locations[id][1]+','+locations[id][0];
+
+  if /* if we're on iOS, open in Apple Maps */
+    ((navigator.platform.indexOf("iPhone") != -1) || 
+     (navigator.platform.indexOf("iPod") != -1) || 
+     (navigator.platform.indexOf("iPad") != -1)){
+    location_link = 'maps://maps.google.com/maps?daddr='+locations[id][1]+','+locations[id][0];
+  }
+
   var html =  '<div class="detail-header">'+
               '  <h1>'+data.name_lang+'</h1>'+
               '  <h2>'+data.bezirk+'</h2>'+
@@ -163,11 +172,11 @@ function openDetails(id, zoom){
               '    '+data.name_lang+'<br>'+
               '    '+data.strasse+'<br>'+
               '    '+data.plz+' '+data.stadt+'<br><br />'+
-              '    <a href="map:.."><img src="./images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;<span>Route berechnen</span></a><br />'+
+              '    <a href="'+location_link+'"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;<span>Route berechnen</span></a><br />'+
               '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+parseFloat(locations[id][0]).toFixed(6).toString().replace('.','')+'@Y='+parseFloat(locations[id][1]).toFixed(6).toString().replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;<span>Anfahrt mit der BVG</span></a><br />'+
               '    <h3>Wasserqualität</h3>'+ 
               '    <span class="stufen-icon stufen-'+data.state+'"></span>'+stufentext[data.state]+' <span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ ')</span>' +
-              ((data.prediction=='true')?'<span class="prediction"><img src="./images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="#">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'') + 
+              ((data.prediction=='true')?'<span class="prediction"><img src="./images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'') + 
               '  </div>'+
               '  <div class="detail-addon">'+
               '    <h3 class="title">Weitere Angaben zur Badesstelle</h3>'+
