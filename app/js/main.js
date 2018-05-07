@@ -234,8 +234,19 @@ function openDetails(id, zoom){
               '    <h3>Wasserqualität</h3>'+ 
               '    <span class="stufen-icon stufen-'+data.state+'"></span>'+stufentext[data.state]+' <span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ ')</span>' +
               ((data.prediction=='true')?'<span class="prediction"><img src="./images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'') + 
-              '  </div>'+
-              '  <div class="detail-addon">'+
+              '  </div>';
+
+      html += '<div class="detail-amt detail-eu">' + 
+              '    <h3 class="title">EU-Einstufung</h3>'+
+              '    <p class="small">Auswertung der letzten vier Jahre.</p>'+
+              '    <span class="eu-ranks"><img class="eu-class" src="./images/eu-signs/excellent@2x.png" width="92" height="81" alt="Ausgezeichnete Badegewässerqualität" />' +
+              '    <img src="./images/eu-signs/legend_excellent@2x.png" width="49" height="14" alt="Ausgezeichnet" />&nbsp;Ausgezeichnet<br />' +
+              '    <img class="first" src="./images/eu-signs/legend_good@2x.png" width="49" height="14" alt="Gut" />&nbsp;Gut<br />' +
+              '    <img src="./images/eu-signs/legend_sufficient@2x.png" width="49" height="14" alt="Ausreichend" />&nbsp;Ausreichend<br />' +
+              '    <img src="./images/eu-signs/legend_poor@2x.png" width="49" height="14" alt="Mangelhaft" />&nbsp;Mangelhaft</span><br />' + 
+              '</div>';
+
+      html += '  <div class="detail-addon">'+
               '    <h3 class="title">Weitere Angaben zur Badesstelle</h3>'+
               '    <ul>';
 
@@ -292,14 +303,6 @@ function openDetails(id, zoom){
       html += '    </ul>'+
               '  </div>'+
               '  <div class="detail-amt">'+
-              '    <h3 class="title">EU-Einstufung</h3>'+
-              '    <p class="small">Auswertung der letzten vier Jahre.</p>'+
-              '    <span class="eu-ranks"><img class="eu-class" src="./images/eu-signs/excellent@2x.png" width="92" height="81" alt="Ausgezeichnete Badegewässerqualität" />' +
-              '    <img src="./images/eu-signs/legend_excellent@2x.png" width="49" height="14" alt="Ausgezeichnet" />&nbsp;Ausgezeichnet<br />' +
-              '    <img class="first" src="./images/eu-signs/legend_good@2x.png" width="49" height="14" alt="Gut" />&nbsp;Gut<br />' +
-              '    <img src="./images/eu-signs/legend_sufficient@2x.png" width="49" height="14" alt="Ausreichend" />&nbsp;Ausreichend<br />' +
-              '    <img src="./images/eu-signs/legend_poor@2x.png" width="49" height="14" alt="Mangelhaft" />&nbsp;Mangelhaft</span><br />' +
-
               '    <h3 class="title">Zuständiges Gesundheitsamt</h3>'+
               '    '+data.gesundheitsamt_name+'<br />'+
               '    '+data.gesundheitsamt_zusatz+'<br />'+

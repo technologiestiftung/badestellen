@@ -467,12 +467,12 @@ hr.closer{
 }
 
 .detail-location{
-  float:left;
-  max-width:45%;
+  float:right;
+  width:45%;
 }
 
 .detail-addon{
-  clear:both;
+  /*clear:both;*/
   float:left;
   width:50%;
   margin: 0 20px;
@@ -494,10 +494,20 @@ hr.closer{
   margin:-4px 3px 10px 0 ;
 }
 
+.detail-addon ul{
+  margin-top:10px;
+}
+
 .detail-amt{
-  float:left;
+  box-sizing: border-box;
+  float:right;
   margin:0 0 0 0;
-  max-width:45%;
+  width:45%;
+  padding-right:20px;
+}
+
+.detail-amt.detail-eu{
+  padding-top:20px;
 }
 
 .detail-location a, .detail-amt a{
@@ -609,6 +619,20 @@ hr.closer{
 }
 
 @media screen and (max-width: 1023px) {
+
+  .detail-image{
+    margin-right:0;
+  }
+
+  .detail-amt.detail-eu{
+    padding-top:0px;
+  }
+
+  .detail-addon{
+    margin-top:25px;
+    margin-right: 0;
+  }
+
   #list{
     margin-top:15px;
   }
