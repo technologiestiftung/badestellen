@@ -79,13 +79,18 @@ if(d3.selectAll('#map').size()>0){
 
     map = new mapboxgl.Map({
       container: 'map',
-      style: {version: 8, sources: {}, layers: []},
-      //style: 'style.json',
+      style: 'style.json',
       center: [13.4244,52.5047],
       zoom: 10
     });
 
-    map.setStyle('style.json');
+    map.on('sourcedata', function(event){
+      console.log('sourcedata', event);
+    });
+
+    map.on('error', function(event){
+      console.log('error', event);
+    });
 
     map.addControl(new mapboxgl.NavigationControl(),'bottom-left');
 
