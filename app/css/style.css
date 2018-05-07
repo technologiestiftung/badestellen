@@ -106,6 +106,10 @@ html, body{
   color:#fff;
 }
 
+.topnav a.active:hover{
+    padding-bottom:9px;
+}
+
 .topnav a.icon {
   display: none;
   margin:0 0 0 0;
