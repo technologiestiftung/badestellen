@@ -9,10 +9,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chardet": "^0.5.0",
+    "d3-dsv": "^1.0.8",
     "express": "^4.16.3",
     "formidable": "^1.2.1",
     "fs": "0.0.1-security",
     "http": "0.0.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "request": "^2.85.0"
   }
 }
