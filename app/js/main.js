@@ -92,7 +92,7 @@ if(d3.selectAll('#map').size()>0){
 
     map = new mapboxgl.Map({
       container: 'map',
-      style: 'style.json',
+      style: style_source,
       center: [13.4244,52.5047],
       zoom: 10
     });
