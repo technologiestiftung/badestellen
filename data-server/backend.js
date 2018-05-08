@@ -50,21 +50,20 @@ db.prepare("CREATE TABLE IF NOT EXISTS measurements (" +
   "id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, " +
   "badestellen_id integer," + 
   "date datetime," + 
-  "detail_id integer," + 
   "sicht integer," + 
   "eco integer," + 
   "ente integer," + 
   "temp integer," + 
-  "bsl integer," + 
   "algen integer," + 
   "cb integer," + 
   "sicht_txt text," + 
   "eco_txt text," + 
   "ente_txt text," + 
   "temp_txt text," + 
-  "bsl_txt text," + 
   "algen_txt text," + 
   "cb_txt text," + 
-  "farb_id integer," + 
-  "wasserqualitaet text" + 
+  "bsl text," + 
+  "state text," + 
+  "wasserqualitaet integer," + 
+  "wasserqualitaet_txt integer" + 
   ")").run()
