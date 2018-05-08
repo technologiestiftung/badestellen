@@ -63,7 +63,7 @@
     </div>
   </div>
   <div id="container">
-    <div class="topnav" id="myTopnav">
+    <div class="topnav" id="myTopnav" role="navigation">
       <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
       <a href="index.html" class="home active">Berliner Badestellen</a>
       <a href="info.html">Messverfahren</a>
@@ -72,7 +72,7 @@
     </div>
     <div id="map"></div>
     <div id="content">
-      <div id="detail"></div>
+      <div id="detail" aria-live="polite" role="article"></div>
       <div id="home">
         <div id="legend">
           <ul>
@@ -85,12 +85,12 @@
           Basierend auf den letzten<br class="responsive-break" />
           Messungen des Landesamt für<br />
           Gesundheit und Soziales.<br class="responsive-break" />
-          <a href="info.html">Mehr&nbsp;erfahren&nbsp;»</a>
+          <a href="https://www.berlin.de/lageso/gesundheit/gesundheitsschutz/badegewaesser/badegewaesserueberwachung/">Mehr&nbsp;erfahren&nbsp;»</a>
         </div>
 
         <div id="list-container">
           <h2>Übersicht Badegewässer</h2>
-          <div id="list">
+          <div id="list" role="listbox" aria-live="polite">
             <ul>
             </ul>
           </div>
@@ -113,7 +113,8 @@
   <div id="footnote">
     <a href="#">Kontakt</a> | <a href="#">Impressum</a> | <a href="#">Datenschutz</a> | Copyright 2018
   </div>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="js/d3.v4.min.js"></script>
+  <script src="js/d3-history/d3-history.min.js"></script>
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
   <script src="js/main.js"></script>
 </body>
