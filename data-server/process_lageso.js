@@ -9,6 +9,7 @@ const sqlite = require('better-sqlite3')
 const db = new sqlite(__dirname + '/badestellen.db')
 
 function parseNum(str){
+	if(str.length==0) return 0
 	return parseInt((str.replace('>','')).replace('<',''))
 }
 
@@ -16,9 +17,9 @@ request({uri:'http://ftp.berlinonline.de/lageso/baden/letzte.csv', encoding:'utf
 
 	if(error) console.log(error)
 
-	const csv = parser.parse(body.split('""":').join("'"))
+	const csv = parser.parse(body.split('"').join(''))
 
-	csv.forEach(c=>{
+	csv.forEach((c,ci)=>{
 
 		let obj = {
 			badestellen_id : c.BadestelleLink.match(/(\d){1,6}/g),

@@ -35,7 +35,9 @@ db.prepare("CREATE TABLE IF NOT EXISTS badestellen (" +
   "hundeverbot boolean," + 
   "name_lang2 text," + 
   "lat real," + 
-  "lng real," + 
+  "lng real," +
+  "webseite text," +
+  "letzte_eu_einstufung text," +
   "image text" + 
   ")").run()
 
@@ -44,6 +46,12 @@ db.prepare("CREATE TABLE IF NOT EXISTS predictions (" +
   "badestellen_id integer," + 
   "date date," + 
   "prediction text" + 
+  ")").run()
+
+db.prepare("CREATE TABLE IF NOT EXISTS events (" +
+  "id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, " +
+  "type text," + 
+  "timestamp datetime" +
   ")").run()
 
 db.prepare("CREATE TABLE IF NOT EXISTS measurements (" +
