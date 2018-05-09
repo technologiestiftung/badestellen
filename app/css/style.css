@@ -471,6 +471,11 @@ hr.closer{
   width:45%;
 }
 
+.detail-location .stufen-icon{
+  margin-top:0;
+  height:44px;
+}
+
 .detail-addon{
   /*clear:both;*/
   float:left;
@@ -506,8 +511,36 @@ hr.closer{
   padding-right:20px;
 }
 
-.detail-amt.detail-eu{
+table.measurement_table,
+table.measurement_table tr,
+table.measurement_table td,
+table.measurement_table th{
+  border:none;
+  padding:0;
+  margin:0;
+  text-align: left;
+  font-size:12px;
+}
+
+table.measurement_table tr td,
+table.measurement_table tr th{
+  border-top:1px solid rgba(0,0,0,0.4);
+  padding: 5px 5px 5px 0;
+}
+
+table.measurement_table tr.row-1 td,
+table.measurement_table tr.row-1 th{
+  border-top:none;
   padding-top:20px;
+}
+
+.detail-eu{
+  padding-top:10px;
+}
+
+.detail-eu p{
+  padding:0;
+  margin:0;
 }
 
 .detail-location a, .detail-amt a{
@@ -560,7 +593,7 @@ hr.closer{
 .eu-ranks{
   font-size:12px;
   display: block;
-  padding-top:15px;
+  padding-top:10px;
 }
 
 .eu-ranks img{
@@ -624,7 +657,7 @@ hr.closer{
     margin-right:0;
   }
 
-  .detail-amt.detail-eu{
+  .detail-eu{
     padding-top:0px;
   }
 

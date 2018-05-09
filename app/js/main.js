@@ -77,7 +77,7 @@ if(d3.selectAll('#map').size()>0){
 
   window.addEventListener("resize", updateMapContainer);
 
-  d3.csv('../processing/data/new.csv', function(err, data){
+  d3.csv('../data-server/data/new_build.csv', function(err, data){
 
     data.sort(function(a,b){
       return b.lng - a.lng;
@@ -288,73 +288,122 @@ function openDetails(id, zoom){
               '    <h3 class="title">Anschrift</h3>'+
               '    '+data.name_lang+'<br>'+
               '    '+data.strasse+'<br>'+
-              '    '+data.plz+' '+data.stadt+'<br><br />'+
+              '    '+parseInt(data.plz)+' '+data.stadt;
+
+              if(data.webseite && data.webseite.length>0){
+      html += '<br><a href="'+data.webseite+'">'+data.webseite+'</a>';
+              }
+
+
+      html += '<br><br />'+
               '    <a href="'+location_link+'"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;<span>Route berechnen</span></a><br />'+
               '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+parseFloat(locations[id][0]).toFixed(6).toString().replace('.','')+'@Y='+parseFloat(locations[id][1]).toFixed(6).toString().replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;<span>Anfahrt mit der BVG</span></a><br />'+
               '    <h3>Wasserqualität</h3>'+ 
-              '    <span class="stufen-icon stufen-'+data.state+'"></span>'+stufentext[data.state]+' <span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ ')</span>' +
-              ((data.prediction=='true')?'<span class="prediction"><img src="./images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'') + 
-              '  </div>';
+              '    <span class="stufen-icon stufen-'+data.state+'"></span>'+stufentext[data.state]+'<br /><span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ ')</span>';
 
-      html += '<div class="detail-amt detail-eu">' + 
+      var measurements = [      'sicht_txt',  'eco_txt',            'ente_txt',                 'temp_txt',         'algen_txt',                'cb_txt'],
+          measurement_labels = ['Sichttiefe', 'Escherichia coli',   'Intestinale Enterokokken', 'Wassertemperatur', 'Erhöhtes Algenauftreten',  'Coliforme Bakterien'],
+          measurement_units = [ 'cm',         'pro 100 ml',         'pro 100 ml',               '°C',               '',                         'pro 100 ml'];
+
+      var hasMeasurements = false;
+      measurements.forEach(function(m){
+        if(m in data && data[m].length>0){
+          hasMeasurements = true;
+        }
+      });
+
+      if(hasMeasurements){
+        html += '<table cellpadding="0" cellmargin="0" border="0" class="measurement_table">';
+
+        var line_count = 1;
+        measurements.forEach(function(m,mi){
+          if(m in data && data[m].length>0){
+            html += '<tr class="row-'+line_count+'"><th>'+measurement_labels[mi]+'</th><td>'+((m=='algen_txt')?((data[m]=='A')?'Ja':'Nein'):(data[m]+' '+measurement_units[mi]))+'</td></tr>';
+            line_count++;
+          }
+        });
+
+        html += '</table>';
+      }
+
+      html += ((data.prediction=='true'||data.prediction==1)?'<span class="prediction"><img src="./images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'');
+
+      var eu_sign;
+
+      switch(data.letzte_eu_einstufung.toLowerCase()){
+        case 'mangelhaft':
+          eu_sign = 'poor';
+        break;
+        case 'ausreichend':
+          eu_sign = 'sufficient';
+        break;
+        case 'ausgezeichnet':
+          eu_sign = 'excellent';
+        break;
+        case 'gut':
+          eu_sign = 'good';
+        break;
+      }
+
+      html += '<div class="detail-eu">' + 
               '    <h3 class="title">EU-Einstufung</h3>'+
               '    <p class="small">Auswertung der letzten vier Jahre.</p>'+
-              '    <span class="eu-ranks"><img class="eu-class" src="./images/eu-signs/excellent@2x.png" width="92" height="81" alt="Ausgezeichnete Badegewässerqualität" />' +
+              '    <span class="eu-ranks"><img class="eu-class" src="./images/eu-signs/'+eu_sign+'@2x.png" width="92" height="81" alt="Ausgezeichnete Badegewässerqualität" />' +
               '    <img src="./images/eu-signs/legend_excellent@2x.png" width="49" height="14" alt="Ausgezeichnet" />&nbsp;Ausgezeichnet<br />' +
               '    <img class="first" src="./images/eu-signs/legend_good@2x.png" width="49" height="14" alt="Gut" />&nbsp;Gut<br />' +
               '    <img src="./images/eu-signs/legend_sufficient@2x.png" width="49" height="14" alt="Ausreichend" />&nbsp;Ausreichend<br />' +
               '    <img src="./images/eu-signs/legend_poor@2x.png" width="49" height="14" alt="Mangelhaft" />&nbsp;Mangelhaft</span><br />' + 
-              '</div>';
+              '</div></div>';
 
       html += '  <div class="detail-addon">'+
               '    <h3 class="title">Weitere Angaben zur Badesstelle</h3>'+
               '    <ul>';
 
-              if(data.cyano_moeglich){
+              if(data.cyano_moeglich && data.cyano_moeglich!=0){
                 html += '<li><img src="./images/signs/cyano@2x.png" width="30" height="30" alt="Cyanobakterien massenhaft möglich (Blaualgen)" />&nbsp;Cyanobakterien massenhaft möglich (Blaualgen)</li>';
               }
 
-              if(data.wasserrettung_durch_hilfsorganisationen_dlrg_oder_asb || data.rettungsschwimmer){
+              if((data.wasserrettung_durch_hilfsorganisationen_dlrg_oder_asb && data.wasserrettung_durch_hilfsorganisationen_dlrg_oder_asb!=0) || (data.rettungsschwimmer && data.rettungsschwimmer!=0)){
                 html += '<li><img src="./images/signs/rescue@2x.png" width="30" height="30" alt="Wasserrettung zeitweise" />&nbsp;Wasserrettung zeitweise</li>';
               }
 
-              if(!data.barrierefrei){
+              if(!data.barrierefrei || data.barrierefrei == 0){
                 html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Nicht barrierefrei" />&nbsp;Nicht barrierefrei</li>';
               }else{
                 html += '<li><img src="./images/signs/barrierefrei@2x.png" width="30" height="30" alt="Barrierefrei" />&nbsp;Barrierefrei</li>';
               }
 
-              if(!data.barrierefrei_zugang){
+              if(!data.barrierefrei_zugang || data.barrierefrei_zugang == 0){
                 html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Zugang zum Wasser nicht barrierefrei" />&nbsp;Zugang zum Wasser nicht barrierefrei</li>';
               }else{
                 html += '<li><img src="./images/signs/barrierefrei@2x.png" width="30" height="30" alt="Barrierefreier Zugang zum Wasser" />&nbsp;Barrierefreier Zugang zum Wasser</li>';
               }
 
-              if(data.restaurant){
+              if(data.restaurant && data.restaurant!=0){
                 html += '<li><img src="./images/signs/restaurant@2x.png" width="30" height="30" alt="Restaurant" />&nbsp;Restaurant</li>';
               }
 
-              if(data.imbiss){
+              if(data.imbiss && data.imbiss!=0){
                 html += '<li><img src="./images/signs/imbiss@2x.png" width="30" height="30" alt="Imbiss" />&nbsp;Imbiss</li>';
               }
 
-              if(data.parken){
+              if(data.parken&&data.parken!=0){
                 html += '<li><img src="./images/signs/parken@2x.png" width="30" height="30" alt="Parkmöglichkeiten" />&nbsp;Parkmöglichkeiten</li>';
               }
 
-              if(data.wc){
+              if(data.wc&&data.wc!=0){
                 html += '<li><img src="./images/signs/toilette@2x.png" width="30" height="30" alt="WC verfügbar" />&nbsp;WC verfügbar</li>';
-                if(!data.barrierefrei_wc){
+                if(!data.barrierefrei_wc||data.barrierefrei_wc==0){
                   html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li>';
                 }
-              }else if(data.wc_mobil){
+              }else if(data.wc_mobil&&data.wc_mobil!=0){
                 html += '<li><img src="./images/signs/toilette@2x.png" width="30" height="30" alt="Mobiles WC verfügbar" />&nbsp;Mobiles WC verfügbar</li>';
-                if(!data.barrierefrei_wc){
+                if(!data.barrierefrei_wc||data.barrierefrei_wc==0){
                   html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li>';
                 }
               }
 
-              if(data.hundeverbot){
+              if(data.hundeverbot&&data.hundeverbot!=0){
                 html += '<li><img src="./images/signs/hundeverbot@2x.png" width="30" height="30" alt="Hundeverbot" />&nbsp;Hundeverbot</li>';
               }else{
                 html += '<li><img src="./images/signs/hundeverbot-not@2x.png" width="30" height="30" alt="Kein Hundeverbot" />&nbsp;Kein Hundeverbot</li>';

@@ -50,7 +50,7 @@ data.forEach(d=>{
 
 	let coord = proj4('EPSG:25833', 'EPSG:4326', [parseFloat((d.ost+'').replace(',','.')),parseFloat((d.nord+'').replace(',','.'))])
 
-	query += ', lat = ?, lng = ?'
+	query += ', lng = ?, lat = ?'
 
 	params.push(coord[1].toFixed(5))
 	params.push(coord[0].toFixed(5))
