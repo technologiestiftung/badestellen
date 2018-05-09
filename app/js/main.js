@@ -273,6 +273,13 @@ function openDetails(id, zoom){
     location_link = 'maps://maps.google.com/maps?daddr='+locations[id][1]+','+locations[id][0];
   }
 
+  function cleanWeb(str){
+    if(str.substr(str.length-1,1)=='/'){
+      str = str.substr(0, str.length-1);
+    }
+    return str.replace('http://','');
+  }
+
   var html =  '<div class="detail-header">'+
               '  <h1>'+data.name_lang+'</h1>'+
               '  <h2>'+data.bezirk+'</h2>'+
@@ -286,16 +293,15 @@ function openDetails(id, zoom){
               '  </div>'+
               '  <div class="detail-location">'+
               '    <h3 class="title">Anschrift</h3>'+
-              '    '+data.name_lang+'<br>'+
-              '    '+data.strasse+'<br>'+
+              '    '+data.name_lang+'<br />'+
+              '    '+data.strasse+'<br />'+
               '    '+parseInt(data.plz)+' '+data.stadt;
 
               if(data.webseite && data.webseite.length>0){
-      html += '<br><a href="'+data.webseite+'">'+data.webseite+'</a>';
+      html += '<br /><a href="'+data.webseite+'"><span>'+cleanWeb(data.webseite)+'</span></a>';
               }
 
-
-      html += '<br><br />'+
+      html += '<br /><br />'+
               '    <a href="'+location_link+'"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;<span>Route berechnen</span></a><br />'+
               '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+parseFloat(locations[id][0]).toFixed(6).toString().replace('.','')+'@Y='+parseFloat(locations[id][1]).toFixed(6).toString().replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;<span>Anfahrt mit der BVG</span></a><br />'+
               '    <h3>Wasserqualität</h3>'+ 
