@@ -422,9 +422,9 @@ function openDetails(id, zoom){
               '    '+data.gesundheitsamt_name+'<br />'+
               '    '+data.gesundheitsamt_zusatz+'<br />'+
               '    '+data.gesundheitsamt_strasse+'<br />'+
-              '    '+data.gesundheitsamt_plz+' '+data.gesundheitsamt_stadt+'<br /><br />'+
+              '    '+parseInt(data.gesundheitsamt_plz)+' '+data.gesundheitsamt_stadt+'<br /><br />'+
               '    <a href="mailto:'+data.gesundheitsamt_mail+'"><img src="./images/signs/email@2x.png" width="30" height="30" alt="Email" />&nbsp;<span>'+data.gesundheitsamt_mail+'</span></a><br />'+
-              '    <a href="tel:'+data.gesundheitsamt_telefon+'"><img src="./images/signs/phone@2x.png" width="30" height="30" alt="Telefon" />&nbsp;<span>'+data.gesundheitsamt_telefon+'</span></a>'+
+              '    <a href="tel:'+parseInt(data.gesundheitsamt_telefon)+'"><img src="./images/signs/phone@2x.png" width="30" height="30" alt="Telefon" />&nbsp;<span>'+parseInt(data.gesundheitsamt_telefon)+'</span></a>'+
               '  </div>'+
               '</div>';
 

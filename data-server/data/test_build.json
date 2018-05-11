@@ -43,7 +43,8 @@
     "algen_txt": "",
     "cb_txt": "360",
     "state": "gruen",
-    "date": "2017-09-13"
+    "date": "2017-09-13",
+    "real_state": "gruen"
   },
   {
     "id": 48,
@@ -89,7 +90,8 @@
     "algen_txt": "",
     "cb_txt": "730",
     "state": "gruen",
-    "date": "2017-09-13"
+    "date": "2017-09-13",
+    "real_state": "gruen"
   },
   {
     "id": 36,
@@ -135,7 +137,8 @@
     "algen_txt": "",
     "cb_txt": "730",
     "state": "gruen",
-    "date": "2017-09-12"
+    "date": "2017-09-12",
+    "real_state": "gruen"
   },
   {
     "id": 28,
@@ -181,7 +184,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-12"
+    "date": "2017-09-12",
+    "real_state": "gruen"
   },
   {
     "id": 6,
@@ -227,7 +231,8 @@
     "algen_txt": "",
     "cb_txt": "360",
     "state": "gruen",
-    "date": "2017-09-12"
+    "date": "2017-09-12",
+    "real_state": "gruen"
   },
   {
     "id": 52,
@@ -273,7 +278,8 @@
     "algen_txt": "",
     "cb_txt": "300",
     "state": "gruen",
-    "date": "2017-09-12"
+    "date": "2017-09-12",
+    "real_state": "gruen"
   },
   {
     "id": 42,
@@ -319,7 +325,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-12"
+    "date": "2017-09-12",
+    "real_state": "gruen"
   },
   {
     "id": 2,
@@ -365,7 +372,8 @@
     "algen_txt": "",
     "cb_txt": "360",
     "state": "gruen",
-    "date": "2017-09-12"
+    "date": "2017-09-12",
+    "real_state": "gruen"
   },
   {
     "id": 24,
@@ -411,7 +419,8 @@
     "algen_txt": "",
     "cb_txt": "360",
     "state": "gruen",
-    "date": "2017-09-12"
+    "date": "2017-09-12",
+    "real_state": "gruen"
   },
   {
     "id": 8,
@@ -457,7 +466,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-11"
+    "date": "2017-09-11",
+    "real_state": "gruen"
   },
   {
     "id": 54,
@@ -503,7 +513,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-11"
+    "date": "2017-09-11",
+    "real_state": "gruen"
   },
   {
     "id": 62,
@@ -549,7 +560,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-11"
+    "date": "2017-09-11",
+    "real_state": "gruen"
   },
   {
     "id": 68,
@@ -595,7 +607,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-11"
+    "date": "2017-09-11",
+    "real_state": "gruen"
   },
   {
     "id": 64,
@@ -641,7 +654,8 @@
     "algen_txt": "",
     "cb_txt": "360",
     "state": "gruen",
-    "date": "2017-09-11"
+    "date": "2017-09-11",
+    "real_state": "gruen"
   },
   {
     "id": 66,
@@ -687,7 +701,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-11"
+    "date": "2017-09-11",
+    "real_state": "gruen"
   },
   {
     "id": 70,
@@ -733,7 +748,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-11"
+    "date": "2017-09-11",
+    "real_state": "gruen"
   },
   {
     "id": 12,
@@ -779,7 +795,8 @@
     "algen_txt": "",
     "cb_txt": "910",
     "state": "gruen",
-    "date": "2017-09-07"
+    "date": "2017-09-07",
+    "real_state": "gruen"
   },
   {
     "id": 32,
@@ -825,7 +842,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-07"
+    "date": "2017-09-07",
+    "real_state": "gruen"
   },
   {
     "id": 44,
@@ -871,7 +889,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-07"
+    "date": "2017-09-07",
+    "real_state": "gruen"
   },
   {
     "id": 34,
@@ -917,7 +936,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-07"
+    "date": "2017-09-07",
+    "real_state": "gruen"
   },
   {
     "id": 50,
@@ -963,7 +983,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-07"
+    "date": "2017-09-07",
+    "real_state": "gruen"
   },
   {
     "id": 40,
@@ -1009,7 +1030,8 @@
     "algen_txt": "",
     "cb_txt": "360",
     "state": "gruen",
-    "date": "2017-09-06"
+    "date": "2017-09-06",
+    "real_state": "gruen"
   },
   {
     "id": 56,
@@ -1055,7 +1077,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-06"
+    "date": "2017-09-06",
+    "real_state": "gruen"
   },
   {
     "id": 72,
@@ -1101,7 +1124,8 @@
     "algen_txt": "",
     "cb_txt": "360",
     "state": "gruen",
-    "date": "2017-09-06"
+    "date": "2017-09-06",
+    "real_state": "gruen"
   },
   {
     "id": 30,
@@ -1147,7 +1171,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-06"
+    "date": "2017-09-06",
+    "real_state": "gruen"
   },
   {
     "id": 4,
@@ -1193,7 +1218,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen"
   },
   {
     "id": 10,
@@ -1239,7 +1265,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen"
   },
   {
     "id": 14,
@@ -1285,7 +1312,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen"
   },
   {
     "id": 16,
@@ -1331,7 +1359,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen"
   },
   {
     "id": 26,
@@ -1377,7 +1406,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen"
   },
   {
     "id": 22,
@@ -1423,7 +1453,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen"
   },
   {
     "id": 38,
@@ -1469,7 +1500,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen"
   },
   {
     "id": 46,
@@ -1515,7 +1547,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen"
   },
   {
     "id": 58,
@@ -1561,7 +1594,8 @@
     "algen_txt": "A",
     "cb_txt": "<300",
     "state": "gruen_a",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen_a"
   },
   {
     "id": 60,
@@ -1607,7 +1641,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen"
   },
   {
     "id": 78,
@@ -1653,7 +1688,8 @@
     "algen_txt": "",
     "cb_txt": "360",
     "state": "gruen",
-    "date": "2017-09-05"
+    "date": "2017-09-05",
+    "real_state": "gruen"
   },
   {
     "id": 20,
@@ -1699,7 +1735,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-04"
+    "date": "2017-09-04",
+    "real_state": "gruen"
   },
   {
     "id": 18,
@@ -1745,7 +1782,8 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-09-04"
+    "date": "2017-09-04",
+    "real_state": "gruen"
   },
   {
     "id": 74,
@@ -1791,6 +1829,7 @@
     "algen_txt": "",
     "cb_txt": "<300",
     "state": "gruen",
-    "date": "2017-08-29"
+    "date": "2017-08-29",
+    "real_state": "gruen"
   }
 ]
