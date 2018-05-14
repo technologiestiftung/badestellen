@@ -78,6 +78,8 @@ query += ' FROM ' +
 
 let rows = db.prepare(query).all([])
 
+let state_map = []
+
 rows.forEach(r=>{
 	r['real_state'] = r.state
 	if(r.state == 'gruen' && r.prediction == 'mangelhaft'){
@@ -87,9 +89,38 @@ rows.forEach(r=>{
 	}else if(r.state == 'grau' && r.prediction != 'mangelhaft'){
 		r.real_state = 'gruen'
 	}
+
+	state_map.push({
+		real_state : r.real_state,
+		state : r.state,
+		prediction : r.prediction,
+		id: r.id,
+		name: r.name
+	})
 })
 
+fs.writeFileSync(__dirname + '/data/test_build.min.json', JSON.stringify(rows), 'utf8')
 fs.writeFileSync(__dirname + '/data/test_build.json', JSON.stringify(rows, null, 2), 'utf8')
+fs.writeFileSync(__dirname + '/data/states.min.json', JSON.stringify(state_map), 'utf8')
+fs.writeFileSync(__dirname + '/data/states.json', JSON.stringify(state_map, null, 2), 'utf8')
+
+//Create state site
+let states_template = fs.readFileSync(__dirname + '/templates/states.html', 'utf8'),
+	states_html = ''
+
+state_map.forEach(s=>{
+	states_html += '<tr>'
+	states_html += '<td>' + s.id + '</td>'
+	states_html += '<td>' + s.name + '</td>'
+	states_html += '<td>' + s.state + '</td>'
+	states_html += '<td>' + s.prediction + '</td>'
+	states_html += '<td>' + s.real_state + '</td>'
+	states_html += '</tr>'
+})
+
+states_template = states_template.split('{{STATES}}').join(states_html)
+
+fs.writeFileSync(__dirname + '/data/states.html', states_template, 'utf8')
 
 //Build new.csv
 let csv = '', keys = []
@@ -310,8 +341,53 @@ rows.forEach(r=>{
 })
 
 
+let prediction_rows = db.prepare('SELECT badestellen_id, date, prediction FROM predictions').all([]),
+	prediction_csv = {}
 
-//Build badestellen/detail_id.csv
-//Build status json
+prediction_rows.forEach(r=>{
+	if(!(r.badestellen_id in prediction_csv)){
+		prediction_csv[r.badestellen_id] = []
+	}
+	prediction_csv[r.badestellen_id].push([r.date, r.prediction])
+})
+
+for(let id in prediction_csv){
+	let csv = 'date,prediction'
+	prediction_csv[id].forEach(c=>{
+		csv += '\n'
+		csv += c[0]+','+c[1]
+	})
+	fs.writeFileSync(__dirname + '/data/details/predictions_' + id + '.csv', csv, 'utf8')
+}
+
+let measurement_cols = 'date,sicht,eco,ente,temp,algen,cb,sicht_txt,eco_txt,ente_txt,temp_txt,algen_txt,cb_txt,bsl,state,wasserqualitaet,wasserqualitaet_txt',
+	measurement_cols_a = measurement_cols.split(','),
+	measurement_rows = db.prepare('SELECT badestellen_id, ' + measurement_cols + ' FROM measurements').all([]),
+	measurement_csv = {}
+
+measurement_rows.forEach(r=>{
+	if(!(r.badestellen_id in measurement_csv)){
+		measurement_csv[r.badestellen_id] = []
+	}
+	let a = []
+	measurement_cols_a.forEach(c=>{
+		a.push(r[c])
+	})
+	measurement_csv[r.badestellen_id].push(a)
+})
+
+for(let id in measurement_csv){
+	let csv = measurement_cols
+	measurement_csv[id].forEach(c=>{
+		csv += '\n'
+		c.forEach((cc,cci)=>{
+			if(cc && cc.length>0 && cc.indexOf(',')>=0) c[cci] = '"'+cc+'"'
+		})
+		csv += c.join(',')
+	})
+	fs.writeFileSync(__dirname + '/data/details/measurements_' + id + '.csv', csv, 'utf8')
+}
+
+
 //Add static files to the API
 
