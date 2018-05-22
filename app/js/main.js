@@ -4,6 +4,8 @@ var state = {
   ani:false
 };
 
+console.log(is_detail);
+
 function retrieveUrl(){
   state = {
     type:'overview',
@@ -71,19 +73,24 @@ function debounce(func, wait, immediate) {
   };
 };
 
-var map, locations = {}, gData = null, gKeys = {};
+var map, locations = {}, gData = null, gKeys = {}, id_map = {};
 
 if(d3.selectAll('#map').size()>0){
 
   window.addEventListener("resize", updateMapContainer);
 
-  d3.csv('../data-server/data/new_build.csv', function(err, data){
+  d3.csv(((is_detail)?'../':'') + 'new_build.csv', function(err, data){
+    if(err){ console.log(err); }
 
     data.sort(function(a,b){
       return b.lng - a.lng;
     });
 
     gData = data;
+
+    data.forEach(function(d){
+      id_map[d.id] = d.detail_id;
+    });
 
     data.forEach(function(d,i){
       gKeys[d.detail_id] = i;
@@ -98,8 +105,10 @@ if(d3.selectAll('#map').size()>0){
       return 0;
     });
 
+    d3.select('#list ul').selectAll('li').remove();
+
     var items = d3.select('#list ul').selectAll('li').data(listData).enter().append('li').style('background-image', function(d){
-        return 'url(../processing/images/'+d.id+'.jpg)';
+        return 'url('+((is_detail)?'../':'./') +'images/badestellen/'+d.id+'.jpg)';
       }).append('a').on('click', function(){
       var d = d3.select(this).datum();
       state.type = 'detail';
@@ -110,7 +119,7 @@ if(d3.selectAll('#map').size()>0){
 
       items.append('img').attr('class', function(d){
         return 'stateimg state-'+d.state+((d.name.indexOf(d.gewaesser)>=0)?'':' substate'); 
-      }).attr('src', './images/trans.gif');
+      }).attr('src', ((is_detail)?'../':'./') + 'images/trans.gif');
 
       items.append('span').html(function(d){
         var textTitle = '<span>';
@@ -134,16 +143,16 @@ if(d3.selectAll('#map').size()>0){
       });
 
 
-    var style_source = 'style.json';
+    var style_source = ((is_detail)?'../':'./') +'style.json';
 
     var version = detectIE();
 
     if (version === false) {
       //no ie / edge
     } else if (version >= 12) {
-      style_source = 'tile_style.json';
+      style_source = ((is_detail)?'../':'./') +'tile_style.json';
     } else {
-      style_source = 'tile_style.json';
+      style_source = ((is_detail)?'../':'./') +'tile_style.json';
     }
 
     map = new mapboxgl.Map({
@@ -183,7 +192,15 @@ if(d3.selectAll('#map').size()>0){
         .addTo(map);
     });
 
-    retrieveUrl();
+    if(!is_detail){
+      retrieveUrl();
+    }else{
+      d3.select('#detail').style('display','block');
+      d3.select('#home').style('display','none');
+      state.type = 'detail';
+      state.id = id_map[+((window.location.href.split('_'))[1].split('.'))[0]];
+      dispatcher.call('action', this, '?');
+    }
   });
 }else{
   d3.select('#splash').transition()
@@ -262,7 +279,7 @@ function openDetails(id, zoom){
     'rot':'Badeverbot'
   };
 
-  var date = new Date(data.date);
+  var date = new Date(data.m_date);
 
   var location_link = 'https://maps.google.com/maps?daddr='+locations[id][1]+','+locations[id][0];
 
@@ -281,9 +298,8 @@ function openDetails(id, zoom){
   }
 
   var html =  '<div class="detail-header">'+
-              '  <h1>'+data.name_lang+'</h1>'+
-              '  <h2>'+data.bezirk+'</h2>'+
-              '  <a id="closebtn">zurück&nbsp;zur&nbsp;Übersicht</a>'+
+              '  <a id="closebtn">&laquo;&nbsp;zurück&nbsp;zur&nbsp;Übersicht</a>'+
+              '  <h1>'+data.name_lang+' <span>'+data.bezirk+'</span></h1>'+
               '  <hr class="closer" />'+
               '</div>'+
               '<div class="detail-body">'+
@@ -302,8 +318,8 @@ function openDetails(id, zoom){
               }
 
       html += '<br /><br />'+
-              '    <a href="'+location_link+'"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;<span>Route berechnen</span></a><br />'+
-              '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+parseFloat(locations[id][0]).toFixed(6).toString().replace('.','')+'@Y='+parseFloat(locations[id][1]).toFixed(6).toString().replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="./images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;<span>Anfahrt mit der BVG</span></a><br />'+
+              '    <a href="'+location_link+'"><img src="'+((is_detail)?'../':'./') +'images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;<span>Route berechnen</span></a><br />'+
+              '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+parseFloat(locations[id][0]).toFixed(6).toString().replace('.','')+'@Y='+parseFloat(locations[id][1]).toFixed(6).toString().replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="'+((is_detail)?'../':'./') +'images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;<span>Anfahrt mit der BVG</span></a><br />'+
               '    <h3>Wasserqualität</h3>'+ 
               '    <span class="stufen-icon stufen-'+data.state+'"></span>'+stufentext[data.state]+'<br /><span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ ')</span>';
 
@@ -332,7 +348,7 @@ function openDetails(id, zoom){
         html += '</table>';
       }
 
-      html += ((data.prediction=='true'||data.prediction==1)?'<span class="prediction"><img src="./images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'');
+      html += ((data.prediction!=null||data.prediction!='null')?'<span class="prediction"><img src="'+((is_detail)?'../':'./') +'images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'');
 
       var eu_sign;
 
@@ -354,11 +370,11 @@ function openDetails(id, zoom){
       html += '<div class="detail-eu">' + 
               '    <h3 class="title">EU-Einstufung</h3>'+
               '    <p class="small">Auswertung der letzten vier Jahre.</p>'+
-              '    <span class="eu-ranks"><img class="eu-class" src="./images/eu-signs/'+eu_sign+'@2x.png" width="92" height="81" alt="Ausgezeichnete Badegewässerqualität" />' +
-              '    <img src="./images/eu-signs/legend_excellent@2x.png" width="49" height="14" alt="Ausgezeichnet" />&nbsp;Ausgezeichnet<br />' +
-              '    <img class="first" src="./images/eu-signs/legend_good@2x.png" width="49" height="14" alt="Gut" />&nbsp;Gut<br />' +
-              '    <img src="./images/eu-signs/legend_sufficient@2x.png" width="49" height="14" alt="Ausreichend" />&nbsp;Ausreichend<br />' +
-              '    <img src="./images/eu-signs/legend_poor@2x.png" width="49" height="14" alt="Mangelhaft" />&nbsp;Mangelhaft</span><br />' + 
+              '    <span class="eu-ranks"><img class="eu-class" src="'+((is_detail)?'../':'./') +'/images/eu-signs/'+eu_sign+'@2x.png" width="92" height="81" alt="Ausgezeichnete Badegewässerqualität" />' +
+              '    <img src="'+((is_detail)?'../':'./') +'images/eu-signs/legend_excellent@2x.png" width="49" height="14" alt="Ausgezeichnet" />&nbsp;Ausgezeichnet<br />' +
+              '    <img class="first" src="'+((is_detail)?'../':'./') +'images/eu-signs/legend_good@2x.png" width="49" height="14" alt="Gut" />&nbsp;Gut<br />' +
+              '    <img src="'+((is_detail)?'../':'./') +'images/eu-signs/legend_sufficient@2x.png" width="49" height="14" alt="Ausreichend" />&nbsp;Ausreichend<br />' +
+              '    <img src="'+((is_detail)?'../':'./') +'images/eu-signs/legend_poor@2x.png" width="49" height="14" alt="Mangelhaft" />&nbsp;Mangelhaft</span><br />' + 
               '</div></div>';
 
       html += '  <div class="detail-addon">'+
@@ -366,53 +382,53 @@ function openDetails(id, zoom){
               '    <ul>';
 
               if(data.cyano_moeglich && data.cyano_moeglich!=0){
-                html += '<li><img src="./images/signs/cyano@2x.png" width="30" height="30" alt="Cyanobakterien massenhaft möglich (Blaualgen)" />&nbsp;Cyanobakterien massenhaft möglich (Blaualgen)</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/cyano@2x.png" width="30" height="30" alt="Cyanobakterien massenhaft möglich (Blaualgen)" />&nbsp;Cyanobakterien massenhaft möglich (Blaualgen)</li>';
               }
 
               if((data.wasserrettung_durch_hilfsorganisationen_dlrg_oder_asb && data.wasserrettung_durch_hilfsorganisationen_dlrg_oder_asb!=0) || (data.rettungsschwimmer && data.rettungsschwimmer!=0)){
-                html += '<li><img src="./images/signs/rescue@2x.png" width="30" height="30" alt="Wasserrettung zeitweise" />&nbsp;Wasserrettung zeitweise</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/rescue@2x.png" width="30" height="30" alt="Wasserrettung zeitweise" />&nbsp;Wasserrettung zeitweise</li>';
               }
 
               if(!data.barrierefrei || data.barrierefrei == 0){
-                html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Nicht barrierefrei" />&nbsp;Nicht barrierefrei</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Nicht barrierefrei" />&nbsp;Nicht barrierefrei</li>';
               }else{
-                html += '<li><img src="./images/signs/barrierefrei@2x.png" width="30" height="30" alt="Barrierefrei" />&nbsp;Barrierefrei</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/barrierefrei@2x.png" width="30" height="30" alt="Barrierefrei" />&nbsp;Barrierefrei</li>';
               }
 
               if(!data.barrierefrei_zugang || data.barrierefrei_zugang == 0){
-                html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Zugang zum Wasser nicht barrierefrei" />&nbsp;Zugang zum Wasser nicht barrierefrei</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Zugang zum Wasser nicht barrierefrei" />&nbsp;Zugang zum Wasser nicht barrierefrei</li>';
               }else{
-                html += '<li><img src="./images/signs/barrierefrei@2x.png" width="30" height="30" alt="Barrierefreier Zugang zum Wasser" />&nbsp;Barrierefreier Zugang zum Wasser</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/barrierefrei@2x.png" width="30" height="30" alt="Barrierefreier Zugang zum Wasser" />&nbsp;Barrierefreier Zugang zum Wasser</li>';
               }
 
               if(data.restaurant && data.restaurant!=0){
-                html += '<li><img src="./images/signs/restaurant@2x.png" width="30" height="30" alt="Restaurant" />&nbsp;Restaurant</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/restaurant@2x.png" width="30" height="30" alt="Restaurant" />&nbsp;Restaurant</li>';
               }
 
               if(data.imbiss && data.imbiss!=0){
-                html += '<li><img src="./images/signs/imbiss@2x.png" width="30" height="30" alt="Imbiss" />&nbsp;Imbiss</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/imbiss@2x.png" width="30" height="30" alt="Imbiss" />&nbsp;Imbiss</li>';
               }
 
               if(data.parken&&data.parken!=0){
-                html += '<li><img src="./images/signs/parken@2x.png" width="30" height="30" alt="Parkmöglichkeiten" />&nbsp;Parkmöglichkeiten</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/parken@2x.png" width="30" height="30" alt="Parkmöglichkeiten" />&nbsp;Parkmöglichkeiten</li>';
               }
 
               if(data.wc&&data.wc!=0){
-                html += '<li><img src="./images/signs/toilette@2x.png" width="30" height="30" alt="WC verfügbar" />&nbsp;WC verfügbar</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/toilette@2x.png" width="30" height="30" alt="WC verfügbar" />&nbsp;WC verfügbar</li>';
                 if(!data.barrierefrei_wc||data.barrierefrei_wc==0){
-                  html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li>';
+                  html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li>';
                 }
               }else if(data.wc_mobil&&data.wc_mobil!=0){
-                html += '<li><img src="./images/signs/toilette@2x.png" width="30" height="30" alt="Mobiles WC verfügbar" />&nbsp;Mobiles WC verfügbar</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/toilette@2x.png" width="30" height="30" alt="Mobiles WC verfügbar" />&nbsp;Mobiles WC verfügbar</li>';
                 if(!data.barrierefrei_wc||data.barrierefrei_wc==0){
-                  html += '<li><img src="./images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li>';
+                  html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li>';
                 }
               }
 
               if(data.hundeverbot&&data.hundeverbot!=0){
-                html += '<li><img src="./images/signs/hundeverbot@2x.png" width="30" height="30" alt="Hundeverbot" />&nbsp;Hundeverbot</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/hundeverbot@2x.png" width="30" height="30" alt="Hundeverbot" />&nbsp;Hundeverbot</li>';
               }else{
-                html += '<li><img src="./images/signs/hundeverbot-not@2x.png" width="30" height="30" alt="Kein Hundeverbot" />&nbsp;Kein Hundeverbot</li>';
+                html += '<li><img src="'+((is_detail)?'../':'./') +'images/signs/hundeverbot-not@2x.png" width="30" height="30" alt="Kein Hundeverbot" />&nbsp;Kein Hundeverbot</li>';
               }
 
       html += '    </ul>'+
@@ -423,8 +439,8 @@ function openDetails(id, zoom){
               '    '+data.gesundheitsamt_zusatz+'<br />'+
               '    '+data.gesundheitsamt_strasse+'<br />'+
               '    '+parseInt(data.gesundheitsamt_plz)+' '+data.gesundheitsamt_stadt+'<br /><br />'+
-              '    <a href="mailto:'+data.gesundheitsamt_mail+'"><img src="./images/signs/email@2x.png" width="30" height="30" alt="Email" />&nbsp;<span>'+data.gesundheitsamt_mail+'</span></a><br />'+
-              '    <a href="tel:'+parseInt(data.gesundheitsamt_telefon)+'"><img src="./images/signs/phone@2x.png" width="30" height="30" alt="Telefon" />&nbsp;<span>'+parseInt(data.gesundheitsamt_telefon)+'</span></a>'+
+              '    <a href="mailto:'+data.gesundheitsamt_mail+'"><img src="'+((is_detail)?'../':'./') +'images/signs/email@2x.png" width="30" height="30" alt="Email" />&nbsp;<span>'+data.gesundheitsamt_mail+'</span></a><br />'+
+              '    <a href="tel:'+parseInt(data.gesundheitsamt_telefon)+'"><img src="'+((is_detail)?'../':'./') +'images/signs/phone@2x.png" width="30" height="30" alt="Telefon" />&nbsp;<span>'+parseInt(data.gesundheitsamt_telefon)+'</span></a>'+
               '  </div>'+
               '</div>';
 
@@ -432,10 +448,14 @@ function openDetails(id, zoom){
   d3.select('#detail').html(html).style('display','block');
 
   d3.select('#closebtn').on('click', function(){
+    if(is_detail){
+      window.location.href = '../index.html';
+    }else{
       state.type = 'overview';
       state.id = null;
       state.ani = null;
       dispatcher.call('action', this, '?');
+    }
   });
 
   document.documentElement.scrollTop = 0;
