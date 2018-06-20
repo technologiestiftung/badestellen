@@ -167,7 +167,7 @@ if(d3.selectAll('#map').size()>0){
     map.fitBounds(
       [[13.0790332437,52.3283651024],[13.7700526861,52.6876624308]],
       {
-        offset: [0, 50],
+        //offset: [0, 50],
         speed:999
       }
     );
@@ -266,6 +266,8 @@ function openDetails(id, zoom){
   d3.select('#home').style('display','none');
   d3.selectAll('#detail *').remove();
 
+
+
   var data = gData[gKeys[id]];
 
   //add close button
@@ -274,6 +276,7 @@ function openDetails(id, zoom){
   // data.properties.details.html = data.properties.details.html.replace('">Stadtplan</a>', '">Route berechnen</a>');
 
   var stufentext = {
+    'grau':'Keine aktuellen Messwerte',
     'gruen':'Zum Baden geeignet',
     'orange':'Vom Baden wird abgeraten',
     'rot':'Badeverbot'
@@ -348,7 +351,7 @@ function openDetails(id, zoom){
         html += '</table>';
       }
 
-      html += ((data.prediction!=null||data.prediction!='null')?'<span class="prediction"><img src="'+((is_detail)?'../':'./') +'images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'');
+      html += ((data.prediction!=null&&data.prediction!='null')?'<span class="prediction"><img src="'+((is_detail)?'../':'./') +'images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'');
 
       var eu_sign;
 
@@ -459,6 +462,7 @@ function openDetails(id, zoom){
   });
 
   document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
 
 }
 

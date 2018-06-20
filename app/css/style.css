@@ -59,7 +59,8 @@ html, body{
 }
 
 #content.nomap{
-  padding-top:70px;
+  margin-top:75px;
+  padding-top:30px;
 }
 
 .small{
@@ -74,40 +75,40 @@ html, body{
   width:100%;
   max-width:1024px;
   overflow: hidden;
-  background-image:url(../images/head-bg-desktop@2x.png);
+  /*background-image:url(../images/head-bg-desktop@2x.png);
   background-size:1025px 75px;
   background-position: bottom right;
-  background-repeat: no-repeat;
-  min-height:75px;
+  background-repeat: no-repeat;*/
+  /*-webkit-box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+  -moz-box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+  box-shadow: 3px 3px 10px rgba(0,0,0,0.2);*/
+  border-bottom:3px solid #253276;
+  background-color:#fff;
+  min-height:45px;
   pointer-events: none;
 }
 
 .topnav a {
   pointer-events: all;
-  margin:8px 0 0 8px;
+  margin:0 0 0 0;
   float: left;
   display: block;
   color: #253276;
   text-align: center;
-  padding: 11px 16px 8px 16px;
+  padding: 12px 16px 12px 16px;
   height:21px;
   text-decoration: none;
   font-size: 17px;
 }
 
 .topnav a:hover {
-  background-color:#ececec;
-  padding-bottom:7px;
+  background-color:#C6CCE9;
 }
 
 .topnav a.active:hover,
 .topnav a.active{
   background-color: #253276;
   color:#fff;
-}
-
-.topnav a.active:hover{
-    padding-bottom:9px;
 }
 
 .topnav a.icon {
@@ -120,13 +121,18 @@ html, body{
   background-color:#fff;
 }
 
+.topnav a.home img{
+  float:left;
+  margin:1px 5px 0 0;
+}
+
 #container{
   margin:0 auto;
   width:100%;
   max-width: 1024px;
-  -webkit-box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
-  -moz-box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
-  box-shadow: 3px 3px 10px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+  -moz-box-shadow:    2px 2px 10px rgba(0,0,0,0.3);
+  box-shadow:         2px 2px 10px rgba(0,0,0,0.3);
   background-color: #fff;
 }
 
@@ -160,6 +166,7 @@ h1{
   height:600px;
   max-height:500px;
   border-bottom:2px solid #253276;
+  margin-top:75px;
 }
 
 #detail{
@@ -186,6 +193,7 @@ h1{
   cursor:pointer;
 }
 
+.marker.grau{ background-image:url(../images/marker_grau@2x.png); }
 .marker.gruen{ background-image:url(../images/marker_gruen@2x.png); }
 .marker.rot{ background-image:url(../images/marker_rot@2x.png); }
 .marker.orange{ background-image:url(../images/marker_orange@2x.png); }
@@ -283,6 +291,12 @@ h2{
 #list img.stateimg.state-gruen{ 
   background-color:#97B014;
   background-image: url('../images/icon_gruen@2x.png');
+}
+
+.stufen-icon.stufen-grau,
+#list img.stateimg.state-grau{ 
+  background-color:#CDCDCD;
+  background-image: url('../images/icon_grau@2x.png');
 }
 
 .stufen-icon.stufen-rot,
@@ -715,9 +729,9 @@ table.measurement_table tr.row-1 th{
   }
 
   .topnav {
-    background-image:url(../images/head-bg-mobile@2x.png);
-    background-size:1024px 55px;
-    min-height:54px;
+    /*background-image:url(../images/head-bg-mobile@2x.png);
+    background-size:1024px 55px;*/
+    min-height:38px;
   }
 
   .topnav a{

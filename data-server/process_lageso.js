@@ -7,9 +7,13 @@ module.exports = {
 			return parseInt((str.replace('>','')).replace('<',''))
 		}
 
+		console.log('inside lageso.process')
+
 		request({uri:'http://ftp.berlinonline.de/lageso/baden/letzte.csv', encoding:'utf8'}, (error, response, body)=>{
 
 			if(error) console.log(error)
+
+			console.log('lageso.processing')
 
 			const csv = parser.parse(body.split('"').join(''))
 
@@ -27,6 +31,8 @@ module.exports = {
 					cb:parseNum(c.cb),
 					temperature: parseFloat(c.Temp.split(',').join('.'))		
 				}
+
+				console.log('lageso.processing.',obj.badestellen_id, obj.quality)
 
 				let params = [
 					obj.badestellen_id[0],

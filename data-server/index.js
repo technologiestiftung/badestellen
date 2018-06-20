@@ -129,16 +129,22 @@ console.log(config.refresh_secret)
 //Test interface
 app.get('/' + config.refresh_secret + '/update', (req, res, next) => {
   db.prepare('INSERT INTO events (type,timestamp)VALUES(?,?)').run(['manual_update', moment().format('YYYY-MM-DD HH:mm:ss')])
+  console.log('manual_update')
   lageso.process(db, request, cparser, moment, function(){
+    console.log('lageso.process')
     builder.build(db, config, fs, moment, path)
+    console.log('build')
     return res.status(200).json({ message: 'all good' })
   })
 })
 
 app.get('/' + config.refresh_secret + '/update_cron', (req, res, next) => {
   db.prepare('INSERT INTO events (type,timestamp)VALUES(?,?)').run(['cron_update', moment().format('YYYY-MM-DD HH:mm:ss')])
+  console.log('cron_update', moment().toDate())
   lageso.process(db, request, cparser, moment, function(){
+    console.log('lageso.process')
     builder.build(db, config, fs, moment, path)
+    console.log('build')
     return res.status(200).json({ message: 'all good' })
   })
 })

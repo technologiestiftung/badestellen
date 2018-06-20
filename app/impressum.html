@@ -50,51 +50,22 @@
   <meta name="twitter:description" content="Aktuelle Badegewässerqualität und Informationen rund um die Berliner Badestellen">
   <meta name="twitter:image" content="https://technologiestiftung.github.io/badestellen/app/images/social_media.jpg">
 
-  <link href="https://fonts.googleapis.com/css?family=Contrail+One|Open+Sans:300,300i,700" rel="stylesheet">
-  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,700" rel="stylesheet">
+  <link href='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.css' rel='stylesheet' />
   <link href='./css/style.css' rel='stylesheet' />
 </head>
 <body>
-  <div id="splash">
-    <div>
-      <img src="images/splash@2x.gif" width="53" height="53" /><br />
-      <strong>Berliner Badestellen</strong><br />
-      <span class="small">werden geladen...</span>
-    </div>
-  </div>
   <div id="container">
-    <div class="topnav" id="myTopnav" role="navigation">
+    <div class="topnav" id="myTopnav">
       <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-      <a href="index.html" class="home active"><img src="./images/Logo-Icon@2x.png" width="20" height="20" alt="Berliner Badestellen" />&nbsp;Berliner Badestellen</a>
-      <a href="info.html">Messverfahren</a>
+      <a href="index.html" class="home"><img src="./images/Logo-Icon-invers@2x.png" width="20" height="20" alt="Berliner Badestellen" />&nbsp;Berliner Badestellen</a>
+      <a href="info.html" class="active">Messverfahren</a>
       <a href="faq.html">FAQ</a>
-      <!--<img src="images/be-berlin.svg" alt="be Berlin Logo" id="logo" />-->
     </div>
-    <div id="map"></div>
-    <div id="content">
-      <div id="detail" aria-live="polite" role="article"></div>
+    <div id="content" class="nomap">
       <div id="home">
-        <div id="legend">
-          <ul>
-            <li><img src="./images/legend_gruen@2x.png" alt="">Zum Baden geeignet</li>
-            <li><img src="./images/legend_orange@2x.png" alt="">Vom Baden wird abgeraten</li>
-            <li><img src="./images/legend_rot@2x.png" alt="">Badeverbot</li>
-          </ul>
-        </div>
-        <div id="measure">
-          Basierend auf den letzten<br class="responsive-break" />
-          Messungen des Landesamt für<br />
-          Gesundheit und Soziales.<br class="responsive-break" />
-          <a href="https://www.berlin.de/lageso/gesundheit/gesundheitsschutz/badegewaesser/badegewaesserueberwachung/">Mehr&nbsp;erfahren&nbsp;»</a>
-        </div>
-
-        <div id="list-container">
-          <h2>Übersicht Badegewässer</h2>
-          <div id="list" role="listbox" aria-live="polite">
-            <ul>
-            </ul>
-          </div>
-        </div>
+        <h1>Impressum</h1>
+        <p>...</p>
       </div>
       <div id="footer">
         <h2 class="first">Partnernetzwerk</h2>
@@ -113,10 +84,8 @@
   <div id="footnote">
     <a href="kontakt.html">Kontakt</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a> | Copyright 2018
   </div>
-  <script type="text/javascript">var is_detail = false;</script>
-  <script src="js/d3.v4.min.js"></script>
-  <script src="js/d3-history/d3-history.min.js"></script>
-  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
-  <script src="js/main.js"></script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
+  <script src="js/light.js"></script>
 </body>
 </html>
