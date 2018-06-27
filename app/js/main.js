@@ -1,10 +1,11 @@
+/*global d3, is_detail, mapboxgl */
+/*exported myFunction*/
+
 var state = {
   type:'overview',
   id:null,
   ani:false
 };
-
-console.log(is_detail);
 
 function retrieveUrl(){
   state = {
@@ -14,10 +15,8 @@ function retrieveUrl(){
   };
   var comps = window.location.href.split('?');
   if(comps.length>1){
-    console.log(comps[1])
     var els = comps[1].split('&');
     var cs = els[0].split('=');
-    console.log(els[0], cs);
     if(cs[0]=='id'){
       if(cs[1] in gKeys){
         state.type = 'detail';
@@ -42,7 +41,6 @@ dispatcher.on('action', function() {
 });
 
 function updateInterface(){
-  console.log('updateInterface', state);
   if(state.type == 'detail'){
       openDetails(state.id, (state.ani=='true')?true:false);
   }else{
@@ -71,7 +69,7 @@ function debounce(func, wait, immediate) {
     timeout = setTimeout(later, wait);
     if (callNow) func.apply(context, args);
   };
-};
+}
 
 var map, locations = {}, gData = null, gKeys = {}, id_map = {};
 
@@ -80,7 +78,6 @@ if(d3.selectAll('#map').size()>0){
   window.addEventListener("resize", updateMapContainer);
 
   d3.csv(((is_detail)?'../':'') + 'new_build.csv', function(err, data){
-    if(err){ console.log(err); }
 
     data.sort(function(a,b){
       return b.lng - a.lng;
@@ -118,7 +115,7 @@ if(d3.selectAll('#map').size()>0){
     }).append('span').attr('class','outer');
 
       items.append('img').attr('class', function(d){
-        return 'stateimg state-'+d.state+((d.name.indexOf(d.gewaesser)>=0)?'':' substate'); 
+        return 'stateimg state-'+d.real_state+((d.name.indexOf(d.gewaesser)>=0)?'':' substate'); 
       }).attr('src', ((is_detail)?'../':'./') + 'images/trans.gif');
 
       items.append('span').html(function(d){
@@ -174,7 +171,7 @@ if(d3.selectAll('#map').size()>0){
 
     updateMapContainer();
 
-    data.forEach(function(marker, i) {
+    data.forEach(function(marker) {
       locations[marker.detail_id] = [marker.lat,marker.lng];
 
       var el = document.createElement('div');
@@ -187,7 +184,7 @@ if(d3.selectAll('#map').size()>0){
         dispatcher.call('action', this, '?id='+marker.detail_id+'&ani=false');
       }); 
 
-      var m = new mapboxgl.Marker(el, {offset:[-2,-8.5]})
+      new mapboxgl.Marker(el, {offset:[-2,-8.5]})
         .setLngLat([marker.lat,marker.lng])
         .addTo(map);
     });
@@ -276,11 +273,21 @@ function openDetails(id, zoom){
   // data.properties.details.html = data.properties.details.html.replace('">Stadtplan</a>', '">Route berechnen</a>');
 
   var stufentext = {
-    'grau':'Keine aktuellen Messwerte',
-    'gruen':'Zum Baden geeignet',
-    'orange':'Vom Baden wird abgeraten',
-    'rot':'Badeverbot'
-  };
+      1:'Zum Baden geeignet',
+      2:'Zum Baden geeignet',
+      11:'Zum Baden geeignet',
+      12:'Zum Baden geeignet',
+      3:'Vom Baden wird abgeraten',
+      4:'Vom Baden wird abgeraten',
+      13:'Vom Baden wird abgeraten',
+      14:'Vom Baden wird abgeraten',
+      10:'Vom Baden wird abgeraten',
+      9:'Keine Angabe',
+      5:'Badeverbot',
+      6:'Badeverbot',
+      15:'Badeverbot',
+      16:'Badeverbot'
+    };
 
   var date = new Date(data.m_date);
 
@@ -324,7 +331,7 @@ function openDetails(id, zoom){
               '    <a href="'+location_link+'"><img src="'+((is_detail)?'../':'./') +'images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;<span>Route berechnen</span></a><br />'+
               '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+parseFloat(locations[id][0]).toFixed(6).toString().replace('.','')+'@Y='+parseFloat(locations[id][1]).toFixed(6).toString().replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="'+((is_detail)?'../':'./') +'images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;<span>Anfahrt mit der BVG</span></a><br />'+
               '    <h3>Wasserqualität</h3>'+ 
-              '    <span class="stufen-icon stufen-'+data.state+'"></span>'+stufentext[data.state]+'<br /><span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ ')</span>';
+              '    <span class="stufen-icon stufen-'+data.real_state+'"></span>'+stufentext[data.real_state]+'<br /><span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ ')</span>';
 
       var measurements = [      'sicht_txt',  'eco_txt',            'ente_txt',                 'temp_txt',         'algen_txt',                'cb_txt'],
           measurement_labels = ['Sichttiefe', 'Escherichia coli',   'Intestinale Enterokokken', 'Wassertemperatur', 'Erhöhtes Algenauftreten',  'Coliforme Bakterien'],

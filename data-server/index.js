@@ -46,7 +46,7 @@ predictionsImporter.import(db, parser, fs, function(){
   lageso.process(db, request, cparser, moment, function(){
     //After all changes in the db, rebuild the system
     metaImporter.import(db, fs, moment, proj4, function(){
-      builder.build(db, config, fs, moment, path)
+      builder.build(db, config, fs, moment, path, cparser, request)
     })
   })
 })
@@ -75,21 +75,21 @@ app.post('/upload', (req, res, next) => {
         })
 
         if(valid){
-          db.prepare('INSERT INTO events (type,timestamp)VALUES(?,?)').run([cuser, moment().format('YYYY-MM-DD HH:mm:ss')])
+          db.prepare('INSERT INTO events (type,timestamp)VALUES(?,?)').run([cuser.user, moment().format('YYYY-MM-DD HH:mm:ss')])
           for(let filename in files){
             let data = fs.readFileSync(files[filename].path, 'utf8')
-            switch(cuser){
+            switch(cuser.user){
               case 'kwb':
                 //Add to the database
                 //Cache data in the system
                 predictionsImporter.import(db, parser, fs, function(){
-                  builder.build(db, config, fs, moment, path)
+                  builder.build(db, config, fs, moment, path, cparser, request)
                 })
               break;
               case 'bwb':
                 //Update the details
                 metaImporter.import(db, fs, moment, proj4, function(){
-                  builder.build(db, config, fs, moment, path)
+                  builder.build(db, config, fs, moment, path, cparser, request)
                 })
               break;
               case 'lageso':
@@ -132,7 +132,7 @@ app.get('/' + config.refresh_secret + '/update', (req, res, next) => {
   console.log('manual_update')
   lageso.process(db, request, cparser, moment, function(){
     console.log('lageso.process')
-    builder.build(db, config, fs, moment, path)
+    builder.build(db, config, fs, moment, path, cparser, request)
     console.log('build')
     return res.status(200).json({ message: 'all good' })
   })
@@ -143,7 +143,7 @@ app.get('/' + config.refresh_secret + '/update_cron', (req, res, next) => {
   console.log('cron_update', moment().toDate())
   lageso.process(db, request, cparser, moment, function(){
     console.log('lageso.process')
-    builder.build(db, config, fs, moment, path)
+    builder.build(db, config, fs, moment, path, cparser, request)
     console.log('build')
     return res.status(200).json({ message: 'all good' })
   })

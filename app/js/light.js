@@ -1,3 +1,5 @@
+/*exported myFunction*/
+
 /*
  * Responsive Menu Button
  */

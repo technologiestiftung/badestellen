@@ -50,28 +50,42 @@
   <meta name="twitter:description" content="Aktuelle Badegewässerqualität und Informationen rund um die Berliner Badestellen">
   <meta name="twitter:image" content="https://technologiestiftung.github.io/badestellen/app/images/social_media.jpg">
 
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,700" rel="stylesheet">
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.css' rel='stylesheet' />
-  <link href='./css/style.css' rel='stylesheet' />
+  <link href='./css/style-min.css' rel='stylesheet' />
 </head>
 <body>
   <div id="container">
     <div class="topnav" id="myTopnav">
-      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-      <a href="index.html" class="home"><img src="./images/Logo-Icon-invers@2x.png" width="20" height="20" alt="Berliner Badestellen" />&nbsp;Berliner Badestellen</a>
-      <a href="info.html" class="active">Messverfahren</a>
-      <a href="faq.html">FAQ</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
+      <a href="index.html" class="home active menu-left"><img src="./images/Logo-Icon-invers@2x.png" width="20" height="20" alt="Berliner Badestellen" />Berliner Badestellen</a>
+      <a href="faq.html" class="menu-right">FAQ</a>
+      <a href="info.html" class="menu-right">Messverfahren</a>
     </div>
     <div id="content" class="nomap">
       <div id="home">
         <h1>Impressum</h1>
-        <p>...</p>
+        <h4>Angaben zur Technologiestiftung Berlin </h4>
+        <p><b>Technologiestiftung Berlin </b></p>
+        <p>Grunewaldstraße 61-62<br> 10825 Berlin<br> Telefon +49 30 209 69 99 0<br> E-Mail: info (at) technologiestiftung-berlin.de</p>
+        <p>Stiftungsverzeichnis Berlin: AZ 3416/464 B3<br> USt-Id-Nr.: DE 187 459 128</p>
+        <p>Die Technologiestiftung Berlin ist eine rechtsfähige und gemeinnützige Stiftung bürgerlichen Rechts. Sie unterliegt nach dem Berliner Stiftungsgesetz in der Fassung vom 11. Dezember 1997 (GVBl. S. 674) der Staatsaufsicht, die von der Senatsverwaltung für Justiz, Salzburger Str. 21-25, 10825 Berlin, geführt wird.</p>
+        <h4>Vertretungsberechtigter Vorstand</h4>
+        <p>Nicolas Zimmer (Vorsitz), Steffen Döring, Prof. Dr.-Ing. Ina Schieferdecker</p>
+        <h4>Inhaltlich Verantwortliche gemäß §5 TMG</h4>
+        <p>Frauke Nippel (Technologiestiftung Berlin)</p>
+        <h4>Haftungsausschluss</h4>
+        <p>Es wird von uns keine Garantie dafür übernommen, dass die auf dieser Website bereitgestellten Informationen vollständig, richtig und in jedem Fall aktuell sind.</p>
+        <p>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Wir haben keinerlei Einfluss auf die aktuelle und zukünftige Gestaltung der verlinkten Seiten. Wir distanzieren uns hiermit ausdrücklich von allen inhaltlichen Änderungen, die nach der Linksetzung auf den verlinkten Seiten vorgenommen werden. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich.</p>
+        <p>Wir behalten uns das Recht vor, ohne vorherige Ankündigung Änderungen oder Ergänzungen der bereitgestellten Informationen vorzunehmen.</p>
+        <p>Wir sind bestrebt, in allen Publikationen geltende Urheberrechte zu beachten. Sollte es trotzdem zu einer Urheberrechtsverletzung kommen, werden wir das entsprechende Objekt nach Benachrichtigung aus seiner Publikation entfernen bzw. mit dem Urheberrecht kenntlich machen.</p>
+        <p>Alle auf den Webseiten genannten und gegebenenfalls durch Dritte geschützte Marken- und Warenzeichen unterliegen uneingeschränkt den Bestimmungen des jeweils gültigen Kennzeichenrechts und den Besitzrechten der jeweiligen eingetragenen Eigentümer.</p>
+        <p>Dieser Haftungshinweis ist als Teil des Internetangebotes der Technologiestiftung Berlin und des Fördervereins Technologiestiftung Berlin e. V. zu betrachten. Sofern Teile oder einzelne Formulierungen dieses Textes der geltenden Rechtslage nicht, nicht mehr oder nicht vollständig entsprechen sollten, bleiben die übrigen Teile des Dokuments in ihrem Inhalt und ihrer Gültigkeit hiervon unberührt.</p>
       </div>
       <div id="footer">
         <h2 class="first">Partnernetzwerk</h2>
         <a href="#"><img src="images/partner/lageso@2x.png" width="162" alt="Landesamt für Gesundheit und Soziales Berlin" style="margin-right:60px;" /></a>
-        <a href="#"><img src="images/partner/bwb@2x.png" width="230" alt="Berliner Wasserbetriebe" style="margin-right:0;" /></a><br />
-        <a href="#"><img src="images/partner/kwb@2x.png" width="223" alt="Kompetenzzentrum Wasser Berlin" style="margin-right:25px;" /></a>
+        <a href="#"><img src="images/partner/bwb@2x.png" width="230" alt="Berliner Wasserbetriebe" style="margin-right:35px;" /></a>
+        <a href="#"><img src="images/partner/kwb@2x.png" width="223" alt="Kompetenzzentrum Wasser Berlin" style="margin-right:40px;" /></a>
         <a href="#"><img src="images/partner/tsb@2x.png" width="196" alt="Technologiestiftung Berlin" /></a>
         <h2>Entwickelt im Projekt</h2>
         <a href="#"><img src="images/partner/flusshygiene@2x.png" width="200" alt="Flusshygiene" style="margin-right:0;" /></a>
@@ -86,6 +100,21 @@
   </div>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
-  <script src="js/light.js"></script>
+  <script src="js/light-min.js"></script>
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.technologiestiftung-berlin.de/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '8']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
 </body>
 </html>

@@ -50,17 +50,16 @@
   <meta name="twitter:description" content="Aktuelle Badegewässerqualität und Informationen rund um die Berliner Badestellen">
   <meta name="twitter:image" content="https://technologiestiftung.github.io/badestellen/app/images/social_media.jpg">
 
-  <link href="https://fonts.googleapis.com/css?family=Contrail+One|Open+Sans:300,300i,700" rel="stylesheet">
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.css' rel='stylesheet' />
-  <link href='./css/style.css' rel='stylesheet' />
+  <link href='./css/style-min.css' rel='stylesheet' />
 </head>
 <body>
   <div id="container">
     <div class="topnav" id="myTopnav">
-      <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-      <a href="index.html" class="home"><img src="./images/Logo-Icon-invers@2x.png" width="20" height="20" alt="Berliner Badestellen" />&nbsp;Berliner Badestellen</a>
-      <a href="info.html" class="active">Messverfahren</a>
-      <a href="faq.html">FAQ</a>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
+      <a href="index.html" class="home active menu-left"><img src="./images/Logo-Icon-invers@2x.png" width="20" height="20" alt="Berliner Badestellen" />Berliner Badestellen</a>
+      <a href="faq.html" class="menu-right">FAQ</a>
+      <a href="info.html" class="menu-right menu-active">Messverfahren</a>
     </div>
     <div id="content" class="nomap">
       <div id="home">
@@ -74,8 +73,8 @@
       <div id="footer">
         <h2 class="first">Partnernetzwerk</h2>
         <a href="#"><img src="images/partner/lageso@2x.png" width="162" alt="Landesamt für Gesundheit und Soziales Berlin" style="margin-right:60px;" /></a>
-        <a href="#"><img src="images/partner/bwb@2x.png" width="230" alt="Berliner Wasserbetriebe" style="margin-right:0;" /></a><br />
-        <a href="#"><img src="images/partner/kwb@2x.png" width="223" alt="Kompetenzzentrum Wasser Berlin" style="margin-right:25px;" /></a>
+        <a href="#"><img src="images/partner/bwb@2x.png" width="230" alt="Berliner Wasserbetriebe" style="margin-right:35px;" /></a>
+        <a href="#"><img src="images/partner/kwb@2x.png" width="223" alt="Kompetenzzentrum Wasser Berlin" style="margin-right:40px;" /></a>
         <a href="#"><img src="images/partner/tsb@2x.png" width="196" alt="Technologiestiftung Berlin" /></a>
         <h2>Entwickelt im Projekt</h2>
         <a href="#"><img src="images/partner/flusshygiene@2x.png" width="200" alt="Flusshygiene" style="margin-right:0;" /></a>
@@ -90,6 +89,21 @@
   </div>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
-  <script src="js/light.js"></script>
+  <script src="js/light-min.js"></script>
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.technologiestiftung-berlin.de/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '8']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
 </body>
 </html>

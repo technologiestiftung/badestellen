@@ -9,7 +9,7 @@ module.exports = {
 
 		console.log('inside lageso.process')
 
-		request({uri:'http://ftp.berlinonline.de/lageso/baden/letzte.csv', encoding:'utf8'}, (error, response, body)=>{
+		request({uri:'http://ftp.berlinonline.de/lageso/baden/letzte.csv', encoding:'latin1'}, (error, response, body)=>{
 
 			if(error) console.log(error)
 

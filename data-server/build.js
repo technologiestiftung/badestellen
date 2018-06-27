@@ -1,6 +1,11 @@
 module.exports = {
 
-	build: (db, config, fs, moment, path)=>{
+	build: (db, config, fs, moment, path, parser, request)=>{
+
+		function parseNum(str){
+			if(str.length==0) return 0
+			return parseInt((str.replace('>','')).replace('<',''))
+		}
 
 		const b_fields = [
 			'id',
@@ -38,6 +43,7 @@ module.exports = {
 			]
 
 		const m_fields = [
+				'wasserqualitaet',
 				'sicht_txt',
 				'eco_txt',
 				'ente_txt',
@@ -80,21 +86,56 @@ module.exports = {
 		' ORDER BY ' +
 			'm.date DESC, p.date DESC '
 
-		let rows = db.prepare(query).all([])
+		let rows = db.prepare(query).all([]),
+			row_keys = {}
+
+		rows.forEach((r,ri)=>{
+			row_keys[r.detail_id] = ri
+		})
 
 		let state_map = []
 
 		rows.forEach(r=>{
-			r['real_state'] = r.state
-			if(r.state == 'gruen' && r.prediction == 'mangelhaft'){
-				r.real_state = 'orange'
-			}else if(r.state == 'grau' && r.prediction == 'mangelhaft'){
-				r.real_state = 'orange'
-			}else if(r.state == 'grau' && r.prediction != 'mangelhaft'){
-				r.real_state = 'gruen'
+			//Default is lageso
+			r['real_state'] = r.wasserqualitaet
+
+			//unsupported special case black???
+			if(r.real_state == 10 || r.real_state == 7 || r.real_state == 8){
+				r.real_state = 9
+			}
+
+			//Check if there is a prediction for this place, otherwise keep default
+			if(r.prediction && r.prediction != null){
+				//The only time prediction overrules Lageso is when prediction is 'mangelhaft'
+				if(r.prediction == 'mangelhaft'){
+					//If Lageso is even worse, stick to Lageso
+					if(r.real_state == 6 || r.real_state == 5){
+						//Do nothing Lageso overrules
+					}else if(r.real_state == 2 || r.real_state == 4 || r.real_state == 6){
+						//Lageso has detected algae
+						r.real_state = 14
+						r.state = 'organge'
+					}else{
+						//Set to predicted orange
+						r.real_state = 13
+						r.state = 'organge'
+					}
+				}else{
+					//This place has a location, but it does not change whatever Lageso already says
+					switch(r.real_state){
+						case 1: r.real_state = 11; break;
+						case 2: r.real_state = 12; break;
+						case 3: r.real_state = 13; break;
+						case 4: r.real_state = 14; break;
+						case 5: r.real_state = 15; break;
+						case 6: r.real_state = 16; break;
+						case 9: r.real_state = 11; break;
+					}
+				}
 			}
 
 			state_map.push({
+				wasserqualitaet : r.wasserqualitaet,
 				real_state : r.real_state,
 				state : r.state,
 				state_date : r.m_date,
@@ -118,7 +159,7 @@ module.exports = {
 			states_html += '<tr>'
 			states_html += '<td>' + s.id + '</td>'
 			states_html += '<td>' + s.name + '</td>'
-			states_html += '<td>' + s.state + '</td>'
+			states_html += '<td>' + s.wasserqualitaet + '</td>'
 			states_html += '<td>' + s.state_date + '</td>'
 			states_html += '<td>' + s.prediction + '</td>'
 			states_html += '<td>' + s.prediction_date + '</td>'
@@ -196,10 +237,20 @@ module.exports = {
 		}
 
 		let stufentext = {
-			'gruen':'Zum Baden geeignet',
-			'orange':'Vom Baden wird abgeraten',
-			'grau':'Keine Angabe',
-			'rot':'Badeverbot'
+			1:'Zum Baden geeignet',
+			2:'Zum Baden geeignet',
+			11:'Zum Baden geeignet',
+			12:'Zum Baden geeignet',
+			3:'Vom Baden wird abgeraten',
+			4:'Vom Baden wird abgeraten',
+			13:'Vom Baden wird abgeraten',
+			14:'Vom Baden wird abgeraten',
+			10:'Vom Baden wird abgeraten',
+			9:'Keine Angabe',
+			5:'Badeverbot',
+			6:'Badeverbot',
+			15:'Badeverbot',
+			16:'Badeverbot'
 		};
 
 		let details_template = fs.readFileSync(__dirname + '/templates/detail.html', 'utf8')
@@ -207,7 +258,7 @@ module.exports = {
 		rows.forEach(r=>{
 			let temp = details_template
 
-			let date = moment(r.date, 'YYYY-MM-DD').format('DD.MM.YYYY');
+			let date = moment(r.m_date, 'YYYY-MM-DD').format('DD.MM.YYYY');
 
 			let measurements_html = ''
 
@@ -396,9 +447,93 @@ module.exports = {
 			fs.writeFileSync(path.join(__dirname, config.export_path, 'details/measurements_' + id + '.csv'), csv, 'utf8')
 		}
 
+		//Build letzte.csv
+
+		console.log('build.letzte')
+
+		let letzte_cols_a = ['BadName','Bezirk','Profil','RSS_Name','Latitude','Longitude','ProfilLink','BadestelleLink','Dat','Sicht','Eco','Ente','Farbe','BSL','Algen','Wasserqualitaet','cb','Temp','PDFLink','PrognoseLink','Farb_ID','Wasserqualitaet_lageso','Wasserqualitaet_predict','Dat_predict'],
+			letzte_cols = letzte_cols_a.join(','),
+			quali_id = letzte_cols_a.find(el=>el=='Wasserqualitaet')
+
+		request({uri:'http://ftp.berlinonline.de/lageso/baden/letzte.csv', encoding:'latin1' /*iso-8859-1*/}, (error, response, body)=>{
+
+			if(error) console.log(error)
+
+			const csv = parser.parse(body.split('"').join(''))
+
+			csv.forEach((c,ci)=>{
+
+				let obj = {
+					badestellen_id : c.BadestelleLink.match(/(\d){1,6}/g),
+					quality:parseNum(c.Wasserqualitaet)
+				}
+
+				if(rows[row_keys[obj.badestellen_id]].prediction && rows[row_keys[obj.badestellen_id]].prediction != null){
+					csv[ci]['Wasserqualitaet_lageso'] = obj.quality
+
+					let prediction_row = db.prepare('SELECT prediction, date FROM predictions WHERE id = ? ORDER BY date DESC LIMIT 1').all([rows[row_keys[obj.badestellen_id]].id]),
+						prediction = prediction_row[0].prediction,
+						new_quality = obj.quality
+
+					if(prediction == 'mangelhaft'){
+						//If Lageso is even worse, stick to Lageso
+						if(obj.quality == 6 || obj.quality == 5){
+							//Do nothing Lageso overrules
+						}else if(obj.quality == 2 || obj.quality == 4 || obj.quality == 6){
+							//Lageso has detected algae
+							csv[ci]['Farbe'] = 'gelb'
+							new_quality = 14
+						}else{
+							//Set to predicted orange
+							new_quality = 13
+							csv[ci]['Farbe'] = 'gelb'
+						}
+					}else{
+						//This place has a location, but it does not change whatever Lageso already says
+						switch(obj.quality){
+							case 1: new_quality = 11; break;
+							case 2: new_quality = 12; break;
+							case 3: new_quality = 13; break;
+							case 4: new_quality = 14; break;
+							case 5: new_quality = 15; break;
+							case 6: new_quality = 16; break;
+							case 9: new_quality = 11; break;
+						}
+					}
+
+					csv[ci]['Wasserqualitaet'] = new_quality
+					csv[ci]['Wasserqualitaet_predict'] = prediction
+					csv[ci]['Dat_predict'] = prediction_row[0].date
+
+				}else{
+					csv[ci]['Wasserqualitaet_lageso'] = obj.quality
+					csv[ci]['Wasserqualitaet_predict'] = ''
+					csv[ci]['Dat_predict'] = ''
+				}
+
+			})
+
+			let lcsv = letzte_cols
+			csv.forEach(c=>{
+				lcsv += '\n'
+				let cci = 0
+				for(var key in c){
+					if(cci>0) lcsv += ','
+					let cc = c[key]
+					if(cc.length>0 && cc.indexOf(',')>=0){
+					 lcsv += '"'+cc+'"'
+					}else{
+					 lcsv += cc
+					}
+					cci++
+				}
+			})
+			fs.writeFileSync(path.join(__dirname, config.export_path, 'letzte.csv'), lcsv, 'utf8')
+
+			console.log('build done')
+		})
 
 		//Add static files to the API
 
-		console.log('build done')
 	}
 }
