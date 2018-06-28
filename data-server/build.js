@@ -452,7 +452,7 @@ module.exports = {
 		console.log('build.letzte')
 
 		let letzte_cols_a = ['BadName','Bezirk','Profil','RSS_Name','Latitude','Longitude','ProfilLink','BadestelleLink','Dat','Sicht','Eco','Ente','Farbe','BSL','Algen','Wasserqualitaet','cb','Temp','PDFLink','PrognoseLink','Farb_ID','Wasserqualitaet_lageso','Wasserqualitaet_predict','Dat_predict'],
-			letzte_cols = letzte_cols_a.join(','),
+			letzte_cols = letzte_cols_a.join(';'),
 			quali_id = letzte_cols_a.find(el=>el=='Wasserqualitaet')
 
 		request({uri:'http://ftp.berlinonline.de/lageso/baden/letzte.csv', encoding:'latin1' /*iso-8859-1*/}, (error, response, body)=>{
@@ -471,9 +471,12 @@ module.exports = {
 				if(rows[row_keys[obj.badestellen_id]].prediction && rows[row_keys[obj.badestellen_id]].prediction != null){
 					csv[ci]['Wasserqualitaet_lageso'] = obj.quality
 
-					let prediction_row = db.prepare('SELECT prediction, date FROM predictions WHERE id = ? ORDER BY date DESC LIMIT 1').all([rows[row_keys[obj.badestellen_id]].id]),
+					console.log(rows[row_keys[obj.badestellen_id]].id)
+
+					let prediction_row = db.prepare('SELECT prediction, date FROM predictions WHERE badestellen_id = ? ORDER BY date DESC LIMIT 1').all([rows[row_keys[obj.badestellen_id]].id]),
 						prediction = prediction_row[0].prediction,
-						new_quality = obj.quality
+						new_quality = obj.quality,
+						new_farbe = csv[ci]['Farbe']
 
 					if(prediction == 'mangelhaft'){
 						//If Lageso is even worse, stick to Lageso
@@ -481,30 +484,30 @@ module.exports = {
 							//Do nothing Lageso overrules
 						}else if(obj.quality == 2 || obj.quality == 4 || obj.quality == 6){
 							//Lageso has detected algae
-							csv[ci]['Farbe'] = 'gelb'
+							new_farbe = 'gelb_prog.jpg'
 							new_quality = 14
 						}else{
 							//Set to predicted orange
 							new_quality = 13
-							csv[ci]['Farbe'] = 'gelb'
+							new_farbe = 'gelb_prog.jpg'
 						}
 					}else{
 						//This place has a location, but it does not change whatever Lageso already says
 						switch(obj.quality){
-							case 1: new_quality = 11; break;
-							case 2: new_quality = 12; break;
-							case 3: new_quality = 13; break;
-							case 4: new_quality = 14; break;
-							case 5: new_quality = 15; break;
-							case 6: new_quality = 16; break;
-							case 9: new_quality = 11; break;
+							case 1: new_quality = 11; new_farbe = 'gruen_prog.jpg'; 	break;
+							case 2: new_quality = 12; new_farbe = 'gruen_a_prog.jpg'; 	break;
+							case 3: new_quality = 13; new_farbe = 'gelb_prog.jpg'; 		break;
+							case 4: new_quality = 14; new_farbe = 'gelb_a_prog.jpg'; 	break;
+							case 5: new_quality = 15; new_farbe = 'rot_prog.jpg'; 		break;
+							case 6: new_quality = 16; new_farbe = 'rot_a_prog.jpg'; 	break;
+							case 9: new_quality = 11; new_farbe = 'gruen_prog.jpg'; 	break;
 						}
 					}
 
 					csv[ci]['Wasserqualitaet'] = new_quality
+					csv[ci]['Farbe'] = new_farbe
 					csv[ci]['Wasserqualitaet_predict'] = prediction
 					csv[ci]['Dat_predict'] = prediction_row[0].date
-
 				}else{
 					csv[ci]['Wasserqualitaet_lageso'] = obj.quality
 					csv[ci]['Wasserqualitaet_predict'] = ''
@@ -518,12 +521,20 @@ module.exports = {
 				lcsv += '\n'
 				let cci = 0
 				for(var key in c){
-					if(cci>0) lcsv += ','
+					if(cci>0) lcsv += ';'
 					let cc = c[key]
-					if(cc.length>0 && cc.indexOf(',')>=0){
-					 lcsv += '"'+cc+'"'
+					if(key.indexOf("Link")>=0 && cc.length>0){
+						if(cc.indexOf(':/lageso')>=0){
+							lcsv += '"""'+cc.split(':/lageso').join('""":/lageso')
+						}else{
+							lcsv += '"""'+cc.split(':http').join('""":http')
+						}
 					}else{
-					 lcsv += cc
+						if(cc.length>0 && cc.indexOf(';')>=0){ //&& (cc.indexOf(',')>=0 || 
+							lcsv += '"'+cc+'"'
+						}else{
+							lcsv += cc
+						}
 					}
 					cci++
 				}
@@ -531,7 +542,26 @@ module.exports = {
 			fs.writeFileSync(path.join(__dirname, config.export_path, 'letzte.csv'), lcsv, 'utf8')
 
 			console.log('build done')
+
 		})
+
+		//Build a statistical history since start of the app (2018-03-27)
+		let today = moment(),
+			first_day = moment('2018-03-27 10:00:00')
+
+		today.hours(10).minutes(0).seconds(0)
+
+		while(first_day.diff(today, 'minutes')<=0){
+			let c_day = first_day.format('YYYY-MM-DD')
+
+			let c_predictions = db.prepare('SELECT badestellen_id, prediction, date FROM predictions WHERE date <= date(?) ORDER BY date DESC LIMIT (SELECT COUNT(*) FROM predictions WHERE date <= date(?) GROUP BY date ORDER BY date DESC LIMIT 1)').all([c_day,c_day]),
+				c_measurements = db.prepare('SELECT DISTINCT badestellen_id badestellen_id, wasserqualitaet, date  FROM measurements WHERE date <= ? ORDER BY date DESC').all([c_day])
+
+			//console.log(c_day, c_predictions, c_measurements)
+
+			first_day.add(1, 'day')
+		}
+
 
 		//Add static files to the API
 

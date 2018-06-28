@@ -200,6 +200,80 @@ h1{
 .nomap p, .nomap ul{
   margin:20px 15px;
   max-width:550px;
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+}
+
+#faq-list{
+  margin:0;
+  padding: 0 0 0 15px;
+  max-width:550px;
+}
+
+#faq-list li{
+  padding-top:10px;
+}
+
+#faq-list li.no-count{
+  font-weight:bold;
+  padding-top:20px;
+}
+
+#faq-list li a{
+  color:#253276;
+  text-decoration: none;
+}
+
+#faq-list li a:hover{
+  text-decoration: underline;
+}
+
+ol#faq-list {
+  counter-reset: section;
+  list-style-type: none;
+}
+
+ol#faq-list li:not(.no-count)::before {
+  display: inline-block;
+  width:30px;
+  counter-increment: section;
+  content: counters(section,".") ". ";
+}
+
+#faq-1 {
+  counter-reset: section;
+}
+
+section{
+   counter-increment: section;
+}
+
+section>h3::before {
+  content: counters(section,".") ". ";
+}
+
+.faq-h{
+  padding-top:50px;
+  font-size:24px;
+  max-width: 550px;
+}
+
+section>h3{
+  font-size:18px;
+  padding-left:15px;
+  max-width: 550px;
 }
 
 #logo{
