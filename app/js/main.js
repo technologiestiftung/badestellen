@@ -53,7 +53,9 @@ function updateInterface(){
 
 var updateMapContainer = debounce(function() {
   d3.select('#map').style('height', Math.round(window.innerHeight<1000?window.innerHeight/2:500)+'px');
-  map.resize();
+  if(map){
+    map.resize();
+  }
 }, 250);
 
 function debounce(func, wait, immediate) {
@@ -71,7 +73,7 @@ function debounce(func, wait, immediate) {
   };
 }
 
-var map, locations = {}, gData = null, gKeys = {}, id_map = {};
+var map = false, locations = {}, gData = null, gKeys = {}, id_map = {};
 
 if(d3.selectAll('#map').size()>0){
 
@@ -175,7 +177,7 @@ if(d3.selectAll('#map').size()>0){
       locations[marker.detail_id] = [marker.lat,marker.lng];
 
       var el = document.createElement('div');
-      el.className = 'marker '+marker.state;
+      el.className = 'marker marker-'+marker.real_state;
       el.setAttribute("id", "marker_"+marker.detail_id);
       el.addEventListener('click', function(){ 
         state.type = 'detail';
@@ -307,6 +309,10 @@ function openDetails(id, zoom){
     return str.replace('http://','');
   }
 
+  function makeHTTPS(url){
+    return url.replace('http://','https://');
+  }
+
   var html =  '<div class="detail-header">'+
               '  <a id="closebtn">&laquo;&nbsp;zurück&nbsp;zur&nbsp;Übersicht</a>'+
               '  <h1>'+data.name_lang+' <span>'+data.bezirk+'</span></h1>'+
@@ -314,7 +320,7 @@ function openDetails(id, zoom){
               '</div>'+
               '<div class="detail-body">'+
               '  <div class="detail-image">'+
-              '    <img src="'+data.image+'" alt="'+data.name+'" title="'+data.name+'"><br />'+
+              '    <img src="'+makeHTTPS(data.image)+'" alt="'+data.name+'" title="'+data.name+'"><br />'+
               '    <span class="caption">Bild: LAGeSo</span>'+
               '  </div>'+
               '  <div class="detail-location">'+
@@ -358,7 +364,7 @@ function openDetails(id, zoom){
         html += '</table>';
       }
 
-      html += ((data.prediction!=null&&data.prediction!='null')?'<span class="prediction"><img src="'+((is_detail)?'../':'./') +'images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'');
+      html += ((data.prediction!=null&&data.prediction!='null')?'<span class="prediction"><img src="'+((is_detail)?'../':'./') +'images/signs/prediction@2x.png" width="30" height="30" alt="" />* Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'');
 
       var eu_sign;
 

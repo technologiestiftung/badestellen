@@ -363,7 +363,7 @@ module.exports = {
 			let vars = [
 				['name_lang',r.name_lang],
 				['bezirk',r.bezirk],
-				['image',r.image],
+				['image',r.image.replace('http://','https://')],
 				['name',r.name],
 				['strasse',r.strasse],
 				['plz',parseInt(r.plz)],
@@ -380,7 +380,7 @@ module.exports = {
 				['eu_sign', eu_sign],
 				['eu_sign_alt', eu_sign_alt],
 				['FEATURES', features_html],
-				['PREDICTION', ((r.prediction=='true'||r.prediction==1)?'<span class="prediction"><img src="../images/signs/prediction@2x.png" width="30" height="30" alt="" />Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'')],
+				['PREDICTION', ((r.prediction=='true'||r.prediction==1)?'<span class="prediction"><img src="../images/signs/prediction@2x.png" width="30" height="30" alt="" />* Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'')],
 				['gesundheitsamt_name', r.gesundheitsamt_name],
 				['gesundheitsamt_zusatz', r.gesundheitsamt_zusatz],
 				['gesundheitsamt_strasse', r.gesundheitsamt_strasse],

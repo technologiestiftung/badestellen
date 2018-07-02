@@ -191,6 +191,8 @@ h1{
   padding:0;
 }
 
+
+
 .nomap h1, .nomap h2, .nomap h4{
   float:none;
   margin:0;
@@ -213,7 +215,11 @@ h1{
   -moz-hyphens: auto;
   -webkit-hyphens: auto;
   hyphens: auto;
+}
 
+.nomap p a{
+  color:#253276;
+  text-decoration: underline;
 }
 
 #faq-list{
@@ -321,14 +327,25 @@ section>h3{
   cursor:pointer;
 }
 
-.marker.grau{ background-image:url(../images/marker_grau@2x.png); }
-.marker.gruen{ background-image:url(../images/marker_gruen@2x.png); }
-.marker.rot{ background-image:url(../images/marker_rot@2x.png); }
-.marker.orange{ background-image:url(../images/marker_orange@2x.png); }
+.marker.marker-11,.marker.marker-12,.marker.marker-1,.marker.marker-2{ background-image:url(../images/marker_1@2x.png); }
+.marker.marker-3,.marker.marker-4,.marker.marker-13,.marker.marker-14{ background-image:url(../images/marker_3@2x.png); }
+.marker.marker-5,.marker.marker-6,.marker.marker-15,.marker.marker-16{ background-image:url(../images/marker_5@2x.png); }
+.marker.marker-7,.marker.marker-8,.marker.marker-9,.marker.marker-10 { background-image:url(../images/marker_7@2x.png); }
 
-.marker.gruen.inactive,
-.marker.rot.inactive,
-.marker.orange.inactive{ background-image:url(../images/marker_inactive@2x.png); }
+.marker.marker-11.inactive,.marker.marker-12.inactive,.marker.marker-1.inactive,.marker.marker-2.inactive,
+.marker.marker-3.inactive,.marker.marker-4.inactive,.marker.marker-13.inactive,.marker.marker-14.inactive,
+.marker.marker-5.inactive,.marker.marker-6.inactive,.marker.marker-15.inactive,.marker.marker-16.inactive,
+.marker.marker-7.inactive,.marker.marker-8.inactive,.marker.marker-9.inactive,.marker.marker-10.inactive{ background-image:url(../images/marker_inactive@2x.png); }
+
+.predict-list-note{
+  padding:0 15px;
+  font-size:12px;
+}
+
+.largestar{
+  font-weight:bold;
+  font-size:18px;
+}
 
 #legend-container{
   padding:4px 0 9px;

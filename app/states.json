@@ -1,0 +1,392 @@
+[
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-22",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 76,
+    "name": "Weißer See"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-22",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 48,
+    "name": "Orankesee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-21",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 32,
+    "name": "Heiligensee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-21",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 54,
+    "name": "Sandhauser Straße"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-21",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 62,
+    "name": "Tegeler See"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-21",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 64,
+    "name": "Reiswerder"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-21",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 66,
+    "name": "Scharfenberg"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 11,
+    "state": "gruen",
+    "state_date": "2018-06-19",
+    "prediction_date": "2018-06-28",
+    "prediction": "ausgezeichnet",
+    "id": 36,
+    "name": "Kleine Badewiese"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 11,
+    "state": "gruen",
+    "state_date": "2018-06-19",
+    "prediction_date": "2018-06-28",
+    "prediction": "ausgezeichnet",
+    "id": 28,
+    "name": "Grunewaldturm"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-19",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 6,
+    "name": "Breitehorn"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-19",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 52,
+    "name": "Radfahrerwiese"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-19",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 42,
+    "name": "Lieper Bucht"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-19",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 2,
+    "name": "Alter Hof"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-19",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 74,
+    "name": "Wannsee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-19",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 24,
+    "name": "Große Steinlanke"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-15",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 20,
+    "name": "Groß Glienicker See Süd"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-15",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 18,
+    "name": "Groß Glienicker See Nord"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-14",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 40,
+    "name": "Krumme Lanke"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-14",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 56,
+    "name": "Schlachtensee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-14",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 72,
+    "name": "Teufelssee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-14",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 30,
+    "name": "Halensee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-13",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 8,
+    "name": "Bürgerablage"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-13",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 70,
+    "name": "Saatwinkel"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-12",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 12,
+    "name": "Flughafensee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-12",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 44,
+    "name": "Lübars"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-12",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 34,
+    "name": "Jungfernheide"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-12",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 50,
+    "name": "Plötzensee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 4,
+    "name": "Bammelecke"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 10,
+    "name": "Dämeritzsee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 14,
+    "name": "Friedrichshagen"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 16,
+    "name": "Gartenstraße"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 26,
+    "name": "Grünau"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 22,
+    "name": "Große Krampe"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 38,
+    "name": "Kleiner Müggelsee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 46,
+    "name": "Müggelsee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 58,
+    "name": "Schmöckwitz"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 60,
+    "name": "Seddinsee"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-11",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 78,
+    "name": "Wendenschloß"
+  },
+  {
+    "wasserqualitaet": 1,
+    "real_state": 1,
+    "state": "gruen",
+    "state_date": "2018-06-07",
+    "prediction_date": null,
+    "prediction": null,
+    "id": 68,
+    "name": "Reiherwerder"
+  }
+]
