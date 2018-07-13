@@ -193,10 +193,11 @@ h1{
 
 
 
-.nomap h1, .nomap h2, .nomap h4{
+.nomap h1, .nomap h2, .nomap h3, .nomap h4{
   float:none;
   margin:0;
   padding-left:15px;
+  max-width:550px;
 }
 
 .nomap p, .nomap ul{

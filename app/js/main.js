@@ -79,7 +79,9 @@ if(d3.selectAll('#map').size()>0){
 
   window.addEventListener("resize", updateMapContainer);
 
-  d3.csv(((is_detail)?'../':'') + 'new_build.csv', function(err, data){
+  var date = new Date()
+
+  d3.csv(((is_detail)?'../':'') + 'new_build.csv?date='+date.getYear()+'-'+date.getMonth()+'-'+date.getDate()+':'+date.getHours(), function(err, data){
 
     data.sort(function(a,b){
       return b.lng - a.lng;
