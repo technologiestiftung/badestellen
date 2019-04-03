@@ -76,13 +76,13 @@ module.exports = {
 		})
 
 		query += ' FROM ' +
-			'badestellen AS b' + 
-		' LEFT JOIN ' + 
-			'predictions AS p ON b.id = p.badestellen_id' + 
-		' LEFT JOIN ' + 
+			'badestellen AS b' +
+		' LEFT JOIN ' +
+			'predictions AS p ON b.id = p.badestellen_id' +
+		' LEFT JOIN ' +
 			'measurements AS m ON b.detail_id = m.badestellen_id' +
-		' GROUP BY ' + 
-			'b.detail_id' + 
+		' GROUP BY ' +
+			'b.detail_id' +
 		' ORDER BY ' +
 			'm.date DESC, p.date DESC '
 
@@ -363,7 +363,7 @@ module.exports = {
 			let vars = [
 				['name_lang',r.name_lang],
 				['bezirk',r.bezirk],
-				['image',r.image.replace('http://','https://')],
+				['image',r.image],
 				['name',r.name],
 				['strasse',r.strasse],
 				['plz',parseInt(r.plz)],
@@ -449,7 +449,7 @@ module.exports = {
 
 		//Build letzte.csv
 
-		console.log('build.letzte')
+		// console.log('build.letzte')
 
 		let letzte_cols_a = ['BadName','Bezirk','Profil','RSS_Name','Latitude','Longitude','ProfilLink','BadestelleLink','Dat','Sicht','Eco','Ente','Farbe','BSL','Algen','Wasserqualitaet','cb','Temp','PDFLink','PrognoseLink','Farb_ID','Wasserqualitaet_lageso','Wasserqualitaet_predict','Dat_predict'],
 			letzte_cols = letzte_cols_a.join(';'),
@@ -457,7 +457,7 @@ module.exports = {
 
 		request({uri:'http://ftp.berlinonline.de/lageso/baden/letzte.csv', encoding:'latin1' /*iso-8859-1*/}, (error, response, body)=>{
 
-			if(error) console.log(error)
+			if(error) // console.log(error)
 
 			const csv = parser.parse(body.split('"').join(''))
 
@@ -471,7 +471,7 @@ module.exports = {
 				if(rows[row_keys[obj.badestellen_id]].prediction && rows[row_keys[obj.badestellen_id]].prediction != null){
 					csv[ci]['Wasserqualitaet_lageso'] = obj.quality
 
-					console.log(rows[row_keys[obj.badestellen_id]].id)
+					// console.log(rows[row_keys[obj.badestellen_id]].id)
 
 					let prediction_row = db.prepare('SELECT prediction, date FROM predictions WHERE badestellen_id = ? ORDER BY date DESC LIMIT 1').all([rows[row_keys[obj.badestellen_id]].id]),
 						prediction = prediction_row[0].prediction,
@@ -530,7 +530,7 @@ module.exports = {
 							lcsv += '"""'+cc.split(':http').join('""":http')
 						}
 					}else{
-						if(cc.length>0 && cc.indexOf(';')>=0){ //&& (cc.indexOf(',')>=0 || 
+						if(cc.length>0 && cc.indexOf(';')>=0){ //&& (cc.indexOf(',')>=0 ||
 							lcsv += '"'+cc+'"'
 						}else{
 							lcsv += cc
@@ -541,7 +541,7 @@ module.exports = {
 			})
 			fs.writeFileSync(path.join(__dirname, config.export_path, 'letzte.csv'), lcsv, 'utf8')
 
-			console.log('build done')
+			// console.log('build done')
 
 		})
 
@@ -557,7 +557,7 @@ module.exports = {
 			let c_predictions = db.prepare('SELECT badestellen_id, prediction, date FROM predictions WHERE date <= date(?) ORDER BY date DESC LIMIT (SELECT COUNT(*) FROM predictions WHERE date <= date(?) GROUP BY date ORDER BY date DESC LIMIT 1)').all([c_day,c_day]),
 				c_measurements = db.prepare('SELECT DISTINCT badestellen_id badestellen_id, wasserqualitaet, date  FROM measurements WHERE date <= ? ORDER BY date DESC').all([c_day])
 
-			//console.log(c_day, c_predictions, c_measurements)
+			//// console.log(c_day, c_predictions, c_measurements)
 
 			first_day.add(1, 'day')
 		}

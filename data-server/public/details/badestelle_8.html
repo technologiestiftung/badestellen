@@ -1,0 +1,186 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="de"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <title>Berliner Badestellen</title>
+  <meta name="description" content="Aktuelle Badegewässerqualität und Informationen rund um die Berliner Badestellen" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="apple-touch-icon" sizes="128x128" href="https://www.badegewaesser-berlin.de/android-chrome-128x128.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://www.badegewaesser-berlin.de/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://www.badegewaesser-berlin.de/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://www.badegewaesser-berlin.de/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="256x256" href="https://www.badegewaesser-berlin.de/android-chrome-256x256.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://www.badegewaesser-berlin.de/favicon-16x16.png">
+  <link rel="manifest" href="https://www.badegewaesser-berlin.de/site.webmanifest">
+  <link rel="mask-icon" href="https://www.badegewaesser-berlin.de/safari-pinned-tab.svg" color="#253276">
+  <meta name="apple-mobile-web-app-title" content="Berliner Badestellen">
+  <meta name="application-name" content="Berliner Badestellen">
+  <meta name="msapplication-TileColor" content="#253276"><!-- 2d89ef -->
+  <meta name="msapplication-TileImage" content="https://www.badegewaesser-berlin.de/mstile-144x144.png">
+  <meta name="theme-color" content="#253276">
+
+  <link type="text/plain" rel="author" href="humans.txt" />
+  <link rel="icon" type="image/x-icon" href="https://www.badegewaesser-berlin.de/favicon.ico" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://www.badegewaesser-berlin.de/favicon.ico" />
+  <link rel="icon" type="image/png" href="https://www.badegewaesser-berlin.de/favicon-32x32.png" />
+
+  <!-- FACEBOOK -->
+  <meta property="og:url" content="https://www.badegewaesser-berlin.de/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Berliner Badestellen">
+  <meta property="og:image" content="https://www.badegewaesser-berlin.de/images/social_media.jpg">
+  <meta property="og:image:width" content="1080">
+  <meta property="og:image:height" content="600">
+  <meta property="og:description" content="Aktuelle Badegewässerqualität und Informationen rund um die Berliner Badestellen">
+  <meta property="og:site_name" content="Berliner Badestellen">
+
+  <!-- TWITTER -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TSBBerlin">
+  <meta name="twitter:creator" content="@TSBBerlin">
+  <meta name="twitter:url" content="https://www.badegewaesser-berlin.de/index.html">
+  <meta name="twitter:title" content="Berliner Badestellen">
+  <meta name="twitter:description" content="Aktuelle Badegewässerqualität und Informationen rund um die Berliner Badestellen">
+  <meta name="twitter:image" content="https://www.badegewaesser-berlin.de/images/social_media.jpg">
+
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.css' rel='stylesheet' />
+  <link href='./css/style-min.css' rel='stylesheet' />
+</head>
+<body>
+  <div id="splash">
+    <div>
+      <img src="images/splash@2x.gif" width="53" height="53" /><br />
+      <strong>Berliner Badestellen</strong><br />
+      <span class="small">werden geladen...</span>
+    </div>
+  </div>
+  <div id="container">
+    <div class="topnav" id="myTopnav" role="navigation">
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
+      <a href="index.html" class="home active menu-left"><img src="./images/Logo-Icon-invers@2x.png" width="20" height="20" alt="Berliner Badestellen" />Berliner Badestellen</a>
+      <a href="faq.html" class="menu-right">FAQ</a>
+      <a href="info.html" class="menu-right">Vorhersagemodell</a>
+    </div>
+    <div id="map"></div>
+    <div id="content">
+      <div id="detail" aria-live="polite" role="article" style="display: block;">
+          <div class="detail-header">
+              <a href="../index.html" id="closebtn">&laquo;&nbsp;zurück&nbsp;zur&nbsp;Übersicht</a>
+              <h1>Badestelle Oberhavel/Bürgerablage <span>Spandau</span></h1>
+              <hr class="closer">
+          </div>
+          <div class="detail-body">
+              <div class="detail-image"> <img src="https://www.berlin.de/lageso/gesundheit/gesundheitsschutz/badegewaesser/badestellen/mdb-lagetsi-badegewaesser-dscf0032.jpg" alt="Bürgerablage" title="Bürgerablage">
+                  <br> <span class="caption">Bild: LAGeSo</span> </div>
+              <div class="detail-location">
+                  <h3 class="title">Anschrift</h3>
+                  Badestelle Oberhavel/Bürgerablage
+                  <br>Niederneuendorfer Allee 84
+                  <br>13587 Berlin
+                  
+                  <br>
+                  <br> <a href="https://maps.google.com/maps?daddr=13.21124,52.58499"><img src="../images/signs/location@2x.png" width="30" height="30" alt="Route berechnen">&nbsp;<span>Route berechnen</span></a>
+                  <br> <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X=52584990@Y=13211240@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="../images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG">&nbsp;<span>Anfahrt mit der BVG</span></a>
+                  <br>
+                  <h3>Wasserqualität</h3> <span class="stufen-icon stufen-1"></span>Zum Baden geeignet
+                  <br><span class="small">(Letzte Messung: 03.09.2018)</span>
+                  <table cellpadding="0" cellmargin="0" border="0" class="measurement_table">
+                      <tbody>
+<table cellpadding="0" cellmargin="0" border="0" class="measurement_table"><tr class="row-1"><th>Sichttiefe</th><td>>150 cm</td></tr><tr class="row-2"><th>Escherichia coli</th><td><15 pro 100 ml</td></tr><tr class="row-3"><th>Intestinale Enterokokken</th><td><15 pro 100 ml</td></tr><tr class="row-4"><th>Wassertemperatur</th><td>20,5 °C</td></tr><tr class="row-5"><th>Coliforme Bakterien</th><td>9300 pro 100 ml</td></tr></table>
+                      </tbody>
+                  </table>
+
+                  <div class="detail-eu">
+                      <h3 class="title">EU-Einstufung</h3>
+                      <p class="small">Auswertung der letzten vier Jahre.</p> <span class="eu-ranks"><img class="eu-class" src="../images/eu-signs/excellent@2x.png" width="92" height="81" alt="Ausgezeichnete Badegewässerqualität">    <img src="../images/eu-signs/legend_excellent@2x.png" width="49" height="14" alt="Ausgezeichnet">&nbsp;Ausgezeichnet<br>    <img class="first" src="../images/eu-signs/legend_good@2x.png" width="49" height="14" alt="Gut">&nbsp;Gut<br>    <img src="../images/eu-signs/legend_sufficient@2x.png" width="49" height="14" alt="Ausreichend">&nbsp;Ausreichend<br>    <img src="../images/eu-signs/legend_poor@2x.png" width="49" height="14" alt="Mangelhaft">&nbsp;Mangelhaft</span>
+                      <br>
+                  </div>
+              </div>
+              <div class="detail-addon">
+                  <h3 class="title">Weitere Angaben zur Badesstelle</h3>
+                  <ul>
+<li><img src="../images/signs/cyano@2x.png" width="30" height="30" alt="Cyanobakterien massenhaft möglich (Blaualgen)" />&nbsp;Cyanobakterien massenhaft möglich (Blaualgen)</li><li><img src="../images/signs/rescue@2x.png" width="30" height="30" alt="Wasserrettung zeitweise" />&nbsp;Wasserrettung zeitweise</li><li><img src="../images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Nicht barrierefrei" />&nbsp;Nicht barrierefrei</li><li><img src="../images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Zugang zum Wasser nicht barrierefrei" />&nbsp;Zugang zum Wasser nicht barrierefrei</li><li><img src="../images/signs/restaurant@2x.png" width="30" height="30" alt="Restaurant" />&nbsp;Restaurant</li><li><img src="../images/signs/parken@2x.png" width="30" height="30" alt="Parkmöglichkeiten" />&nbsp;Parkmöglichkeiten</li><li><img src="../images/signs/toilette@2x.png" width="30" height="30" alt="Mobiles WC verfügbar" />&nbsp;Mobiles WC verfügbar</li><li><img src="../images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li><li><img src="../images/signs/hundeverbot@2x.png" width="30" height="30" alt="Hundeverbot" />&nbsp;Hundeverbot</li>
+                  </ul>
+              </div>
+              <div class="detail-amt">
+                  <h3 class="title">Zuständiges Gesundheitsamt</h3>
+                  Bezirksamt Spandau von Berlin
+                  <br>Abteilung Soziales und Gesundheit Gesundheitsamt
+                  <br>Carl-Schurz-Str. 2-6
+                  <br>13578 Berlin
+                  <br>
+                  <br> <a href="mailto:Ges2@ba-spandau.berlin.de"><img src="../images/signs/email@2x.png" width="30" height="30" alt="Email">&nbsp;<span>Ges2@ba-spandau.berlin.de</span></a>
+                  <br> <a href="tel:30902794020"><img src="../images/signs/phone@2x.png" width="30" height="30" alt="Telefon">&nbsp;<span>30902794020</span></a> </div>
+          </div>
+      </div>  
+      <div id="home">
+        <div id="legend-container">
+          <div id="legend">
+            <ul>
+              <li><img src="./images/legend_gruen@2x.png" alt="">Zum Baden geeignet</li>
+              <li><img src="./images/legend_orange@2x.png" alt="">Vom Baden wird abgeraten</li>
+              <li><img src="./images/legend_rot@2x.png" alt="">Badeverbot</li>
+            </ul>
+          </div>
+          <div id="measure">
+            Basierend auf den letzten<br class="responsive-break" />
+            Messungen des LAGeSo.<br class="responsive-break" />
+            <a href="https://www.berlin.de/lageso/gesundheit/gesundheitsschutz/badegewaesser/badegewaesserueberwachung/">Mehr&nbsp;erfahren&nbsp;»</a>
+          </div>
+          <hr  class="closer" />
+        </div>
+
+        <div id="list-container">
+          <h2>Übersicht Badegewässer</h2>
+          <div id="list" role="listbox" aria-live="polite">
+            <ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div id="footer">
+        <h2 class="first">Partnernetzwerk</h2>
+        <a href="https://www.berlin.de/lageso/"><img src="images/partner/lageso@2x.png" width="162" alt="Landesamt für Gesundheit und Soziales Berlin" style="margin-right:60px;" /></a>
+        <a href="http://www.bwb.de/"><img src="images/partner/bwb@2x.png" width="230" alt="Berliner Wasserbetriebe" style="margin-right:35px;" /></a>
+        <a href="http://www.kompetenz-wasser.de/de/"><img src="images/partner/kwb@2x.png" width="223" alt="Kompetenzzentrum Wasser Berlin" style="margin-right:40px;" /></a>
+        <a href="https://technologiestiftung-berlin.de/"><img src="images/partner/tsb@2x.png" width="196" alt="Technologiestiftung Berlin" /></a>
+        <h2>Entwickelt im Projekt</h2>
+        <a href="http://www.kompetenz-wasser.de/de/project/flusshygiene/"><img src="images/partner/flusshygiene@2x.png" width="200" alt="Flusshygiene" style="margin-right:0;" /></a>
+        <h2>Gefördert durch</h2>
+        <a href="https://www.bmbf.de/"><img src="images/partner/bmbf@2x.png" width="135" alt="BMBF" style="margin-right:40px;" /></a>
+        <a href="https://bmbf.nawam-rewam.de/"><img src="images/partner/ReWaM_NaWaM@2x.png" width="311" alt="ReWaM NaWaM" /></a><br /><br />
+      </div>
+    </div>
+  </div>
+  <div id="footnote">
+    <a href="kontakt.html">Kontakt</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a> | Copyright 2018
+  </div>
+  <script type="text/javascript">var is_detail = true;</script>
+  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="js/d3-history/d3-history.min.js"></script>
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
+  <script src="js/main-min.js"></script>
+<!-- Matomo -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.technologiestiftung-berlin.de/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '8']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Matomo Code -->
+</body>
+</html>

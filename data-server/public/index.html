@@ -66,8 +66,7 @@
       <a href="javascript:void(0);" class="icon" onclick="myFunction()"></a>
       <a href="index.html" class="home active menu-left"><img src="./images/Logo-Icon-invers@2x.png" width="20" height="20" alt="Berliner Badestellen" />Berliner Badestellen</a>
       <a href="faq.html" class="menu-right">FAQ</a>
-      <a href="info.html" class="menu-right">Messverfahren</a>
-      <!--<img src="images/be-berlin.svg" alt="be Berlin Logo" id="logo" />-->
+      <a href="info.html" class="menu-right">Vorhersagemodell</a>
     </div>
     <div id="map"></div>
     <div id="content">
@@ -91,417 +90,418 @@
 
         <div id="list-container">
           <h2>Übersicht Badegewässer</h2>
+          <div class="predict-list-note">Bei den mit einem <span class="largestar">*</span> ausgezeichneten Badestellen wird die Bewertung durch ein Vorhersagemodel unterstützt.</div>
           <div id="list" role="listbox" aria-live="polite">
             <ul>
-            	<li style="background-image: url('./images/badestellen/76.jpg');">
-            		<a href="./details/badestelle_76.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 " src="./images/trans.gif">
-            				<span>
-            					<span>Weißer See</span>            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/48.jpg');">
-            		<a href="./details/badestelle_48.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 " src="./images/trans.gif">
-            				<span>
-            					<span>Orankesee</span>            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/32.jpg');">
-            		<a href="./details/badestelle_32.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 " src="./images/trans.gif">
-            				<span>
-            					<span>Heiligensee</span>            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/54.jpg');">
-            		<a href="./details/badestelle_54.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Sandhauser Straße</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Oberhavel</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/62.jpg');">
-            		<a href="./details/badestelle_62.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 " src="./images/trans.gif">
-            				<span>
-            					<span>Tegeler See</span>            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/64.jpg');">
-            		<a href="./details/badestelle_64.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Reiswerder</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Tegeler See</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/66.jpg');">
-            		<a href="./details/badestelle_66.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Scharfenberg</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Tegeler See</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/36.jpg');">
-            		<a href="./details/badestelle_36.html">
-            			<span class="outer">
-            				<img class="stateimg state-11 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Kleine Badewiese</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Unterhavel</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/28.jpg');">
-            		<a href="./details/badestelle_28.html">
-            			<span class="outer">
-            				<img class="stateimg state-11 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Grunewaldturm</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Unterhavel</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/6.jpg');">
-            		<a href="./details/badestelle_6.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Breitehorn</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Unterhavel</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/52.jpg');">
-            		<a href="./details/badestelle_52.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Radfahrerwiese</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Unterhavel</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/42.jpg');">
-            		<a href="./details/badestelle_42.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Lieper Bucht</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Unterhavel</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/2.jpg');">
-            		<a href="./details/badestelle_2.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Alter Hof</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Unterhavel</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/74.jpg');">
-            		<a href="./details/badestelle_74.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Wannsee</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Unterhavel</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/24.jpg');">
-            		<a href="./details/badestelle_24.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Große Steinlanke</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Unterhavel</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/20.jpg');">
-            		<a href="./details/badestelle_20.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Groß Glienicker See Süd</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Groß-Glienicker See</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/18.jpg');">
-            		<a href="./details/badestelle_18.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Groß Glienicker See Nord</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Groß-Glienicker See</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/40.jpg');">
-            		<a href="./details/badestelle_40.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Krumme Lanke</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Grunewaldseen</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/56.jpg');">
-            		<a href="./details/badestelle_56.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Schlachtensee</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Grunewaldseen</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/72.jpg');">
-            		<a href="./details/badestelle_72.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Teufelssee</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Grunewaldseen</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/30.jpg');">
-            		<a href="./details/badestelle_30.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 " src="./images/trans.gif">
-            				<span>
-            					<span>Halensee</span>            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/8.jpg');">
-            		<a href="./details/badestelle_8.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Bürgerablage</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Oberhavel</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/70.jpg');">
-            		<a href="./details/badestelle_70.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Saatwinkel</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Tegeler See</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/12.jpg');">
-            		<a href="./details/badestelle_12.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 " src="./images/trans.gif">
-            				<span>
-            					<span>Flughafensee</span>            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/44.jpg');">
-            		<a href="./details/badestelle_44.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Lübars</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Ziegeleisee</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/34.jpg');">
-            		<a href="./details/badestelle_34.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Jungfernheide</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Jungfernheidesee</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/50.jpg');">
-            		<a href="./details/badestelle_50.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 " src="./images/trans.gif">
-            				<span>
-            					<span>Plötzensee</span>            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/4.jpg');">
-            		<a href="./details/badestelle_4.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Bammelecke</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Dahme</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/10.jpg');">
-            		<a href="./details/badestelle_10.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 " src="./images/trans.gif">
-            				<span>
-            					<span>Dämeritzsee</span>            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/14.jpg');">
-            		<a href="./details/badestelle_14.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Friedrichshagen</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Müggelsee</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/16.jpg');">
-            		<a href="./details/badestelle_16.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Gartenstraße</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Dahme</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/26.jpg');">
-            		<a href="./details/badestelle_26.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Grünau</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Dahme</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/22.jpg');">
-            		<a href="./details/badestelle_22.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Große Krampe</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Dahme</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/38.jpg');">
-            		<a href="./details/badestelle_38.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 " src="./images/trans.gif">
-            				<span>
-            					<span>Kleiner Müggelsee</span>            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/46.jpg');">
-            		<a href="./details/badestelle_46.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 " src="./images/trans.gif">
-            				<span>
-            					<span>Müggelsee</span>            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/58.jpg');">
-            		<a href="./details/badestelle_58.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Schmöckwitz</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Dahme</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/60.jpg');">
-            		<a href="./details/badestelle_60.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Seddinsee</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Dahme</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/78.jpg');">
-            		<a href="./details/badestelle_78.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Wendenschloß</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Dahme</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
-            	<li style="background-image: url('./images/badestellen/68.jpg');">
-            		<a href="./details/badestelle_68.html">
-            			<span class="outer">
-            				<img class="stateimg state-1 substate" src="./images/trans.gif">
-            				<span>
-            					<span>Reiherwerder</span><br class="unresposive-break">
-            					<span class="unresponsive-sub">Tegeler See</span>
-            				</span>
-            			</span>
-            		</a>
-            	</li>
+              <li style="background-image: url('./images/badestellen/76.jpg');">
+                <a href="./details/badestelle_76.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 " src="./images/trans.gif">
+                    <span>
+                      <span>Weißer See</span>                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/48.jpg');">
+                <a href="./details/badestelle_48.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 " src="./images/trans.gif">
+                    <span>
+                      <span>Orankesee</span>                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/32.jpg');">
+                <a href="./details/badestelle_32.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 " src="./images/trans.gif">
+                    <span>
+                      <span>Heiligensee</span>                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/54.jpg');">
+                <a href="./details/badestelle_54.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Sandhauser Straße</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Oberhavel</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/62.jpg');">
+                <a href="./details/badestelle_62.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 " src="./images/trans.gif">
+                    <span>
+                      <span>Tegeler See</span>                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/68.jpg');">
+                <a href="./details/badestelle_68.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Reiherwerder</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Tegeler See</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/66.jpg');">
+                <a href="./details/badestelle_66.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Scharfenberg</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Tegeler See</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/36.jpg');">
+                <a href="./details/badestelle_36.html">
+                  <span class="outer">
+                    <img class="stateimg state-13 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Kleine Badewiese</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Unterhavel</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/28.jpg');">
+                <a href="./details/badestelle_28.html">
+                  <span class="outer">
+                    <img class="stateimg state-13 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Grunewaldturm</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Unterhavel</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/6.jpg');">
+                <a href="./details/badestelle_6.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Breitehorn</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Unterhavel</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/52.jpg');">
+                <a href="./details/badestelle_52.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Radfahrerwiese</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Unterhavel</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/42.jpg');">
+                <a href="./details/badestelle_42.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Lieper Bucht</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Unterhavel</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/2.jpg');">
+                <a href="./details/badestelle_2.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Alter Hof</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Unterhavel</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/74.jpg');">
+                <a href="./details/badestelle_74.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Wannsee</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Unterhavel</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/24.jpg');">
+                <a href="./details/badestelle_24.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Große Steinlanke</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Unterhavel</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/40.jpg');">
+                <a href="./details/badestelle_40.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Krumme Lanke</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Grunewaldseen</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/56.jpg');">
+                <a href="./details/badestelle_56.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Schlachtensee</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Grunewaldseen</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/72.jpg');">
+                <a href="./details/badestelle_72.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Teufelssee</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Grunewaldseen</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/30.jpg');">
+                <a href="./details/badestelle_30.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 " src="./images/trans.gif">
+                    <span>
+                      <span>Halensee</span>                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/20.jpg');">
+                <a href="./details/badestelle_20.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Groß Glienicker See Süd</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Groß-Glienicker See</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/18.jpg');">
+                <a href="./details/badestelle_18.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Groß Glienicker See Nord</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Groß-Glienicker See</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/12.jpg');">
+                <a href="./details/badestelle_12.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 " src="./images/trans.gif">
+                    <span>
+                      <span>Flughafensee</span>                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/44.jpg');">
+                <a href="./details/badestelle_44.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Lübars</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Ziegeleisee</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/34.jpg');">
+                <a href="./details/badestelle_34.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Jungfernheide</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Jungfernheidesee</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/50.jpg');">
+                <a href="./details/badestelle_50.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 " src="./images/trans.gif">
+                    <span>
+                      <span>Plötzensee</span>                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/4.jpg');">
+                <a href="./details/badestelle_4.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Bammelecke</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Dahme</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/10.jpg');">
+                <a href="./details/badestelle_10.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 " src="./images/trans.gif">
+                    <span>
+                      <span>Dämeritzsee</span>                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/14.jpg');">
+                <a href="./details/badestelle_14.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Friedrichshagen</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Müggelsee</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/16.jpg');">
+                <a href="./details/badestelle_16.html">
+                  <span class="outer">
+                    <img class="stateimg state-3 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Gartenstraße</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Dahme</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/26.jpg');">
+                <a href="./details/badestelle_26.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Grünau</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Dahme</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/22.jpg');">
+                <a href="./details/badestelle_22.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Große Krampe</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Dahme</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/38.jpg');">
+                <a href="./details/badestelle_38.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 " src="./images/trans.gif">
+                    <span>
+                      <span>Kleiner Müggelsee</span>                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/46.jpg');">
+                <a href="./details/badestelle_46.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 " src="./images/trans.gif">
+                    <span>
+                      <span>Müggelsee</span>                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/58.jpg');">
+                <a href="./details/badestelle_58.html">
+                  <span class="outer">
+                    <img class="stateimg state-3 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Schmöckwitz</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Dahme</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/60.jpg');">
+                <a href="./details/badestelle_60.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Seddinsee</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Dahme</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/78.jpg');">
+                <a href="./details/badestelle_78.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Wendenschloß</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Dahme</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/8.jpg');">
+                <a href="./details/badestelle_8.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Bürgerablage</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Oberhavel</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/64.jpg');">
+                <a href="./details/badestelle_64.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Reiswerder</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Tegeler See</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
+              <li style="background-image: url('./images/badestellen/70.jpg');">
+                <a href="./details/badestelle_70.html">
+                  <span class="outer">
+                    <img class="stateimg state-1 substate" src="./images/trans.gif">
+                    <span>
+                      <span>Saatwinkel</span><br class="unresposive-break">
+                      <span class="unresponsive-sub">Tegeler See</span>
+                    </span>
+                  </span>
+                </a>
+              </li>
 
           </ul>
           </div>

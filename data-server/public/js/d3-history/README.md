@@ -48,7 +48,7 @@ selection.on('click', function() {
 });
 // arguments are available in the event handler function
 dispatcher.on('action', function(datum, additional_information) {
-  console.log(datum, additional_information);
+  // console.log(datum, additional_information);
 });
 ```
 
@@ -109,7 +109,7 @@ By default, URLs are simply updated with pushState. However, you can override th
   history_dispatcher = d3.history();
   // do whatever you want with the URL and state data
   url_handler = function(data, title, url) {
-    console.log("Let's do something unusual with the URL.");
+    // console.log("Let's do something unusual with the URL.");
   });
   // attach custom URL handling function
   history_dispatcher.url(url_handler);
