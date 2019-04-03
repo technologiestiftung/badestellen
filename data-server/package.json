@@ -20,5 +20,9 @@
     "path": "^0.12.7",
     "proj4": "^2.4.4",
     "request": "^2.85.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-unobtrusive": "^1.2.2"
   }
 }
