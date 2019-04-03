@@ -20,7 +20,7 @@ module.exports = {
     });
 
     meta_files.sort((a,b)=>{
-      return a.date.diff(b.date, 'seconds');
+      return a.date.diff(b.date);
     });
 
     let data = JSON.parse(fs.readFileSync(meta_files[meta_files.length-1].file, 'utf8'));
@@ -57,8 +57,8 @@ module.exports = {
         }
       });
 
-      const dost = parseFloat((d.ost+'').replace(',','.'));
-      const dnord = parseFloat((d.nord+'').replace(',','.'));
+      // const dost = parseFloat((d.ost+'').replace(',','.'));
+      // const dnord = parseFloat((d.nord+'').replace(',','.'));
 
       // // console.log(d);
       // // console.log(d.ost);

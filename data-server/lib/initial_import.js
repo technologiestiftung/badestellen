@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const path = require('path');
 module.exports = {
 

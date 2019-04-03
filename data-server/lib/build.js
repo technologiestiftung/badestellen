@@ -558,10 +558,10 @@ module.exports = {
     today.hours(10).minutes(0).seconds(0);
 
     while (first_day.diff(today, 'minutes')<=0){
-      let c_day = first_day.format('YYYY-MM-DD');
+      // let c_day = first_day.format('YYYY-MM-DD');
 
-      let c_predictions = db.prepare('SELECT badestellen_id, prediction, date FROM predictions WHERE date <= date(?) ORDER BY date DESC LIMIT (SELECT COUNT(*) FROM predictions WHERE date <= date(?) GROUP BY date ORDER BY date DESC LIMIT 1)').all([c_day,c_day]),
-        c_measurements = db.prepare('SELECT DISTINCT badestellen_id badestellen_id, wasserqualitaet, date  FROM measurements WHERE date <= ? ORDER BY date DESC').all([c_day]);
+      // let c_predictions = db.prepare('SELECT badestellen_id, prediction, date FROM predictions WHERE date <= date(?) ORDER BY date DESC LIMIT (SELECT COUNT(*) FROM predictions WHERE date <= date(?) GROUP BY date ORDER BY date DESC LIMIT 1)').all([c_day,c_day]),
+      // c_measurements = db.prepare('SELECT DISTINCT badestellen_id badestellen_id, wasserqualitaet, date  FROM measurements WHERE date <= ? ORDER BY date DESC').all([c_day]);
 
       //// console.log(c_day, c_predictions, c_measurements)
 
