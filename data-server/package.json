@@ -23,6 +23,7 @@
     "request": "^2.85.0"
   },
   "devDependencies": {
+    "codecrumbs": "^1.2.8",
     "cz-conventional-changelog": "^2.1.0",
     "eslint": "^5.16.0",
     "eslint-config-unobtrusive": "^1.2.2",

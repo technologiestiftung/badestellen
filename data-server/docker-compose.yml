@@ -5,6 +5,8 @@ services:
     build:
       context: './'
       dockerfile: 'Dockerfile'
+    environment:
+      - 'NODE_ENV=development'
     ports:
       - '3535:3535'
     volumes:

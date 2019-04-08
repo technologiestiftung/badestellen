@@ -462,8 +462,12 @@ module.exports = {
     request({uri:'http://ftp.berlinonline.de/lageso/baden/letzte.csv', encoding:'latin1' /*iso-8859-1*/}, (error, response, body)=>{
 
       if (error){
-        throw error;
-      } // console.log(error);
+        if (process.env.NODE_ENV === 'development'){
+          throw error;
+        } else {
+          console.log(error);
+        }
+      }
 
       const csv = parser.parse(body.split('"').join(''));
 

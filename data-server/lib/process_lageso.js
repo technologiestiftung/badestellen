@@ -13,8 +13,12 @@ module.exports = {
     request({uri:'http://ftp.berlinonline.de/lageso/baden/letzte.csv', encoding:'latin1'}, (error, response, body)=>{
 
       if (error){
-        throw error;
-      } // console.log(error);
+        if (process.env.NODE_ENV==='development'){
+          throw error;
+        } else {
+          console.log(error);
+        }
+      }
 
       // // console.log('lageso.processing');
 
