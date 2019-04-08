@@ -1,0 +1,8 @@
+{
+	"path":"/uploads/",
+	"export_path":"/data/",
+	"port":3535,
+	"users":[
+		{"user": "user", "pwd": "password"}
+	]
+}

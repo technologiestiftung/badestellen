@@ -2,7 +2,11 @@
   "name": "badestellen",
   "version": "1.0.0",
   "description": "demo application",
-  "main": " ",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.1.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,17 +14,16 @@
     "type": "git",
     "url": "git+https://github.com/technologiestiftung/badestellen.git"
   },
-  "author": "Sebastian Meier @seb_meier",
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/technologiestiftung/badestellen/issues"
   },
   "homepage": "https://github.com/technologiestiftung/badestellen#readme",
-  "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
-    "fs": "0.0.1-security",
-    "request": "^2.83.0",
-    "request-promise": "^4.2.2",
-    "request-promise-native": "^1.0.5"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

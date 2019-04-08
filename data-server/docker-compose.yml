@@ -1,0 +1,15 @@
+version: '3'
+services:
+  badegewaesser:
+    container_name: 'badegewaesser'
+    build:
+      context: './'
+      dockerfile: 'Dockerfile'
+    environment:
+      - 'NODE_ENV=development'
+    ports:
+      - '3535:3535'
+    volumes:
+      - '/usr/app/node_modules'
+      - './:/usr/app'
+
