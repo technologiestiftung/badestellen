@@ -43,6 +43,9 @@ module.exports = {
       "id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, " +
       "badestellen_id integer," + 
       "date date," + 
+      "p025 real," + 
+      "p975 real," + 
+      "p500 real," + 
       "prediction text" + 
       ")").run()
 
@@ -73,5 +76,20 @@ module.exports = {
       "wasserqualitaet integer," + 
       "wasserqualitaet_txt integer" + 
       ")").run()
+
+    db.prepare("CREATE TABLE IF NOT EXISTS feedback (" +
+      "id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, " +
+      "timestamp datetime," +
+      "age integer," +
+      "bathing integer," +
+      "usability integer," +
+      "design integer," +
+      "functionality integer," +
+      "overall integer," +
+      "use integer," +
+      "function_comment text," +
+      "overall_comment text" +
+      ")").run()
+
   }
 }
