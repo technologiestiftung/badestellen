@@ -486,11 +486,11 @@ function openDetails(id, zoom){
               }
 
       html += '    </ul>'+
-              '    <div id="vis"><h3 class="title">Prognosedaten</h3></div>'+
+              '    <div id="vis"><h3 class="title">Prognose und Messdaten</h3></div>'+
               '    <div id="visLegend"><h4>Legende</h4>' + 
               '<span class="legendElement"><img src="./images/visLegend-points.png" srcset="./images/visLegend-points.png 1x, ./images/visLegend-points@2x.png 2x"><span>Messungen LAGeSo</span></span>'+
               '<span class="legendElement"><img src="./images/visLegend-line.png" srcset="./images/visLegend-line.png 1x, ./images/visLegend-line@2x.png 2x"><span>Prognose Mittelwert</span></span>'+
-              '<span class="legendElement"><img src="./images/visLegend-p.png" srcset="./images/visLegend-p.png 1x, ./images/visLegend-p@2x.png 2x"><span>Wahrscheinlichkeitsraum der Prognose</span></span>'+
+              '<span class="legendElement"><img src="./images/visLegend-p.png" srcset="./images/visLegend-p.png 1x, ./images/visLegend-p@2x.png 2x"><span>vorhergesagter Konzentrationsbereich</span></span>'+
               '<span class="legendElement"><img src="./images/visLegend-bg-gut.png" srcset="./images/visLegend-bg-gut.png 1x, ./images/visLegend-bg-gut@2x.png 2x"><span>Gute Wasserqualität laut Prognose</span></span>'+
               '<span class="legendElement"><img src="./images/visLegend-bg-schlecht.png" srcset="./images/visLegend-bg-schlecht.png 1x, ./images/visLegend-bg-schlecht@2x.png 2x"><span>Basierend auf der Prognose wird vom Baden abgeraten</span></span>'+
               '<span class="legendElement"><img src="./images/visLegend-bg-na.png" srcset="./images/visLegend-bg-na.png 1x, ./images/visLegend-bg-na@2x.png 2x"><span>Nicht genügend Daten für eine Prognose</span></span>'+
@@ -597,7 +597,7 @@ function multiFormat(date) {
 }
 
 function drawGraph(measurements, predictions) {
-  var margin = {top: 5, right: 5, bottom: 30, left: 40},
+  var margin = {top: 5, right: 5, bottom: 30, left: 60},
     width = 400 - margin.left - margin.right,
     height = 200 - margin.top - margin.bottom;
 
@@ -719,11 +719,11 @@ function drawGraph(measurements, predictions) {
         .attr("fill", function(d) {
           switch(d.prediction){
             case "mangelhaft":
-              return "rgba(255,0,0,0.2)";
+              return "#F39F00";
             case "NA":
               return "url(#pattern)";
             default:
-              return "rgba(0,255,0,0.2)";
+              return "#97B016";
           }
         })
         .attr("width", function(d) {
@@ -735,7 +735,7 @@ function drawGraph(measurements, predictions) {
 
     svg.append("path").attr("mask", "url(#mask)")
       .datum(filterPredictions)
-      .attr("fill", "rgba(0,0,0,0.1)")
+      .attr("fill", "rgba(0,0,0,0.3)")
       .attr("stroke", "transparent")
       .attr("d", d3.area()
         .x(function(d) { return x(d["date"]); })
@@ -759,6 +759,14 @@ function drawGraph(measurements, predictions) {
         .attr("cy", function(d){ return y(d["eco"]); })
         .attr("r", 3)
         .style("fill", "black");
+
+    svg.append("g")
+      .style("transform", "translate(-50px," + height + "px)")
+      .append("text")
+      .attr("text-anchor", "start")
+      .style("transform", "rotate(-90deg)")
+      .html("<tspan style=\"font-style:italic;\">Konzentration E.coli</tspan> <tspan>[KBE/100mL]</tspan>");
+
 
   } else {
     d3.selectAll("#vis, #visLegend").style("display", "none");

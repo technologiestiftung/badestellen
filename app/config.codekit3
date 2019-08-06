@@ -4083,8 +4083,8 @@
 		"oA": 0,
 		"oAP": "/images/visLegend-bg-gut@2x.png",
 		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
+		"oIPL": 1,
+		"opt": 1,
 		"oT": 1,
 		"q": 100
 		},
@@ -4116,8 +4116,8 @@
 		"oA": 0,
 		"oAP": "/images/visLegend-bg-schlecht.png",
 		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
+		"oIPL": 1,
+		"opt": 1,
 		"oT": 1,
 		"q": 100
 		},
@@ -4127,8 +4127,8 @@
 		"oA": 0,
 		"oAP": "/images/visLegend-bg-schlecht@2x.png",
 		"oF": 0,
-		"oIPL": 0,
-		"opt": 0,
+		"oIPL": 1,
+		"opt": 1,
 		"oT": 1,
 		"q": 100
 		},

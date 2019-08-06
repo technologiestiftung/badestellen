@@ -1211,6 +1211,10 @@ svg text{
  font-size:10px; 
 }
 
+#vis h3.title{
+  padding-bottom:0px;
+}
+
 #visLegend{
   font-size:12px;
 }
