@@ -51,7 +51,13 @@ predictionsImporter.import(db, parser, fs, function(){
   })
 })
 
-let app = express()
+let app = express();
+
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
 
 app.post('/upload', (req, res, next) => {
     var form = new formidable.IncomingForm()
@@ -122,6 +128,43 @@ app.get('/', (req, res, next) => {
 app.get('/test', (req, res, next) => {
   return res.status(200).json({ message: 'Get Test.' })
 })
+
+app.post('/feedback', (req, res, next) => {
+  var form = new formidable.IncomingForm()
+  form.parse(req, (err, fields, files) => {
+
+    db.prepare('INSERT INTO feedback (timestamp,age,bathing,usability,design,functionality,overall,use,function_comment,overall_comment)VALUES(?,?,?,?,?,?,?,?,?,?)')
+      .run([
+        moment().format('YYYY-MM-DD HH:mm:ss'),
+        fields.age,
+        field.bathing,
+        fields.usability,
+        fields.design,
+        fields.functionality,
+        fields.overall,
+        fields.use,
+        fields.function_comment,
+        fields.overall_comment
+      ]);
+
+    return res.status(200).json({ message: 'Thanks.' })
+  })
+})
+
+app.get('/' + config.refresh_secret + '/feedbacklist.csv', (req, res, next) => {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'text/csv');
+
+  res.write("timestamp,age,bathing,usability,design,functionality,overall,use,function_comment,overall_comment\r\n");
+
+  let rows = db.prepare('SELECT timestamp,age,bathing,usability,design,functionality,overall,use,function_comment,overall_comment FROM feedback').all([]);
+
+  rows.forEach((row) => {
+    res.write(`${row.timestamp},${row.age},${row.bathing},${row.usability},${row.design},${row.functionality},${row.overall},${row.use},"${row.function_comment.replace("\"", "'")}","${row.overall_comment.replace("\"", "'")}"\r\n`);
+  });
+
+  res.end();
+});
 
 console.log(config.refresh_secret)
 
