@@ -12,15 +12,15 @@ module.exports = {
 						c.id,
 						c.Datum,
 						c.Vorhersage,
-						("p025" in c) ? c.p025 : -1,
-						("p975" in c) ? c.p975 : -1,
-						("p500" in c) ? c.p500 : -1
+						("p025" in c) ? c.p025 : 0,
+						("p975" in c) ? c.p975 : 0,
+						("p500" in c) ? c.p500 : 0
 					]
 
 					//check if the item already exists
 					let rows = db.prepare("SELECT id FROM predictions WHERE badestellen_id = ? AND date = ?").all([c.id, c.Datum])
 					if(rows.length>0){
-						
+
 						console.log('already exists', params)
 
 					}else{
