@@ -206,7 +206,7 @@ module.exports = {
 		rows.forEach(r=>{
 
 			badestellen += '            	<li style="background-image: url(\'./images/badestellen/' + r.id + '.jpg\');">'+'\n';
-			badestellen += '            		<a href="./details/badestelle_' + r.id + '.html">'+'\n';
+			badestellen += '            		<a>'+'\n';
 			badestellen += '            			<span class="outer">'+'\n';
 			badestellen += '            				<img class="stateimg state-' + r.real_state + ' '+ ((r.name.indexOf(r.gewaesser)==-1)?'substate':'') +'" src="./images/trans.gif">'+'\n';
 			badestellen += '            				<span>'+'\n';
@@ -229,7 +229,7 @@ module.exports = {
 
 		// individual prediction files
 
-		let prediction_rows = db.prepare('SELECT badestellen_id, date, prediction, p025, p975, p500 FROM predictions').all([]),
+		let prediction_rows = db.prepare('SELECT badestellen_id, date, prediction, p025, p975, p500 FROM predictions ORDER BY date').all([]),
 			prediction_csv = {}
 
 		prediction_rows.forEach(r=>{
@@ -240,7 +240,7 @@ module.exports = {
 		})
 
 		for(let id in prediction_csv){
-			let csv = 'date,prediction'
+			let csv = 'date,prediction,p025,p975,p500'
 			prediction_csv[id].forEach(c=>{
 				csv += '\n'
 				csv += c[0]+','+c[1]+','+c[2]+','+c[3]+','+c[4]
@@ -252,7 +252,7 @@ module.exports = {
 
 		let measurement_cols = 'date,sicht,eco,ente,temp,algen,cb,sicht_txt,eco_txt,ente_txt,temp_txt,algen_txt,cb_txt,bsl,state,wasserqualitaet,wasserqualitaet_txt',
 			measurement_cols_a = measurement_cols.split(','),
-			measurement_rows = db.prepare('SELECT badestellen_id, ' + measurement_cols + ' FROM measurements').all([]),
+			measurement_rows = db.prepare('SELECT badestellen_id, ' + measurement_cols + ' FROM measurements ORDER BY date').all([]),
 			measurement_csv = {}
 
 		measurement_rows.forEach(r=>{

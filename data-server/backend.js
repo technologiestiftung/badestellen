@@ -49,6 +49,20 @@ module.exports = {
       "prediction text" + 
       ")").run()
 
+    const prediction_columns = db.prepare("PRAGMA table_info(predictions);").all([]);
+    let prediction_complete = false;
+    prediction_columns.forEach((column) => {
+          if (column.name === "p500") {
+                prediction_complete = true;
+          }
+    });
+
+    if (!prediction_complete) {
+          db.prepare("ALTER TABLE predictions ADD p025 real").run();
+          db.prepare("ALTER TABLE predictions ADD p975 real").run();
+          db.prepare("ALTER TABLE predictions ADD p500 real").run();
+    }
+
     db.prepare("CREATE TABLE IF NOT EXISTS events (" +
       "id INTEGER UNIQUE PRIMARY KEY AUTOINCREMENT, " +
       "type text," + 

@@ -1,6 +1,40 @@
 /*global d3, is_detail, mapboxgl */
 /*exported myFunction*/
 
+Date.prototype.addDays = function(days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+};
+
+/*----- Feedback Form -----*/
+
+d3.select("#feedbackBtn")
+  .on("click", function(){
+    d3.select("#feedbackContainer")
+      .style("display", "block")
+      .on("click", function(){
+
+        if (d3.event.target.id === "feedbackContainer") {
+          d3.select("#feedbackContainer")
+            .style("display", "none");
+        }
+      });
+  });
+
+d3.select("#feedbackSubmit")
+  .on("click", function(){
+    var formElement = document.querySelector("#feedback");
+    var request = new XMLHttpRequest();
+    request.open("POST", "https://tsb.ara.uberspace.de/badedaten/feedback");
+    request.send(new FormData(formElement));
+    d3.select("#feedbackContainer")
+      .style("display", "none");
+    formElement.reset();
+  });
+
+/*----- Feedback Form End -----*/
+
 var state = {
   type:'overview',
   id:null,
@@ -81,7 +115,7 @@ if(d3.selectAll('#map').size()>0){
 
   var date = new Date()
 
-  d3.csv(((is_detail)?'../':'') + 'new_build.csv?date='+date.getYear()+'-'+date.getMonth()+'-'+date.getDate()+':'+date.getHours(), function(err, data){
+  d3.csv(((is_detail)?'../':'') + 'new_build.csv?date='+date.getYear()+'-'+date.getMonth()+'-'+date.getDate()+':'+date.getHours()).then(function(data){
 
     data.sort(function(a,b){
       return b.lng - a.lng;
@@ -202,6 +236,8 @@ if(d3.selectAll('#map').size()>0){
       state.id = id_map[+((window.location.href.split('_'))[1].split('.'))[0]];
       dispatcher.call('action', this, '?');
     }
+  }).catch(function(err){
+    throw err;
   });
 }else{
   d3.select('#splash').transition()
@@ -339,7 +375,7 @@ function openDetails(id, zoom){
               '    <a href="'+location_link+'"><img src="'+((is_detail)?'../':'./') +'images/signs/location@2x.png" width="30" height="30" alt="Route berechnen" />&nbsp;<span>Route berechnen</span></a><br />'+
               '    <a href="http://www.fahrinfo-berlin.de/Fahrinfo/bin/query.bin/dn?seqnr=&amp;ident=&amp;ZID=A=16@X='+parseFloat(locations[id][0]).toFixed(6).toString().replace('.','')+'@Y='+parseFloat(locations[id][1]).toFixed(6).toString().replace('.','')+'@O=WGS84%2052%B027%2747%20N%2013%B010%2747%20E&amp;ch"><img src="'+((is_detail)?'../':'./') +'images/signs/location@2x.png" width="30" height="30" alt="Anfahrt mit der BVG" />&nbsp;<span>Anfahrt mit der BVG</span></a><br />'+
               '    <h3>Wasserqualität</h3>'+ 
-              '    <span class="stufen-icon stufen-'+data.real_state+'"></span>'+stufentext[data.real_state]+'<br /><span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ ')</span>';
+              '    <span class="stufen-icon stufen-'+data.real_state+'"></span>'+stufentext[data.real_state]+'<br /><span class="small">(Letzte Messung: '+date.getDate()+'.'+(date.getMonth()+1)+'.'+(date.getYear()-100)+ '<span id="lastPredict"></span>)</span>';
 
       var measurements = [      'sicht_txt',  'eco_txt',            'ente_txt',                 'temp_txt',         'algen_txt',                'cb_txt'],
           measurement_labels = ['Sichttiefe', 'Escherichia coli',   'Intestinale Enterokokken', 'Wassertemperatur', 'Erhöhtes Algenauftreten',  'Coliforme Bakterien'],
@@ -450,6 +486,15 @@ function openDetails(id, zoom){
               }
 
       html += '    </ul>'+
+              '    <div id="vis"><h3 class="title">Prognosedaten</h3></div>'+
+              '    <div id="visLegend"><h4>Legende</h4>' + 
+              '<span class="legendElement"><img src="./images/visLegend-points.png" srcset="./images/visLegend-points.png 1x, ./images/visLegend-points@2x.png 2x"><span>Messungen LAGeSo</span></span>'+
+              '<span class="legendElement"><img src="./images/visLegend-line.png" srcset="./images/visLegend-line.png 1x, ./images/visLegend-line@2x.png 2x"><span>Prognose Mittelwert</span></span>'+
+              '<span class="legendElement"><img src="./images/visLegend-p.png" srcset="./images/visLegend-p.png 1x, ./images/visLegend-p@2x.png 2x"><span>Wahrscheinlichkeitsraum der Prognose</span></span>'+
+              '<span class="legendElement"><img src="./images/visLegend-bg-gut.png" srcset="./images/visLegend-bg-gut.png 1x, ./images/visLegend-bg-gut@2x.png 2x"><span>Gute Wasserqualität laut Prognose</span></span>'+
+              '<span class="legendElement"><img src="./images/visLegend-bg-schlecht.png" srcset="./images/visLegend-bg-schlecht.png 1x, ./images/visLegend-bg-schlecht@2x.png 2x"><span>Basierend auf der Prognose wird vom Baden abgeraten</span></span>'+
+              '<span class="legendElement"><img src="./images/visLegend-bg-na.png" srcset="./images/visLegend-bg-na.png 1x, ./images/visLegend-bg-na@2x.png 2x"><span>Nicht genügend Daten für eine Prognose</span></span>'+
+              '</div>'+
               '  </div>'+
               '  <div class="detail-amt">'+
               '    <h3 class="title">Zuständiges Gesundheitsamt</h3>'+
@@ -479,8 +524,248 @@ function openDetails(id, zoom){
   document.documentElement.scrollTop = 0;
   document.body.scrollTop = 0;
 
+  if(data.prediction != null && data.prediction != 'null') {
+    
+    d3.csv("./details/measurements_" + data.detail_id + ".csv").then(function(measurementsData){
+      d3.csv("./details/predictions_" + data.id + ".csv").then(function(predictionsData){
+
+        predictionsData.forEach(function(d){
+          d.date = d3.timeParse("%Y-%m-%d")(d.date);
+          d.p025 = parseFloat(d.p025);
+          d.p975 = parseFloat(d.p975);
+          d.p500 = parseFloat(d.p500);
+        });
+
+        predictionsData.sort(function(a,b){
+          return a.date - b.date;
+        });
+
+        var lastDate = predictionsData[predictionsData.length - 1].date;
+
+        d3.select("#lastPredict")
+          .html("&nbsp;/&nbsp;Letzte Prognose: " + lastDate.getDate() + "." + (lastDate.getMonth() + 1) + "." + lastDate.getFullYear());
+
+        drawGraph(measurementsData, predictionsData);
+
+      }).catch(function(err){
+        throw err;
+      });
+    }).catch(function(err){
+      throw err;
+    });
+
+  } else {
+    d3.csv("./details/measurements_" + data.detail_id + ".csv").then(function(measurementsData){
+
+      drawGraph(measurementsData, []);
+
+    }).catch(function(err){
+      throw err;
+    });
+  }
+
 }
 
+var timeLocale = d3.timeFormatLocale({
+  "dateTime": "%A, %e %B %Y г. %X",
+  "date": "%d.%m.%Y",
+  "time": "%H:%M:%S",
+  "periods": ["AM", "PM"],
+  "days": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+  "shortDays": ["So", "Mo", "Di", "Mi", "Do", "Sa", "So"],
+  "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+  "shortMonths": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
+});
+
+var formatMillisecond = timeLocale.format(".%L"),
+    formatSecond = timeLocale.format(":%S"),
+    formatMinute = timeLocale.format("%I:%M"),
+    formatHour = timeLocale.format("%I %p"),
+    formatDay = timeLocale.format("%a %d"),
+    formatWeek = timeLocale.format("%b %d"),
+    formatMonth = timeLocale.format("%B"),
+    formatYear = timeLocale.format("%Y");
+
+function multiFormat(date) {
+  return (d3.timeSecond(date) < date ? formatMillisecond
+      : d3.timeMinute(date) < date ? formatSecond
+      : d3.timeHour(date) < date ? formatMinute
+      : d3.timeDay(date) < date ? formatHour
+      : d3.timeMonth(date) < date ? (d3.timeWeek(date) < date ? formatDay : formatWeek)
+      : d3.timeYear(date) < date ? formatMonth
+      : formatYear)(date);
+}
+
+function drawGraph(measurements, predictions) {
+  var margin = {top: 5, right: 5, bottom: 30, left: 40},
+    width = 400 - margin.left - margin.right,
+    height = 200 - margin.top - margin.bottom;
+
+  var root = d3.select("#vis")
+    .append("svg")
+      .style("width","100%")
+      .style("height","300px")
+      .attr("preserveAspectRatio", "xMidYMid meet")
+      .attr("viewBox", "0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom))
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+
+  var defs = root.append("defs");
+
+  defs.append("mask").attr("id", "mask")
+    .append("rect")
+    .attr("fill", "white")
+    .attr("width", width)
+    .attr("height", height);
+
+  defs.append("pattern").attr("id", "pattern")
+    .attr("x","0")
+    .attr("y","10")
+    .attr("width","10")
+    .attr("height","10")
+    .attr("patternUnits","userSpaceOnUse")
+    .append("image")
+      .style("opacity", 0.25)
+      .attr("xlink:href","./images/Rectangle@2x.png")
+      .attr("x","0")
+      .attr("y","0")
+      .attr("height","10px")
+      .attr("width","10px");
+
+  var svg = root.append("g")
+      .attr("transform",
+            "translate(" + margin.left + "," + margin.top + ")");
+
+  measurements.forEach(function (d) {
+    d["date"] = d3.timeParse("%Y-%m-%d")(d["date"]);
+    d["sicht"] = parseFloat(d["sicht"]);
+    d["eco"] = parseFloat(d["eco"]);
+    d["ente"] = parseFloat(d["ente"]);
+    d["temp"] = parseFloat(d["temp"]);
+    d["algen"] = parseFloat(d["algen"]);
+    d["cb"] = parseFloat(d["cb"]);
+  });
+
+  measurements.sort(function(a,b){
+    return a.date - b.date;
+  });
+
+  if (predictions.length >= 1) {
+
+    // search for missing data
+    for (var i = predictions.length - 1; i > 0; i--) {
+      var thisDay = predictions[i].date;
+      var compDay = predictions[i-1].date.addDays(1);
+      if(thisDay.getDate() !== compDay.getDate()){
+        while(thisDay.getDate() !== compDay.getDate()){
+          predictions.push({
+            date:compDay,
+            prediction:"NA"
+          });
+          compDay = compDay.addDays(1);
+        }
+      }
+    }
+
+    var filterPredictions = predictions.filter(function(d){
+      return (isNaN(d.p500)) ? false : true;
+    });
+
+    // Add X axis --> it is a date format
+    var x = d3.scaleTime()
+      .domain(d3.extent(filterPredictions, function(d) { return d["date"]; }))
+      .range([ 0, width ]);
+
+    svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x).ticks(7).tickFormat(multiFormat));
+
+    var max = 0;
+
+    var columns = ["p025", "p975", "p500"];
+
+    columns.forEach(function(column) {
+      var tMax = d3.max(filterPredictions, function(d){ return d[column]; });
+      if (tMax > max) {
+        max = tMax;
+      }
+    });
+
+    var y = d3.scaleSymlog()
+      .domain([0, max])
+      .range([ height, 0 ]);
+
+    var tickValues = [];
+    var tickCount = 10;
+
+    for (var ii = 0; ii < tickCount; ii++) {
+      tickValues.push(y.invert(height/tickCount*ii));
+    }
+
+    svg.append("g")
+      .call(d3.axisLeft(y).tickValues(tickValues));
+
+    svg.append("g").attr("mask", "url(#mask)").selectAll("rect").data(predictions)
+      .enter().append("rect")
+        .attr("x", function(d) {
+          var tDate = d["date"];
+          var eDate = tDate.addDays(1);
+          var tWidth = x(eDate) - x(tDate);
+
+          return x(d["date"]) - tWidth/2;
+        })
+        .attr("y", 0)
+        .attr("stroke", "transparent")
+        .attr("fill", function(d) {
+          switch(d.prediction){
+            case "mangelhaft":
+              return "rgba(255,0,0,0.2)";
+            case "NA":
+              return "url(#pattern)";
+            default:
+              return "rgba(0,255,0,0.2)";
+          }
+        })
+        .attr("width", function(d) {
+          var tDate = d["date"];
+          var eDate = tDate.addDays(1);
+          return x(eDate) - x(tDate);
+        })
+        .attr("height", height);
+
+    svg.append("path").attr("mask", "url(#mask)")
+      .datum(filterPredictions)
+      .attr("fill", "rgba(0,0,0,0.1)")
+      .attr("stroke", "transparent")
+      .attr("d", d3.area()
+        .x(function(d) { return x(d["date"]); })
+        .y0(function(d) { return y(d["p025"]); })
+        .y1(function(d) { return y(d["p975"]); })
+      );
+
+    svg.append("path").attr("mask", "url(#mask)")
+      .datum(filterPredictions)
+      .attr("stroke", "rgba(0,0,0,1)")
+      .attr("stroke-width", 1)
+      .attr("fill", "transparent")
+      .attr("d", d3.line()
+        .x(function(d) { return x(d["date"]); })
+        .y(function(d) { return y(d["p500"]); })
+      );
+
+    svg.append("g").attr("mask", "url(#mask)").selectAll("circle").data(measurements)
+      .enter().append("circle")
+        .attr("cx", function(d){ return x(d["date"]); })
+        .attr("cy", function(d){ return y(d["eco"]); })
+        .attr("r", 3)
+        .style("fill", "black");
+
+  } else {
+    d3.selectAll("#vis, #visLegend").style("display", "none");
+  }
+
+  // Draw graphs for Lageso Data
+}
 
 /*
  * Responsive Menu Button

@@ -12,22 +12,22 @@ module.exports = {
 						c.id,
 						c.Datum,
 						c.Vorhersage,
-						("p025" in c) ? c.p025 : 0,
-						("p975" in c) ? c.p975 : 0,
-						("p500" in c) ? c.p500 : 0
+						("P2.5" in c) ? parseFloat(c["P2.5"]) : 0,
+						("P97.5" in c) ? parseFloat(c["P97.5"]) : 0,
+						("P50" in c) ? parseFloat(c["P50"]) : 0
 					]
 
 					//check if the item already exists
 					let rows = db.prepare("SELECT id, p500 FROM predictions WHERE badestellen_id = ? AND date = ?").all([c.id, c.Datum])
 					if(rows.length>0){
 
-						if (rows[0].p500 === 0 && params[5] !== 0) {
-							db.preapre("UPDATE predictions SET p025 = ?, p975 = ?, p500 = ? WHERE id = ?")
+						if ((rows[0].p500 === 0 || rows[0].p500 === null || rows[0].p500 === "null") && params[5] !== 0) {
+							db.prepare("UPDATE predictions SET p025 = ?, p975 = ?, p500 = ? WHERE id = ?")
 								.run([
 									params[3],
 									params[4],
 									params[5],
-									c.id
+									rows[0].id
 								]);
 							console.log('already exists > updated', params)
 						} else {

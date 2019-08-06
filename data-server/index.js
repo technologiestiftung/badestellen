@@ -137,7 +137,7 @@ app.post('/feedback', (req, res, next) => {
       .run([
         moment().format('YYYY-MM-DD HH:mm:ss'),
         fields.age,
-        field.bathing,
+        fields.bathing,
         fields.usability,
         fields.design,
         fields.functionality,
@@ -160,7 +160,7 @@ app.get('/' + config.refresh_secret + '/feedbacklist.csv', (req, res, next) => {
   let rows = db.prepare('SELECT timestamp,age,bathing,usability,design,functionality,overall,use,function_comment,overall_comment FROM feedback').all([]);
 
   rows.forEach((row) => {
-    res.write(`${row.timestamp},${row.age},${row.bathing},${row.usability},${row.design},${row.functionality},${row.overall},${row.use},"${row.function_comment.replace("\"", "'")}","${row.overall_comment.replace("\"", "'")}"\r\n`);
+    res.write(`${row.timestamp},${row.age},${row.bathing},${row.usability},${row.design},${row.functionality},${row.overall},${row.use},"${row.function_comment.split("\"").join("\"\"")}","${row.overall_comment.split("\"").join("\"\"")}"\r\n`);
   });
 
   res.end();

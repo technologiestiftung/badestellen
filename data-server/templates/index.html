@@ -115,8 +115,94 @@
   <div id="footnote">
     <a href="kontakt.html">Kontakt</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a> | Copyright 2018
   </div>
+  <div id="feedbackBtn">Feedback</div>
+  <div id="feedbackContainer">
+    <div id="feedbackForm">
+      <form id="feedback">
+        <h2>Feedback Formular</h2>
+        <div class="feedbackFormLine feedbackFormLineText">
+          <label class="feedbackMasterLabel">Alter in Jahren:</label>
+          <label for="feedbackAge-0" class="feedbackTextLabel">bis 18</label>
+          <input id="feedbackAge-0" type="radio" name="age" value="0">
+          <label for="feedbackAge-1" class="feedbackTextLabel">18-25</label>
+          <input id="feedbackAge-1" type="radio" name="age" value="1">
+          <label for="feedbackAge-2" class="feedbackTextLabel">26-35</label>
+          <input id="feedbackAge-2" type="radio" name="age" value="2">
+          <label for="feedbackAge-3" class="feedbackTextLabel">36-45</label>
+          <input id="feedbackAge-3" type="radio" name="age" value="3">
+          <label for="feedbackAge-4" class="feedbackTextLabel">46-59</label>
+          <input id="feedbackAge-4" type="radio" name="age" value="4">
+          <label for="feedbackAge-5" class="feedbackTextLabel">ab 60</label>
+          <input id="feedbackAge-5" type="radio" name="age" value="5">
+        </div>
+        <div class="feedbackFormLine feedbackFormLineText">
+          <label class="feedbackMasterLabel">Gehen Sie in Seen und / oder Flüssen baden?</label>
+          <label for="feedbackSwim-0" class="feedbackTextLabel">Ja</label>
+          <input id="feedbackSwim-0" type="radio" name="bathing" value="0">
+          <label for="feedbackSwim-1" class="feedbackTextLabel">Nein</label>
+          <input id="feedbackSwim-1" type="radio" name="bathing" value="1">
+        </div>
+        <div class="feedbackFormLine">
+          <label class="feedbackMasterLabel">Ist die Seite für Sie leicht bedienbar?</label>
+          <label for="feedbackUsability-0" class="feedbackSmile0"></label>
+          <input id="feedbackUsability-0" type="radio" name="usability" value="0">
+          <label for="feedbackUsability-1" class="feedbackSmile1"></label>
+          <input id="feedbackUsability-1" type="radio" name="usability" value="1">
+          <label for="feedbackUsability-2" class="feedbackSmile2"></label>
+          <input id="feedbackUsability-2" type="radio" name="usability" value="2">
+        </div>
+        <div class="feedbackFormLine">
+          <label class="feedbackMasterLabel">Gefällt Ihnen das Design der Seite?</label>
+          <label for="feedbackDesign-0" class="feedbackSmile0"></label>
+          <input id="feedbackDesign-0" type="radio" name="design" value="0">
+          <label for="feedbackDesign-1" class="feedbackSmile1"></label>
+          <input id="feedbackDesign-1" type="radio" name="design" value="1">
+          <label for="feedbackDesign-2" class="feedbackSmile2"></label>
+          <input id="feedbackDesign-2" type="radio" name="design" value="2">
+        </div>
+        <div class="feedbackFormLine">
+          <label class="feedbackMasterLabel">Wie finden Sie die Funktionalität?</label>
+          <label for="feedbackFunctionality-0" class="feedbackSmile0"></label>
+          <input id="feedbackFunctionality-0" type="radio" name="functionality" value="0">
+          <label for="feedbackFunctionality-1" class="feedbackSmile1"></label>
+          <input id="feedbackFunctionality-1" type="radio" name="functionality" value="1">
+          <label for="feedbackFunctionality-2" class="feedbackSmile2"></label>
+          <input id="feedbackFunctionality-2" type="radio" name="functionality" value="2">
+        </div>
+        <div class="feedbackFormLine">
+          <label class="feedbackMasterLabel">Wie gefällt Ihnen die Seite insgesamt?</label>
+          <label for="feedbackOverall-0" class="feedbackSmile0"></label>
+          <input id="feedbackOverall-0" type="radio" name="overall" value="0">
+          <label for="feedbackOverall-1" class="feedbackSmile1"></label>
+          <input id="feedbackOverall-1" type="radio" name="overall" value="1">
+          <label for="feedbackOverall-2" class="feedbackSmile2"></label>
+          <input id="feedbackOverall-2" type="radio" name="overall" value="2">
+        </div>
+        <div class="feedbackFormLine">
+          <label class="feedbackMasterLabel">Würden Sie die Seite privat nutzen?</label>
+          <label for="feedbackUse-0" class="feedbackSmile0"></label>
+          <input id="feedbackUse-0" type="radio" name="use" value="0">
+          <label for="feedbackUse-1" class="feedbackSmile1"></label>
+          <input id="feedbackUse-1" type="radio" name="use" value="1">
+          <label for="feedbackUse-2" class="feedbackSmile2"></label>
+          <input id="feedbackUse-2" type="radio" name="use" value="2">
+        </div>
+        <div class="feedbackFormLine">
+          <label for="feedbackFunction" class="feedbackMasterLabel">Welche weiteren Funktionen würden Sie sich wünschen?</label>
+          <textarea id="feedbackFunction" name="function_comment"></textarea>
+        </div>
+        <div class="feedbackFormLine">
+          <label for="feedbackOverall" class="feedbackMasterLabel">Was Sie uns sonst noch sagen möchten:</label>
+          <textarea id="feedbackOverall" name="overall_comment"></textarea>
+        </div>
+        <a id="feedbackSubmit">Feedback abschicken</a>
+      </form>
+    </div>
+  </div>
   <script type="text/javascript">var is_detail = false;</script>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="js/fetch.umd.js"></script>
+  <script src="js/promise.polyfill.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="js/d3-history/d3-history.min.js"></script>
   <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.45.0/mapbox-gl.js'></script>
   <script src="js/main-min.js"></script>
