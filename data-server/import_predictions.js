@@ -18,10 +18,21 @@ module.exports = {
 					]
 
 					//check if the item already exists
-					let rows = db.prepare("SELECT id FROM predictions WHERE badestellen_id = ? AND date = ?").all([c.id, c.Datum])
+					let rows = db.prepare("SELECT id, p500 FROM predictions WHERE badestellen_id = ? AND date = ?").all([c.id, c.Datum])
 					if(rows.length>0){
 
-						console.log('already exists', params)
+						if (rows[0].p500 === 0 && params[5] !== 0) {
+							db.preapre("UPDATE predictions SET p025 = ?, p975 = ?, p500 = ? WHERE id = ?")
+								.run([
+									params[3],
+									params[4],
+									params[5],
+									c.id
+								]);
+							console.log('already exists > updated', params)
+						} else {
+							console.log('already exists', params)
+						}
 
 					}else{
 

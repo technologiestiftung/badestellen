@@ -227,197 +227,28 @@ module.exports = {
 
 		fs.writeFileSync(path.join(__dirname, config.export_path, 'index.html'), index_template, 'utf8')
 
-		//BUILDING DETAILS
+		// individual prediction files
 
-		function cleanWeb(str){
-			if(str.substr(str.length-1,1)=='/'){
-				str = str.substr(0, str.length-1);
-			}
-			return str.replace('http://','');
-		}
-
-		let stufentext = {
-			1:'Zum Baden geeignet',
-			2:'Zum Baden geeignet',
-			11:'Zum Baden geeignet',
-			12:'Zum Baden geeignet',
-			3:'Vom Baden wird abgeraten',
-			4:'Vom Baden wird abgeraten',
-			13:'Vom Baden wird abgeraten',
-			14:'Vom Baden wird abgeraten',
-			10:'Vom Baden wird abgeraten',
-			9:'Keine Angabe',
-			5:'Badeverbot',
-			6:'Badeverbot',
-			15:'Badeverbot',
-			16:'Badeverbot'
-		};
-
-		let details_template = fs.readFileSync(__dirname + '/templates/detail.html', 'utf8')
-
-		rows.forEach(r=>{
-			let temp = details_template
-
-			let date = moment(r.m_date, 'YYYY-MM-DD').format('DD.MM.YYYY');
-
-			let measurements_html = ''
-
-			var measurements = [      'sicht_txt',  'eco_txt',            'ente_txt',                 'temp_txt',         'algen_txt',                'cb_txt'],
-				measurement_labels = ['Sichttiefe', 'Escherichia coli',   'Intestinale Enterokokken', 'Wassertemperatur', 'Erhöhtes Algenauftreten',  'Coliforme Bakterien'],
-				measurement_units = [ 'cm',         'pro 100 ml',         'pro 100 ml',               '°C',               '',                         'pro 100 ml'];
-
-			var hasMeasurements = false;
-			measurements.forEach(function(m){
-				if((m in r) && r[m].length>0){
-					hasMeasurements = true;
-				}
-			});
-
-			if(hasMeasurements){
-				measurements_html += '<table cellpadding="0" cellmargin="0" border="0" class="measurement_table">';
-
-				var line_count = 1;
-				measurements.forEach(function(m,mi){
-				  if(m in r && r[m].length>0){
-				    measurements_html += '<tr class="row-'+line_count+'"><th>'+measurement_labels[mi]+'</th><td>'+((m=='algen_txt')?((r[m]=='A')?'Ja':'Nein'):(r[m]+' '+measurement_units[mi]))+'</td></tr>';
-				    line_count++;
-				  }
-				});
-
-				measurements_html += '</table>';
-			}
-
-			var eu_sign, eu_sign_alt;
-
-			switch(r.letzte_eu_einstufung.toLowerCase()){
-				case 'mangelhaft':
-					eu_sign = 'poor';
-					eu_sign_alt = 'Mangelhafte';
-				break;
-				case 'ausreichend':
-					eu_sign = 'sufficient';
-					eu_sign_alt = 'Auschreichende';
-				break;
-				case 'ausgezeichnet':
-					eu_sign = 'excellent';
-					eu_sign_alt = 'Ausgezeichnete';
-				break;
-				case 'gut':
-					eu_sign = 'good';
-					eu_sign_alt = 'Gute';
-				break;
-		    }
-
-		    let features_html = ''
-
-			if(r.cyano_moeglich && r.cyano_moeglich!=0){
-				features_html += '<li><img src="../images/signs/cyano@2x.png" width="30" height="30" alt="Cyanobakterien massenhaft möglich (Blaualgen)" />&nbsp;Cyanobakterien massenhaft möglich (Blaualgen)</li>';
-			}
-
-			if((r.wasserrettung_durch_hilfsorganisationen_dlrg_oder_asb && r.wasserrettung_durch_hilfsorganisationen_dlrg_oder_asb!=0) || (r.rettungsschwimmer && r.rettungsschwimmer!=0)){
-				features_html += '<li><img src="../images/signs/rescue@2x.png" width="30" height="30" alt="Wasserrettung zeitweise" />&nbsp;Wasserrettung zeitweise</li>';
-			}
-
-			if(!r.barrierefrei || r.barrierefrei == 0){
-				features_html += '<li><img src="../images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Nicht barrierefrei" />&nbsp;Nicht barrierefrei</li>';
-			}else{
-				features_html += '<li><img src="../images/signs/barrierefrei@2x.png" width="30" height="30" alt="Barrierefrei" />&nbsp;Barrierefrei</li>';
-			}
-
-			if(!r.barrierefrei_zugang || r.barrierefrei_zugang == 0){
-				features_html += '<li><img src="../images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="Zugang zum Wasser nicht barrierefrei" />&nbsp;Zugang zum Wasser nicht barrierefrei</li>';
-			}else{
-				features_html += '<li><img src="../images/signs/barrierefrei@2x.png" width="30" height="30" alt="Barrierefreier Zugang zum Wasser" />&nbsp;Barrierefreier Zugang zum Wasser</li>';
-			}
-
-			if(r.restaurant && r.restaurant!=0){
-				features_html += '<li><img src="../images/signs/restaurant@2x.png" width="30" height="30" alt="Restaurant" />&nbsp;Restaurant</li>';
-			}
-
-			if(r.imbiss && r.imbiss!=0){
-				features_html += '<li><img src="../images/signs/imbiss@2x.png" width="30" height="30" alt="Imbiss" />&nbsp;Imbiss</li>';
-			}
-
-			if(r.parken&&r.parken!=0){
-				features_html += '<li><img src="../images/signs/parken@2x.png" width="30" height="30" alt="Parkmöglichkeiten" />&nbsp;Parkmöglichkeiten</li>';
-			}
-
-			if(r.wc&&r.wc!=0){
-				features_html += '<li><img src="../images/signs/toilette@2x.png" width="30" height="30" alt="WC verfügbar" />&nbsp;WC verfügbar</li>';
-				if(!r.barrierefrei_wc||r.barrierefrei_wc==0){
-					features_html += '<li><img src="../images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li>';
-				}
-			}else if(r.wc_mobil&&r.wc_mobil!=0){
-				features_html += '<li><img src="../images/signs/toilette@2x.png" width="30" height="30" alt="Mobiles WC verfügbar" />&nbsp;Mobiles WC verfügbar</li>';
-				if(!r.barrierefrei_wc||r.barrierefrei_wc==0){
-					features_html += '<li><img src="../images/signs/barrierefrei-not@2x.png" width="30" height="30" alt="WC ist nicht barrierefrei" />&nbsp;WC ist nicht barrierefrei</li>';
-				}
-			}
-
-			if(r.hundeverbot&&r.hundeverbot!=0){
-				features_html += '<li><img src="../images/signs/hundeverbot@2x.png" width="30" height="30" alt="Hundeverbot" />&nbsp;Hundeverbot</li>';
-			}else{
-				features_html += '<li><img src="../images/signs/hundeverbot-not@2x.png" width="30" height="30" alt="Kein Hundeverbot" />&nbsp;Kein Hundeverbot</li>';
-			}
-
-			let vars = [
-				['name_lang',r.name_lang],
-				['bezirk',r.bezirk],
-				['image',r.image.replace('http://','https://')],
-				['name',r.name],
-				['strasse',r.strasse],
-				['plz',parseInt(r.plz)],
-				['stadt',r.stadt],
-				['webseite',((r.webseite && r.webseite.length>0)?'<br /><a href="'+r.webseite+'"><span>'+cleanWeb(r.webseite)+'</span></a>':'')],
-				['loc_x',parseFloat(r.lng)],
-				['loc_y',parseFloat(r.lat)],
-				['loc_bvg_x',parseFloat(r.lng).toFixed(6).toString().replace('.','')],
-				['loc_bvg_y',parseFloat(r.lat).toFixed(6).toString().replace('.','')],
-				['state',r.real_state],
-				['state_text',stufentext[r.real_state]],
-				['date', date],
-				['MEASUREMENTS', measurements_html],
-				['eu_sign', eu_sign],
-				['eu_sign_alt', eu_sign_alt],
-				['FEATURES', features_html],
-				['PREDICTION', ((r.prediction=='true'||r.prediction==1)?'<span class="prediction"><img src="../images/signs/prediction@2x.png" width="30" height="30" alt="" />* Die hier angezeigte Bewertung wird unterstützt durch eine neuartige tagesaktuelle Vorhersagemethode. <a href="info.html">Erfahren Sie mehr&nbsp;&raquo;</a></span>':'')],
-				['gesundheitsamt_name', r.gesundheitsamt_name],
-				['gesundheitsamt_zusatz', r.gesundheitsamt_zusatz],
-				['gesundheitsamt_strasse', r.gesundheitsamt_strasse],
-				['gesundheitsamt_plz', parseInt(r.gesundheitsamt_plz)],
-				['gesundheitsamt_stadt', r.gesundheitsamt_stadt],
-				['gesundheitsamt_mail', r.gesundheitsamt_mail],
-				['gesundheitsamt_telefon', parseInt(r.gesundheitsamt_telefon)],
-				['LAST_MODIFIED', moment().format('YYYY-MM-DD')]
-			]
-
-			vars.forEach(v=>{
-				temp = temp.split('{{'+v[0]+'}}').join([v[1]])
-			})
-
-			fs.writeFileSync(path.join(__dirname, config.export_path, '/details/badestelle_'+r.id+'.html'), temp, 'utf8')
-
-		})
-
-
-		let prediction_rows = db.prepare('SELECT badestellen_id, date, prediction FROM predictions').all([]),
+		let prediction_rows = db.prepare('SELECT badestellen_id, date, prediction, p025, p975, p500 FROM predictions').all([]),
 			prediction_csv = {}
 
 		prediction_rows.forEach(r=>{
 			if(!(r.badestellen_id in prediction_csv)){
 				prediction_csv[r.badestellen_id] = []
 			}
-			prediction_csv[r.badestellen_id].push([r.date, r.prediction])
+			prediction_csv[r.badestellen_id].push([r.date, r.prediction, r.p025, r.p975, r.p500])
 		})
 
 		for(let id in prediction_csv){
 			let csv = 'date,prediction'
 			prediction_csv[id].forEach(c=>{
 				csv += '\n'
-				csv += c[0]+','+c[1]
+				csv += c[0]+','+c[1]+','+c[2]+','+c[3]+','+c[4]
 			})
 			fs.writeFileSync(path.join(__dirname, config.export_path, '/details/predictions_' + id + '.csv'), csv, 'utf8')
 		}
+
+		// individual measurement files
 
 		let measurement_cols = 'date,sicht,eco,ente,temp,algen,cb,sicht_txt,eco_txt,ente_txt,temp_txt,algen_txt,cb_txt,bsl,state,wasserqualitaet,wasserqualitaet_txt',
 			measurement_cols_a = measurement_cols.split(','),
