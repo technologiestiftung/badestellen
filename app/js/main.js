@@ -190,9 +190,11 @@ if(d3.selectAll('#map').size()>0){
       style_source = ((is_detail)?'../':'./') +'tile_style.json';
     }
 
+    mapboxgl.accessToken = 'pk.eyJ1IjoidGVjaG5vbG9naWVzdGlmdHVuZyIsImEiOiJjanl6bmRtd2swMzh0M2NxbjFtaWxtNnZnIn0.xBc9YIbxGpnXTP-epGZUfw';
+
     map = new mapboxgl.Map({
       container: 'map',
-      style: style_source,
+      style: "mapbox://styles/technologiestiftung/cjz09bylr5f8k1cp83p7cwdaf",
       center: [13.4244,52.5047],
       zoom: 10
     });

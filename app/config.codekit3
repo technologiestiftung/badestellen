@@ -4494,6 +4494,14 @@
 		"oO": 0,
 		"oS": 1
 		},
+	"/test-style.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "/test-style-min.json",
+		"oF": 0,
+		"oO": 0,
+		"oS": 1
+		},
 	"/test.style.json": {
 		"ft": 524288,
 		"oA": 1,
