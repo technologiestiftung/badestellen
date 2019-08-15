@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<script src="https://d3js.org/d3.v5.js"></script>
+<div id="vis"></div>
+<script type="text/javascript">
+
+Date.prototype.addDays = function(days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+};
+
+var margin = {top: 10, right: 30, bottom: 30, left: 50},
+    width = 660 - margin.left - margin.right,
+    height = 400 - margin.top - margin.bottom;
+
+var root = d3.select("#vis")
+  .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+
+var defs = root.append("defs");
+
+defs.append("mask").attr("id", "mask")
+  .append("rect")
+  .attr("fill", "white")
+  .attr("width", width)
+  .attr("height", height);
+
+defs.append("pattern").attr("id", "pattern")
+  .attr("x","0")
+  .attr("y","10")
+  .attr("width","10")
+  .attr("height","10")
+  .attr("patternUnits","userSpaceOnUse")
+  .append("image")
+    .style("opacity", 0.25)
+    .attr("xlink:href","Rectangle@2x.png")
+    .attr("x","0")
+    .attr("y","0")
+    .attr("height","10px")
+    .attr("width","10px");
+
+var svg = root.append("g")
+    .attr("transform",
+          "translate(" + margin.left + "," + margin.top + ")");
+
+var id = 36;
+var columns = ["P2.5","P97.5","P50","P90","P95"];
+
+Promise.all([d3.csv("Vorhersage2018.csv"),d3.csv("export-measurements.csv"),d3.csv("export-predictions.csv")])
+.then((data) => {
+
+  data[1] = data[1].filter((d) => (d.badestellen_id === "344351"));
+  data[2] = data[2].filter((d) => (d.badestellen_id === "36"));
+
+  data[2].forEach((d) => {
+    d["date"] = d3.timeParse("%Y-%m-%d")(d["date"]);
+  });
+
+  data[1].forEach((d) => {
+    d["date"] = d3.timeParse("%Y-%m-%d")(d["date"]);
+  });
+
+  data[0].forEach((d) => {
+    d["Datum"] = d3.timeParse("%Y-%m-%d")(d["Datum"]);
+    columns.forEach(column => {
+      d[column] = parseFloat(d[column]);
+    });
+  });
+
+  data[2].sort((a,b) => {
+    return a.date - b.date;
+  });
+
+  // search for missing data
+  for (var i = data[2].length - 1; i > 0; i--) {
+    var thisDay = data[2][i].date;
+    var compDay = data[2][i-1].date.addDays(1);
+    if(thisDay.getDate() !== compDay.getDate()){
+      while(thisDay.getDate() !== compDay.getDate()){
+        data[2].push({
+          date:compDay,
+          prediction:"NA"
+        });
+        compDay = compDay.addDays(1);
+      }
+    }
+  }
+
+  // Add X axis --> it is a date format
+  var x = d3.scaleTime()
+    .domain(d3.extent(data[0], function(d) { return d["Datum"]; }))
+    .range([ 0, width ]);
+
+  var locale = d3.timeFormatLocale({
+    "dateTime": "%A, %e %B %Y г. %X",
+    "date": "%d.%m.%Y",
+    "time": "%H:%M:%S",
+    "periods": ["AM", "PM"],
+    "days": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+    "shortDays": ["So", "Mo", "Di", "Mi", "Do", "Sa", "So"],
+    "months": ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"],
+    "shortMonths": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
+  });
+
+var formatMillisecond = locale.format(".%L"),
+    formatSecond = locale.format(":%S"),
+    formatMinute = locale.format("%I:%M"),
+    formatHour = locale.format("%I %p"),
+    formatDay = locale.format("%a %d"),
+    formatWeek = locale.format("%b %d"),
+    formatMonth = locale.format("%B"),
+    formatYear = locale.format("%Y");
+
+function multiFormat(date) {
+  return (d3.timeSecond(date) < date ? formatMillisecond
+      : d3.timeMinute(date) < date ? formatSecond
+      : d3.timeHour(date) < date ? formatMinute
+      : d3.timeDay(date) < date ? formatHour
+      : d3.timeMonth(date) < date ? (d3.timeWeek(date) < date ? formatDay : formatWeek)
+      : d3.timeYear(date) < date ? formatMonth
+      : formatYear)(date);
+}
+
+  svg.append("g")
+    .attr("transform", "translate(0," + height + ")")
+    .call(d3.axisBottom(x).ticks(7).tickFormat(multiFormat));
+
+  var max = 0;
+
+  columns.forEach(column => {
+    var tMax = d3.max(data[0], (d) => d[column]);
+    if (tMax > max) {
+      max = tMax;
+    }
+  });
+
+  var y = d3.scaleSymlog()
+    .domain([0, max])
+    .range([ height, 0 ]);
+
+  var tickValues = [];
+  var tickCount = 10;
+
+  for (var i = 0; i < tickCount; i++) {
+    tickValues.push(y.invert(height/tickCount*i));
+  }
+
+  svg.append("g")
+    .call(d3.axisLeft(y).tickValues(tickValues));
+
+  svg.append("g").attr("mask", "url(#mask)").selectAll("rect").data(data[2])
+    .enter().append("rect")
+      .attr("x", d => {
+        var tDate = d["date"];
+        var eDate = tDate.addDays(1);
+        var tWidth = x(eDate) - x(tDate);
+
+        return x(d["date"]) - tWidth/2;
+      })
+      .attr("y", 0)
+      .attr("stroke", "transparent")
+      .attr("fill", d => {
+        switch(d.prediction){
+          case "mangelhaft":
+            return "rgba(255,0,0,0.2)";
+            break;
+          case "NA":
+            return "url(#pattern)";
+            break;
+          default:
+            return "rgba(0,255,0,0.2)";
+            break;
+        }
+      })
+      .attr("width", (d,i) => {
+        var tDate = d["date"];
+        var eDate = tDate.addDays(1);
+        return x(eDate) - x(tDate);
+      })
+      .attr("height", height);
+
+  svg.append("path").attr("mask", "url(#mask)")
+    .datum(data[0])
+    .attr("fill", "rgba(0,0,0,0.1)")
+    .attr("stroke", "transparent")
+    .attr("d", d3.area()
+      .x(function(d) { return x(d["Datum"]); })
+      .y0(function(d) { return y(d["P2.5"]); })
+      .y1(function(d) { return y(d["P95"]); })
+    );
+
+  svg.append("path").attr("mask", "url(#mask)")
+    .datum(data[0])
+    .attr("stroke", "rgba(0,0,0,1)")
+    .attr("stroke-width", 1)
+    .attr("fill", "transparent")
+    .attr("d", d3.line()
+      .x(function(d) { return x(d["Datum"]); })
+      .y(function(d) { return y(d["P50"]); })
+    );
+
+  svg.append("g").attr("mask", "url(#mask)").selectAll("circle").data(data[1])
+    .enter().append("circle")
+      .attr("cx", d => x(d["date"]))
+      .attr("cy", d => y(parseFloat(d["eco"])))
+      .attr("r", 3)
+      .style("fill", "black");
+
+});
+
+</script>
