@@ -118,7 +118,7 @@ if(d3.selectAll('#map').size()>0){
   d3.csv(((is_detail)?'../':'') + 'new_build.csv?date='+date.getYear()+'-'+date.getMonth()+'-'+date.getDate()+':'+date.getHours()).then(function(data){
 
     data.sort(function(a,b){
-      return b.lng - a.lng;
+      return b.lat - a.lat;
     });
 
     gData = data;
@@ -212,7 +212,7 @@ if(d3.selectAll('#map').size()>0){
     updateMapContainer();
 
     data.forEach(function(marker) {
-      locations[marker.detail_id] = [marker.lat,marker.lng];
+      locations[marker.detail_id] = [marker.lng,marker.lat];
 
       var el = document.createElement('div');
       el.className = 'marker marker-'+marker.real_state;
@@ -225,7 +225,7 @@ if(d3.selectAll('#map').size()>0){
       }); 
 
       new mapboxgl.Marker(el, {offset:[-2,-8.5]})
-        .setLngLat([marker.lat,marker.lng])
+        .setLngLat([marker.lng,marker.lat])
         .addTo(map);
     });
 
