@@ -579,6 +579,8 @@ var timeLocale = d3.timeFormatLocale({
   "shortMonths": ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
 });
 
+
+
 var formatMillisecond = timeLocale.format(".%L"),
     formatSecond = timeLocale.format(":%S"),
     formatMinute = timeLocale.format("%I:%M"),
@@ -679,6 +681,7 @@ function drawGraph(measurements, predictions) {
       .range([ 0, width ]);
 
     svg.append("g")
+      .attr("id", "x-axis")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).ticks(7).tickFormat(multiFormat));
 
@@ -705,7 +708,7 @@ function drawGraph(measurements, predictions) {
     }
 
     svg.append("g")
-      .call(d3.axisLeft(y).tickValues(tickValues));
+      .call(d3.axisLeft(y).tickValues(tickValues).tickFormat(d3.format("d")));
 
     svg.append("g").attr("mask", "url(#mask)").selectAll("rect").data(predictions)
       .enter().append("rect")
