@@ -1206,6 +1206,10 @@ table.measurement_table tr.row-1 th{
 
 /*----- VIS -----*/
 
+#vis svg{
+  overflow: visible;
+}
+
 svg text{
  font-family: 'Open Sans';
  font-size:10px; 
