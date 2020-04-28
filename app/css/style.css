@@ -621,6 +621,9 @@ h2{
   clear:left;
   padding-bottom:10px;
   margin-bottom:0;
+  color: #B5050E;
+  font-size: 1.308em;
+  font-weight: 700;
 }
 
 .stufen-icon{
@@ -762,10 +765,14 @@ table.measurement_table tr.row-1 th{
 
 .detail-location a, .detail-amt a{
   text-decoration: none;
-  color:#000;
-  font-style: italic;
+  color:#003684;
   clear:both;
   display: block;
+}
+
+.detail-location a span, .detail-amt a span{
+  display:inline-block;
+  padding-top:5px;
 }
 
 .detail-amt p.small{
@@ -1809,7 +1816,7 @@ a[class*=" ic-fa-"]::before, a[class^="ic-fa-"]::before {
 
 .content-navi-top .beberlin {
   float:left;
-  margin:-9px 0 0 100px;
+  margin:-9px 0 0 90px;
 }
 
 .content-navi-top .beberlin img {
@@ -1837,7 +1844,7 @@ a[class*=" ic-fa-"]::before, a[class^="ic-fa-"]::before {
   background-image: none!important;
   filter: none;
   margin: 0 0 0 20px;
-  padding: 0;
+  padding: 20px 0 0 0;
   line-height: 1.385em;
   clear:both;
 }
@@ -1848,7 +1855,7 @@ a[class*=" ic-fa-"]::before, a[class^="ic-fa-"]::before {
   }
 
   .breadcrumb{
-    padding: 20px 0 0 0;
+    padding: 0;
   }
 }
 
@@ -1944,8 +1951,10 @@ a[class*=" ic-fa-"]::before, a[class^="ic-fa-"]::before {
   list-style: none;
 }
 
-.content-footer .nav .right {
-  float: right;
+@media screen and (min-width: 920px) {
+  .content-footer .nav .right {
+    float: right;
+  }
 }
 
 .content-footer .nav li a {
