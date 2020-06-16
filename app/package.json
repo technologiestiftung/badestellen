@@ -1,0 +1,26 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Badestellen Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "css": "node-sass css/style.css css/style-min.css --source-map true --output-style compressed",
+    "lint": "eslint js/light.js js/main.js",
+    "js": "uglifyjs js/light.js --compress --source-map --output js/light-min.js & uglifyjs js/main.js --compress --source-map --output js/main-min.js",
+    "build": "npm run lint & npm run css & npm run js"
+  },
+  "author": "sebastian-meier",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-standard": "^14.1.1",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "http-server": "^0.12.3",
+    "node-sass": "^4.14.1",
+    "uglify-js": "^3.9.4"
+  }
+}

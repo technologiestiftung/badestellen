@@ -1,1 +1,1 @@
-{"version":3,"sources":["light.js"],"names":["myFunction","x","document","getElementById","className"],"mappings":"AAKA,QAASA,cACL,GAAIC,GAAIC,SAASC,eAAe,WACZ,YAAhBF,EAAEG,UACFH,EAAEG,WAAa,cAEfH,EAAEG,UAAY","file":"light-min.js"}
+{"version":3,"sources":["js/light.js"],"names":["window","toggleNav","x","document","getElementById","className"],"mappings":"AAGAA,OAAOC,UAAY,WACjB,IAAIC,EAAIC,SAASC,eAAe,YACZ,WAAhBF,EAAEG,UACJH,EAAEG,WAAa,cAEfH,EAAEG,UAAY"}

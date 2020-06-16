@@ -5,3 +5,4 @@ config.json
 app/.DS_Store
 data-server-backup
 app/config.codekit3
+TODO.md

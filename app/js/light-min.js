@@ -1,2 +1,1 @@
-function myFunction(){var a=document.getElementById("myTopnav");"topnav"===a.className?a.className+=" responsive":a.className="topnav"}
-//# sourceMappingURL=./light-min.js.map
+window.toggleNav=function(){var x=document.getElementById("myTopnav");"topnav"===x.className?x.className+=" responsive":x.className="topnav"};
