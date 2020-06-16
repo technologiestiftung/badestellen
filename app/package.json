@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "http-server",
     "css": "node-sass css/style.css css/style-min.css --source-map true --output-style compressed",
     "lint": "eslint js/light.js js/main.js",
     "js": "uglifyjs js/light.js --compress --source-map --output js/light-min.js & uglifyjs js/main.js --compress --source-map --output js/main-min.js",
