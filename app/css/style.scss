@@ -22,10 +22,6 @@ body{
   box-sizing: content-box;
 }
 
-*{
-  outline: none;
-}
-
 ::-webkit-scrollbar {
     width: 5px;
     height: 3px;
@@ -535,7 +531,8 @@ h2{
   cursor:pointer;
 }
 
-#list li a:hover{
+#list li a:hover,
+#list li a:focus{
   background-color:rgba(37,15,118,0.5);
   cursor:pointer;
 }
@@ -678,6 +675,7 @@ hr.closer{
   width:50%;
   margin:20px 20px 20px 0;
   float:left;
+  line-height:0;
 }
 
 .detail-image img{
@@ -826,9 +824,12 @@ table.measurement_table tr.row-1 th{
 }
 
 .caption{
-  padding:0 10px;
+  padding:5px;
+  line-height:10px;
   font-size:10px;
-  color:rgba(0,0,0,0.8);
+  color:rgba(0,0,0,1);
+  background-color:#ECECEC;
+  display:block;
 }
 
 #footer{
@@ -850,7 +851,7 @@ table.measurement_table tr.row-1 th{
 
 #footnote{
   clear:both;
-  padding:20px 0 100px 0;
+  padding:20px 0 40px 0;
   text-align:center;
   margin-top: 0;
   border-top: none;
@@ -1349,6 +1350,10 @@ svg text{
   line-height: 19px;
   padding: 10px;
   background-color: transparent;
+
+  &:active, &:hover{
+    text-decoration:underline;
+  }
 }
 
 .portal-header a, .portal-header a:hover {
@@ -1402,6 +1407,7 @@ svg text{
 }
 
 .content-header .section-logo .institution {
+  font-weight: 700;
   font-size: 155%;
   line-height: 1.2em;
   color: #1a1a1a;
@@ -1409,9 +1415,8 @@ svg text{
 }
 
 .content-header .section-logo .title {
-  font-weight: 700;
   color: #000;
-  font-size: 155%;
+  font-size: 100%;
   line-height: 1.2em;
   display: inline-block;
 }
@@ -1485,7 +1490,11 @@ a[class*=" ic-fa-"]::before, a[class^="ic-fa-"]::before {
   content: "\f081";
 }
 
-.ic-fa-facebook::before, .ic-fa-flickr::before, .ic-fa-googleplus::before, .ic-fa-instagram::before, .ic-fa-pinterest::before, .ic-fa-rss::before, .ic-fa-snapchat::before, .ic-fa-twitter::before, .ic-fa-xing::before, .ic-fa-youtube::before {
+.ic-fa-access::before {
+  content: "\f29a";
+}
+
+.ic-fa-facebook::before, .ic-fa-access::before, .ic-fa-flickr::before, .ic-fa-googleplus::before, .ic-fa-instagram::before, .ic-fa-pinterest::before, .ic-fa-rss::before, .ic-fa-snapchat::before, .ic-fa-twitter::before, .ic-fa-xing::before, .ic-fa-youtube::before {
   color: #2F468A;
   font-size: 1.385em;
   vertical-align: -.08em;
@@ -2033,4 +2042,9 @@ a[class*=" ic-fa-"]:before, a[class^=ic-fa-]:before {
   src: url('https://www.berlin.de/i9f/v4/fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('https://www.berlin.de/i9f/v4/fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('https://www.berlin.de/i9f/v4/fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('https://www.berlin.de/i9f/v4/fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('https://www.berlin.de/i9f/v4/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
   font-weight: normal;
   font-style: normal;
+}
+
+/*--- COOKIE CONSENT ---*/
+.cc-message{
+  font-size:0.9em;
 }

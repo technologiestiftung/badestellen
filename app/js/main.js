@@ -142,7 +142,7 @@ if (d3.selectAll('#map').size() > 0) {
 
     var items = d3.select('#list ul').selectAll('li').data(listData).enter().append('li').style('background-image', function (d) {
       return 'url(' + ((isDetail) ? '../' : './') + 'images/badestellen/' + d.id + '.jpg)'
-    }).append('a').on('click', function () {
+    }).append('a').attr('href', '#').on('click', function () {
       var d = d3.select(this).datum()
       state.type = 'detail'
       state.id = d.detail_id
@@ -292,13 +292,13 @@ function openDetails (id, zoom) {
   }
 
   var html = '<div class="detail-header">' +
-              '  <a id="closebtn">&laquo;&nbsp;zurück&nbsp;zur&nbsp;Übersicht</a>' +
+              '  <a href="#" id="closebtn">&laquo;&nbsp;zurück&nbsp;zur&nbsp;Übersicht</a>' +
               '  <h1>' + data.name_lang + ' <span>' + data.bezirk + '</span></h1>' +
               '  <hr class="closer" />' +
               '</div>' +
               '<div class="detail-body">' +
               '  <div class="detail-image">' +
-              '    <img src="' + makeHTTPS(data.image) + '" alt="' + data.name + '" title="' + data.name + '"><br />' +
+              '    <img src="' + makeHTTPS(data.image) + '" alt="' + data.name + '" title="' + data.name + '">' +
               '    <span class="caption">Bild: LAGeSo</span>' +
               '  </div>' +
               '  <div class="detail-location">' +
@@ -434,6 +434,8 @@ function openDetails (id, zoom) {
               '<span class="legendElement"><img src="./images/visLegend-bg-gut.png" srcset="./images/visLegend-bg-gut.png 1x, ./images/visLegend-bg-gut@2x.png 2x"><span>Gute Wasserqualität laut Prognose</span></span>' +
               '<span class="legendElement"><img src="./images/visLegend-bg-schlecht.png" srcset="./images/visLegend-bg-schlecht.png 1x, ./images/visLegend-bg-schlecht@2x.png 2x"><span>Basierend auf der Prognose wird vom Baden abgeraten</span></span>' +
               '<span class="legendElement"><img src="./images/visLegend-bg-na.png" srcset="./images/visLegend-bg-na.png 1x, ./images/visLegend-bg-na@2x.png 2x"><span>Nicht genügend Daten für eine Prognose</span></span>' +
+              '<span class="legendElement"><span><a href="./details/measurements_' + data.detail_id + '.csv">Messungsdaten herunterladen</a></span></span>' +
+              '<span class="legendElement"><span><a href="./details/predictions_' + data.id + '.csv">Vorhersagedaten herunterladen</a></span></span>' +
               '</div>' +
               '  </div>' +
               '  <div class="detail-amt">' +
@@ -532,6 +534,8 @@ function drawGraph (measurements, predictions) {
   var margin = { top: 5, right: 5, bottom: 30, left: 60 }
   var width = 400 - margin.left - margin.right
   var height = 200 - margin.top - margin.bottom
+
+  d3.select('#vis *').remove()
 
   var root = d3.select('#vis')
     .append('svg')
