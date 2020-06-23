@@ -55,14 +55,71 @@
 </head>
 <body>
   <div id="container">
-    <div class="topnav" id="myTopnav">
-      <a href="javascript:void(0);" class="icon" onclick="toggleNav()"></a>
-      <a href="index.html" class="home active menu-left"><img src="./images/Logo-Icon-invers@2x.png" width="20" height="20" alt="Berliner Badestellen" />Berliner Badestellen</a>
-      <a href="faq.html" class="menu-right">FAQ</a>
-      <a href="info.html" class="menu-right">Vorhersagemodell</a>
+    <!-- START BERLIN.DE -->
+    <div class="container-portal-header">
+      <div class="html5-header portal-header hidden-phone">
+        <div class="red-line"></div>
+        <div class="html5-figure main-image">
+          <a href="https://www.berlin.de/">
+            <img class="portal-logo hide-mobile" src="//www.berlin.de/i9f/v4/css/images/berlin_de.png" alt="Zur Homepage von Berlin.de">
+          </a>
+        </div>
+        <nav aria-label="Portal Navigation">
+          <h6 class="aural">Portal Navigation</h5>
+          <p class="aural" id="bo-portalnavilinkslabel">Besuchen Sie auch unsere anderen Themen-Bereiche:</p>
+          <ul class="portal-navi" id="bo-portalnavilinks" aria-labelledby="bo-portalnavilinkslabel">
+            <li class="active"><a href="https://www.berlin.de/politik-verwaltung-buerger/">Politik, Verwaltung, Bürger</a></li>
+            <li><a href="https://www.berlin.de/kultur-und-tickets/">Kultur &amp; Ausgehen</a></li>
+            <li><a href="https://www.berlin.de/tourismus/">Tourismus</a></li>
+            <li><a href="https://www.berlin.de/wirtschaft/">Wirtschaft</a></li>
+            <li><a href="https://www.berlin.de/special/">Lifestyle</a></li>
+            <li><a href="https://www.berlin.de/adressen/">BerlinFinder</a></li>
+            <li><a href="https://www.berlin.de/stadtplan/">Stadtplan</a></li>
+          </ul>
+        </nav>
+      </div>
     </div>
-    <div id="content" class="nomap">
-      <div id="home">
+    <!-- END BERLIN.DE -->
+
+    <div id="innercontainer">
+
+      <div class="html5-header content-header ">
+        <div class="html5-section section-logo without-logo">
+          <div class="html5-section text">
+            <span class="institution">Berliner Badestellen</span>
+            <span class="title">Landesamt für Gesundheit und Soziales</span>
+          </div>
+        </div>
+      
+        <div class="html5-nav meta-navi">
+          <ul class="nav">
+            <li class="odd pos0"><a href="https://www.berlin.de/lageso/">Zurück zum LAGeSo &raquo;</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="content-navi-wrapper navbar hidden-phone">
+        <div class="html5-nav content-navi-top navbar-inner">
+          <nav class="nav-collapse mainnav-collapse collapse" aria-label="Hauptnavigation">
+            <h6 class="aural">Hauptnavigation</h5>
+            <ul class="nav level1">
+              <li>
+                <a href="index.html">Liste der Badestellen</a>
+              </li>
+              <li class="">
+                <a href="info.html">Vorhersagemodell</a>
+              </li>
+              <li class="has-submenu">
+                <a href="faq.html">FAQ</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <div id="content" class="nomap">
+        <div id="home">
         <h1>Impressum</h1>
         <h4>Angaben zur Technologiestiftung Berlin </h4>
         <p><b>Technologiestiftung Berlin </b></p>
@@ -94,11 +151,23 @@
         <a href="https://bmbf.nawam-rewam.de/"><img src="images/partner/ReWaM_NaWaM@2x.png" width="311" alt="ReWaM NaWaM" /></a><br /><br />
       </div>
     </div>
+
+    <div class="html5-footer content-footer" role="contentinfo">
+      <div class="html5-nav">
+        <ul class="nav">
+          <li><a href="/impressum.html" class="ic-fa-impressum">Impressum</a></li>
+          <li><a href="/datenschutz.html" class="ic-fa-lock">Datenschutzerklärung</a></li>
+          <li><a href="/barrierefreiheit.html" class="ic-fa-access">Digitale Barrierefreiheitserklärung</a></li>
+          <li class="right"><a class="ic-fa-print" href="javascript:window.print();">Druckversion</a></li>
+          <li class="right"><a class="ic-fa-totop" href="#top">zum Seitenanfang</a></li>
+        </ul>
+      </div>
+    </div>
+
   </div>
-  <div id="footnote">
-    <a href="kontakt.html">Kontakt</a> | <a href="impressum.html">Impressum</a> | <a href="datenschutz.html">Datenschutz</a> | Copyright 2018
-  </div>
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+</div>
+<div id="footnote"></div>
+  <script src="/js/d3.v5.min.js"></script>
   <script src='https://api.mapbox.com/mapbox-gl-js/v0.40.0/mapbox-gl.js'></script>
   <script src="js/light-min.js"></script>
 <!-- Matomo -->
