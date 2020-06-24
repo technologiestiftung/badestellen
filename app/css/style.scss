@@ -2062,3 +2062,7 @@ a[class*=" ic-fa-"]:before, a[class^=ic-fa-]:before {
 .cc-message{
   font-size:0.9em;
 }
+
+.cc-window.cc-invisible{
+  display:none !important;
+}

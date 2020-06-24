@@ -17,7 +17,7 @@ window.cookieInstance = new CookieConsent({
   hasTransition: false,
   cookie: {
     name: 'BadestellenConsentCookie',
-    domain: '127.0.0.1'
+    domain: 'badestellen-demo.lab.technologiestiftung-berlin.de'
   },
   content: {
     message: 'Zur Erhebung der Nutzer*innenzahlen werden Cookies genutzt.',

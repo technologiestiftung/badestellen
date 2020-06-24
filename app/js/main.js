@@ -1,4 +1,4 @@
-/* global d3, isDetail, mapboxgl */
+/* global d3, isDetail, mapboxgl, CookieConsent */
 /* exported toggleNav */
 
 Date.prototype.addDays = function (days) {
@@ -718,3 +718,24 @@ window.toggleNav = function () {
     x.className = 'topnav'
   }
 }
+
+window.cookieInstance = new CookieConsent({
+  container: document.getElementById('cookieconsent'),
+  hasTransition: false,
+  cookie: {
+    name: 'BadestellenConsentCookie',
+    domain: 'badestellen-demo.lab.technologiestiftung-berlin.de'
+  },
+  content: {
+    message: 'Zur Erhebung der Nutzer*innenzahlen werden Cookies genutzt.',
+    link: 'Sie können dies hier deaktivieren &raquo;',
+    href: '/datenschutz.html#optout',
+    dismiss: 'Akzeptieren'
+  },
+  palette: {
+    popup: { background: '#c7d9ff', color: '#253276' },
+    button: { background: '#253276', color: '#fff' }
+  },
+  revokable: false,
+  theme: 'edgeless'
+})
