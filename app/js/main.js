@@ -705,7 +705,6 @@ function drawGraph (measurements, predictions) {
   } else {
     d3.selectAll('#vis, #visLegend').style('display', 'none')
   }
-  // TODO: Draw graphs for Lageso Data
 }
 
 /*
