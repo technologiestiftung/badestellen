@@ -111,7 +111,7 @@ module.exports = {
 					//If Lageso is even worse, stick to Lageso
 					if(r.real_state == 6 || r.real_state == 5){
 						//Do nothing Lageso overrules
-					}else if(r.real_state == 2 || r.real_state == 4 || r.real_state == 6){
+					}else if(r.real_state == 2 || r.real_state == 4 || r.real_state == 6 || r.algen_txt == 'A'){
 						//Lageso has detected algae
 						r.real_state = 14
 						r.state = 'organge'
@@ -134,6 +134,19 @@ module.exports = {
 				}
 			}
 
+			if (r.algen_txt == 'A') {
+				switch(r.real_state){
+					case 1: r.real_state = 2; break;
+					case 3: r.real_state = 4; break;
+					case 5: r.real_state = 6; break;
+					case 7: r.real_state = 8; break;
+					case 11: r.real_state = 12; break;
+					case 13: r.real_state = 14; break;
+					case 15: r.real_state = 16; break;
+					case 17: r.real_state = 18; break;
+				}
+			}
+
 			state_map.push({
 				wasserqualitaet : r.wasserqualitaet,
 				real_state : r.real_state,
@@ -142,7 +155,8 @@ module.exports = {
 				prediction_date : r.p_date,
 				prediction : r.prediction,
 				id: r.id,
-				name: r.name
+				name: r.name,
+				algen: r.algen_txt
 			})
 		})
 
@@ -164,6 +178,7 @@ module.exports = {
 			states_html += '<td>' + s.prediction + '</td>'
 			states_html += '<td>' + s.prediction_date + '</td>'
 			states_html += '<td>' + s.real_state + '</td>'
+			states_html += '<td>' + s.algen_txt + '</td>'
 			states_html += '</tr>'
 		})
 
