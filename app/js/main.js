@@ -212,7 +212,7 @@ if(d3.selectAll('#map').size()>0){
     updateMapContainer();
 
     data.forEach(function(marker) {
-      locations[marker.detail_id] = [marker.lng,marker.lat];
+      locations[marker.detail_id] = [marker.lat,marker.lng];
 
       var el = document.createElement('div');
       el.className = 'marker marker-'+marker.real_state;
@@ -225,7 +225,7 @@ if(d3.selectAll('#map').size()>0){
       }); 
 
       new mapboxgl.Marker(el, {offset:[-2,-8.5]})
-        .setLngLat([marker.lng,marker.lat])
+        .setLngLat([marker.lat,marker.lng])
         .addTo(map);
     });
 
@@ -681,7 +681,7 @@ function drawGraph(measurements, predictions) {
       .range([ 0, width ]);
 
     svg.append("g")
-      .attr("id", "x-axis")
+      // .attr("id", "x-axis")
       .attr("transform", "translate(0," + height + ")")
       .call(d3.axisBottom(x).ticks(7).tickFormat(multiFormat));
 
@@ -708,7 +708,7 @@ function drawGraph(measurements, predictions) {
     }
 
     svg.append("g")
-      .call(d3.axisLeft(y).tickValues(tickValues).tickFormat(d3.format("d")));
+      .call(d3.axisLeft(y).tickValues(tickValues)); // .tickFormat(d3.format("d"))
 
     svg.append("g").attr("mask", "url(#mask)").selectAll("rect").data(predictions)
       .enter().append("rect")
