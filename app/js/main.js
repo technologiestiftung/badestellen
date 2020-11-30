@@ -9,29 +9,29 @@ Date.prototype.addDays = function(days) {
 
 /*----- Feedback Form -----*/
 
-d3.select("#feedbackBtn")
-  .on("click", function(){
-    d3.select("#feedbackContainer")
-      .style("display", "block")
-      .on("click", function(){
+// d3.select("#feedbackBtn")
+//   .on("click", function(){
+//     d3.select("#feedbackContainer")
+//       .style("display", "block")
+//       .on("click", function(){
 
-        if (d3.event.target.id === "feedbackContainer") {
-          d3.select("#feedbackContainer")
-            .style("display", "none");
-        }
-      });
-  });
+//         if (d3.event.target.id === "feedbackContainer") {
+//           d3.select("#feedbackContainer")
+//             .style("display", "none");
+//         }
+//       });
+//   });
 
-d3.select("#feedbackSubmit")
-  .on("click", function(){
-    var formElement = document.querySelector("#feedback");
-    var request = new XMLHttpRequest();
-    request.open("POST", "https://tsb.ara.uberspace.de/badedaten/feedback");
-    request.send(new FormData(formElement));
-    d3.select("#feedbackContainer")
-      .style("display", "none");
-    formElement.reset();
-  });
+// d3.select("#feedbackSubmit")
+//   .on("click", function(){
+//     var formElement = document.querySelector("#feedback");
+//     var request = new XMLHttpRequest();
+//     request.open("POST", "https://tsb.ara.uberspace.de/badedaten/feedback");
+//     request.send(new FormData(formElement));
+//     d3.select("#feedbackContainer")
+//       .style("display", "none");
+//     formElement.reset();
+//   });
 
 /*----- Feedback Form End -----*/
 
@@ -115,7 +115,7 @@ if(d3.selectAll('#map').size()>0){
 
   var date = new Date()
 
-  d3.csv(((is_detail)?'../':'') + 'new_build.csv?date='+date.getYear()+'-'+date.getMonth()+'-'+date.getDate()+':'+date.getHours()).then(function(data){
+  d3.csv('http://flusshygiene-berlin-data.s3.eu-central-1.amazonaws.com/lageso/new_build.csv?date='+date.getYear()+'-'+date.getMonth()+'-'+date.getDate()+':'+date.getHours()).then(function(data){
 
     data.sort(function(a,b){
       return b.lat - a.lat;
@@ -143,7 +143,7 @@ if(d3.selectAll('#map').size()>0){
     d3.select('#list ul').selectAll('li').remove();
 
     var items = d3.select('#list ul').selectAll('li').data(listData).enter().append('li').style('background-image', function(d){
-        return 'url('+((is_detail)?'../':'./') +'images/badestellen/'+d.id+'.jpg)';
+        return 'url(http://flusshygiene-berlin-data.s3.eu-central-1.amazonaws.com/lageso/images/badestellen/'+d.id+'.jpg)';
       }).append('a').on('click', function(){
       var d = d3.select(this).datum();
       state.type = 'detail';
@@ -528,8 +528,8 @@ function openDetails(id, zoom){
 
   if(data.prediction != null && data.prediction != 'null') {
     
-    d3.csv("./details/measurements_" + data.detail_id + ".csv").then(function(measurementsData){
-      d3.csv("./details/predictions_" + data.id + ".csv").then(function(predictionsData){
+    d3.csv("http://flusshygiene-berlin-data.s3.eu-central-1.amazonaws.com/lageso/details/measurements_" + data.detail_id + ".csv").then(function(measurementsData){
+      d3.csv("http://flusshygiene-berlin-data.s3.eu-central-1.amazonaws.com/lageso/details/predictions_" + data.id + ".csv").then(function(predictionsData){
 
         predictionsData.forEach(function(d){
           d.date = d3.timeParse("%Y-%m-%d")(d.date);
@@ -557,7 +557,7 @@ function openDetails(id, zoom){
     });
 
   } else {
-    d3.csv("./details/measurements_" + data.detail_id + ".csv").then(function(measurementsData){
+    d3.csv("http://flusshygiene-berlin-data.s3.eu-central-1.amazonaws.com/lageso/details/measurements_" + data.detail_id + ".csv").then(function(measurementsData){
 
       drawGraph(measurementsData, []);
 
