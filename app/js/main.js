@@ -194,7 +194,7 @@ if(d3.selectAll('#map').size()>0){
 
     map = new mapboxgl.Map({
       container: 'map',
-      style: "mapbox://styles/technologiestiftung/cjz09bylr5f8k1cp83p7cwdaf",
+      style: 'mapbox://styles/mapbox/light-v9', // "mapbox://styles/technologiestiftung/cjz09bylr5f8k1cp83p7cwdaf",
       center: [13.4244,52.5047],
       zoom: 10
     });
