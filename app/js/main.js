@@ -143,7 +143,7 @@ if(d3.selectAll('#map').size()>0){
     d3.select('#list ul').selectAll('li').remove();
 
     var items = d3.select('#list ul').selectAll('li').data(listData).enter().append('li').style('background-image', function(d){
-        return 'url(https://flusshygiene-berlin-data.s3.eu-central-1.amazonaws.com/lageso/images/badestellen/'+d.id+'.jpg)';
+        return 'url(https://flusshygiene-berlin-data.s3.eu-central-1.amazonaws.com/lageso/images/'+d.id+'.jpg)';
       }).append('a').on('click', function(){
       var d = d3.select(this).datum();
       state.type = 'detail';
