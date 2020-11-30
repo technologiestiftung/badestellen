@@ -190,7 +190,7 @@ if(d3.selectAll('#map').size()>0){
       style_source = ((is_detail)?'../':'./') +'tile_style.json';
     }
 
-    mapboxgl.accessToken = 'pk.eyJ1IjoidGVjaG5vbG9naWVzdGlmdHVuZyIsImEiOiJjanl6bmRtd2swMzh0M2NxbjFtaWxtNnZnIn0.xBc9YIbxGpnXTP-epGZUfw';
+    mapboxgl.accessToken = 'pk.eyJ1IjoianVsaTg0IiwiYSI6ImNraTBpazBqbzMwazAyc2t6Y25pdnVwb3AifQ.s6Uck73RqMtgps2MjwrSAg';
 
     map = new mapboxgl.Map({
       container: 'map',
