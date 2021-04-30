@@ -7,33 +7,6 @@ Date.prototype.addDays = function (days) {
   return date
 }
 
-/* ----- Feedback Form ----- */
-
-// d3.select('#feedbackBtn')
-//   .on('click', function () {
-//     d3.select('#feedbackContainer')
-//       .style('display', 'block')
-//       .on('click', function () {
-//         if (d3.event.target.id === 'feedbackContainer') {
-//           d3.select('#feedbackContainer')
-//             .style('display', 'none')
-//         }
-//       })
-//   })
-
-// d3.select('#feedbackSubmit')
-//   .on('click', function () {
-//     var formElement = document.querySelector('#feedback')
-//     var request = new XMLHttpRequest()
-//     request.open('POST', 'https://tsb.ara.uberspace.de/badedaten/feedback')
-//     request.send(new FormData(formElement))
-//     d3.select('#feedbackContainer')
-//       .style('display', 'none')
-//     formElement.reset()
-//   })
-
-/* ----- Feedback Form End ----- */
-
 var state = {
   ani: false,
   id: null,
@@ -187,7 +160,8 @@ if (d3.selectAll('#map').size() > 0) {
         if (d.name.indexOf(d.gewaesser) >= 0) {
           textTitle += d.name
         } else {
-          textTitle += d.name + '</span><br class="unresposive-break" /><span class="unresponsive-sub">' + d.gewaesser
+          // <br class="unresposive-break" />
+          textTitle += d.name + '</span><br /><span class="unresponsive-sub">' + d.gewaesser
         }
 
         textTitle += '</span>'
@@ -733,18 +707,6 @@ function openDetails (id, zoom) {
 //     d3.selectAll('#vis, #visLegend').style('display', 'none')
 //   }
 // }
-
-/*
- * Responsive Menu Button
- */
-window.toggleNav = function () {
-  var x = document.getElementById('myTopnav')
-  if (x.className === 'topnav') {
-    x.className += ' responsive'
-  } else {
-    x.className = 'topnav'
-  }
-}
 
 window.cookieInstance = new CookieConsent({
   container: document.getElementById('cookieconsent'),

@@ -1,0 +1,47 @@
+/*----- VIS -----*/
+
+#vis svg{
+  overflow: visible;
+}
+
+svg text{
+ font-size:10px; 
+}
+
+#vis h3.title{
+  padding-bottom:0px;
+}
+
+#visLegend{
+  font-size:12px;
+}
+
+#visLegend h4{
+  margin:0;
+  padding:0;
+}
+
+.legendElement{
+  display: block;
+  padding-top:10px;
+  clear:both;
+}
+
+.legendElement:first-child{
+  padding-top:0;
+}
+
+.legendElement img{
+  margin-right:5px;
+  float:left;
+}
+
+.legendElement span{
+  margin-top:-1px;
+  float:left;
+}
+
+#x-axis text{
+  text-anchor: end;
+  transform: translate(-6px,2px) rotate(-45deg);
+}
