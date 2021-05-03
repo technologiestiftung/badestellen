@@ -1,0 +1,469 @@
+<script lang="ts">
+  import * as animateScroll from 'svelte-scrollto'
+  animateScroll.scrollTo(0)
+</script>
+
+<h2>Datenschutzerklärung</h2>
+<h2>1. Allgemeine Informationen</h2>
+<br /><br />
+<h4>1.1 Zweck der Datenschutzerklärung</h4>
+<p>
+  Die Datenschutzerklärung soll Sie über Art, Umfang und Zweck der von der
+  Technologiestiftung Berlin erhobenen, genutzten und verarbeitenden Daten sowie Ihre
+  Rechte in Bezug auf Datenschutz informieren. Die Technologiestiftung Berlin ist sich der
+  Verantwortung für den Schutz von personenbezogenen Daten bewusst und setzt sich
+  besonders dafür ein, dass Ihre Privatsphäre geschützt wird.
+</p>
+<p>
+  Personenbezogene Daten im Sinne der Datenschutz-Grundverordnung&nbsp; (DSGVO -
+  Verordnung (EU) 2016/679) sind alle Informationen, anhand derer eine Person eindeutig
+  identifizierbar ist. Im Zuge der Anwendung der DSGVO ab dem 25. Mai 2018 hat die
+  Technologiestiftung Berlin zahlreiche Maßnahmen umgesetzt, um den Schutz Ihrer Daten zu
+  gewährleisten und eine Nutzung nach einer Abwägung der Eigeninteressen zu minimieren.
+</p>
+<h4>1.2 Verantwortliche</h4>
+<p>
+  Die Verantwortliche im Sinne der DSGVO, sonstiger in den Mitgliedstaaten der
+  Europäischen Union geltenden Datenschutzgesetze und anderer Bestimmungen mit
+  datenschutzrechtlichem Charakter ist die Technologiestiftung Berlin.
+</p>
+<p>
+  Technologiestiftung Berlin<br />Grunewaldstraße 61-62<br />10825 Berlin<br />Deutschland
+</p>
+<p>
+  Tel.: 030 20 96 99 90<br />E-Mail:
+  <span style="background-color: rgb(255, 255, 255);"
+    ><a
+      href="mailto:info@technologiestiftung-berlin.de"
+      title="Opens internal link in current window"
+      class="mail">info(at)technologiestiftung-berlin.de</a
+    ></span
+  ><br />Website:
+  <a href="http://www.technologiestiftung-berlin.de" target="_blank"
+    >www.technologiestiftung-berlin.de</a
+  >
+</p>
+<p>
+  Für Anfragen und Auskünfte zum Datenschutz erreichen Sie unseren Datenschutzbeauftragten
+  unter:
+</p>
+<p>
+  Michael Scherer <br />Technologiestiftung Berlin<br />Grunewaldstraße 61-62<br />10825
+  Berlin<br />Deutschland
+</p>
+<p>
+  Tel.: 030 20 96 99 951<br />E-Mail:
+  <span style="background-color: rgb(255, 255, 255);"
+    ><a
+      href="mailto:scherer@technologiestiftung-berlin.de"
+      title="Opens internal link in current window"
+      class="mail">scherer(at)technologiestiftung-berlin.de</a
+    ></span
+  >
+</p>
+<h4>1.3 Allgemeine Zweckbestimmung der Datenerhebung, -verarbeitung und -nutzung</h4>
+<p>
+  Die <a
+    href="https://www.technologiestiftung-berlin.de/de/stiftung/"
+    title="Opens internal link in current window"
+    target="_blank"
+    class="external-link-new-window">Technologiestiftung Berlin</a
+  > ist eine rechtsfähige gemeinnützige Stiftung bürgerlichen Rechts. Im Rahmen der Tätigkeiten
+  der Stiftung ist es notwendig, personenbezogene Daten zu handhaben.
+</p>
+<p>
+  Personenbezogene Daten werden für die folgenden Zwecke erhoben, verarbeitet und genutzt:
+</p>
+<ul>
+  <li>
+    Informationen über die Technologiestiftung und Einladungen zu Aktivitäten der
+    Technologiestiftung
+  </li>
+  <li>Geschäftspartner*innen- und Interessent*innenbetreuung&nbsp;</li>
+  <li>Personalmanagement</li>
+  <li>internes und externes Rechnungswesen</li>
+  <li>Beantragung und Bewirtschaftung von öffentlichen und privaten Mitteln</li>
+  <li>Bewirtschaftung eigener Projektförderungen</li>
+</ul>
+<p>
+  Dabei kann es dazu kommen, dass die Daten im Rahmen der gesetzlichen Vorgaben an Dritte
+  zur Verarbeitung weitergegeben werden, da ein berechtigtes Interesse oder eine
+  Verpflichtung besteht. Dies können folgende Dritte sein:
+</p>
+<ul>
+  <li>
+    Dienstleister*innen zur Auftragsverarbeitung nach Art. 29 und Art. 6 Abs1 a und f
+    DSGVO
+  </li>
+  <li>
+    interne Stellen, soweit diese Daten im Rahmen ordnungsgemäßer Aufgabenerfüllung
+    benötigt werden nach Art. 6 Abs1 a und f DSGVO
+  </li>
+  <li>
+    öffentliche Stellen, sofern vorrangige Rechtsvorschriften dies erfordern nach Art. 6
+    Abs.1 c DSGVO
+  </li>
+  <li>externe Stellen zur ordnungsgemäßen Erfüllung von Verträgen Art.6 Abs.1 b DSGVO</li>
+</ul>
+<h4>1.4 Auskunft, Berichtigung und Widerruf</h4>
+<p>
+  Als betroffene Person, deren personenbezogene Daten die Technologiestiftung Berlin
+  erhoben haben könnte, haben Sie das Anrecht, auf Antrag eine vollständige Auskunft über
+  die bei uns gespeicherten Daten zu erhalten. Das schließt sämtliche personenbezogenen
+  Datensätze und deren Erhebung, Zwecke und Speicherfristen mit ein.
+</p>
+<p>
+  Außerdem haben Sie das Recht, betroffene Daten zu korrigieren bzw. korrigieren zu
+  lassen. Sollten Sie eine Einwilligung für die Verwendung Ihrer Daten erteilt haben,
+  können Sie diese jederzeit widerrufen.
+</p>
+<p>
+  Kontaktieren Sie in solchen Fällen den unter 1.2 genannten Datenschutzbeauftragten der
+  Technologiestiftung Berlin.
+</p>
+<h4>1.5 Löschung und Sperrung von personenbezogenen Daten</h4>
+<p>
+  Die erhobenen personenbezogenen Daten werden generell nur für den Zeitraum ihres Zweckes
+  gespeichert und verarbeitet. Sollte dieser Zweck nicht mehr gegeben sein, werden die
+  Daten in regelmäßigen Abständen gelöscht.
+</p>
+<p>
+  Sie können uns jederzeit kontaktieren und verlangen, dass Ihre personenbezogenen Daten
+  gelöscht oder gesperrt werden. Kontaktieren Sie dafür den unter 1.2 genannten
+  Datenschutzbeauftragten der Technologiestiftung Berlin.
+</p>
+<p>
+  Eine Sperrungsmitteilung bedeutet, dass die Technologiestiftung Berlin Ihren Datensatz
+  nur noch für von Ihnen bestimmte Zwecke einsetzen darf. Es erfolgt dabei keine Löschung
+  des Datensatzes.
+</p>
+<p>
+  Bitte beachten Sie, dass die Technologiestiftung an Speicherfristen Europäischer
+  Richtlinien- und Verordnungsgeber*innen und andere gesetzliche Vorschriften gebunden
+  ist. In diesem konkreten Fall werden wir Sie informieren und eine Löschung nach Ablauf
+  der Frist vornehmen.
+</p>
+<h2>2. Relevante Dienste</h2>
+<h4>2.1 Websites</h4>
+<p>Die Technologiestiftung Berlin bietet im Rahmen ihrer Arbeit folgende Websites an:</p>
+<ul>
+  <li>
+    <a href="http://www.technologiestiftung-berlin.de" target="_blank"
+      >www.technologiestiftung-berlin.de</a
+    >
+  </li>
+  <li>
+    <a href="http://www.berlin-innovation.de" target="_blank">www.berlin-innovation.de</a>
+  </li>
+  <li>
+    <a href="http://www.codingklassenfahrt.de" target="_blank"
+      >www.codingklassenfahrt.de</a
+    >
+  </li>
+  <li><a href="http://www.odis-berlin.de" target="_blank">www.odis-berlin.de</a></li>
+  <li><a href="http://www.kita-suche.de" target="_blank">www.kita-suche.de</a></li>
+  <li>
+    <a href="http://breitband.lab.technologiestiftung-berlin.de/" target="_blank"
+      >http://breitband.lab.technologiestiftung-berlin.de/</a
+    >
+  </li>
+  <li>
+    <a href="http://www.badegewaesser-berlin.de" target="_blank"
+      >www.badegewaesser-berlin.de</a
+    >
+  </li>
+  <li>
+    <a href="http://badegewaesser.berlin.de" target="_blank">badegewaesser.berlin.de</a>
+  </li>
+  <li>
+    <a href="http://www.kultur-b-digital.de" target="_blank">www.kultur-b-digital.de</a>
+  </li>
+  <li>
+    <a href="https://www.citylab-berlin.org/" target="_blank">www.citylab-berlin.org</a>
+  </li>
+</ul>
+<p>
+  Generell gelten für diese Domains und deren Subdomains die gleichen
+  Datenschutzbestimmungen. Besonderheiten finden Sie unter Punkt 3.
+</p>
+<p>
+  Die Internetpräsenz der Stiftung ist grundsätzlich ohne jede Angabe Ihrer
+  personenbezogenen Daten frei nutzbar. Allerdings werden Daten während der Nutzung
+  erhoben.
+</p>
+<p>
+  Sobald Sie die Domain <a href="http://www.technologiestiftung-berlin.de" target="_blank"
+    >www.technologiestiftung-berlin.de</a
+  >&nbsp;oder eine der oben genannten Seiten mit Ihrem Gerät aufrufen, werden automatisch
+  durch den benutzten Browser eine Reihe von Daten übermittelt und temporär in einem
+  Logfile gespeichert.&nbsp;
+</p>
+<p>
+  Folgende Daten werden bis zur automatischen Löschung nach einem Monat erfasst, sofern
+  Sie nicht über Ihre individuellen Browsereinstellungen eine entsprechende Anonymisierung
+  vorgenommen haben:
+</p>
+<ul>
+  <li>IP-Adresse</li>
+  <li>Datum und Uhrzeit des Zugriffs</li>
+  <li>Name und URL der abgerufenen Seite oder Datei</li>
+  <li>Website, von der Sie uns erreicht haben</li>
+  <li>Browser</li>
+</ul>
+<p>Die so erhobenen Daten dienen dazu,</p>
+<ul>
+  <li>einen reibungsfreien Verbindungsaufbau der Seite zu gewährleisten</li>
+  <li>die Systemsicherheit und Stabilität der Seite zu verbessern</li>
+  <li>administrative Zwecke zu erfüllen, wie z.B. die Verhinderung von Missbrauch</li>
+</ul>
+<h4>2.2 Cookies</h4>
+<p>
+  Cookies sind Daten, die auf Ihrem Datenträger beim Besuch von Websites gespeichert
+  werden und im Austausch mit unserer Website bestimmte Daten und Einstellungen
+  speichern.&nbsp;
+</p>
+<p>
+  Sie haben die Möglichkeit, dem Setzen von Cookies über die jeweiligen
+  Browser-Einstellungen oder mit Hilfe anderer&nbsp; Erweiterungen wie Ghostery oder
+  uBlock generell zu widersprechen bzw. diese einzuschränken. Welche Erweiterungen Sie mit
+  Ihrem Internetbrowser nutzen können, finden Sie auf den jeweiligen
+  Hersteller*innenseiten.
+</p>
+<p>
+  Sie können bei der erstmaligen Nutzung unserer Online-Dienste eine Entscheidung treffen,
+  ob Sie der Technologiestiftung Berlin erlauben, Cookies zur Verbesserung des
+  Online-Angebots zu setzen oder nicht.&nbsp;
+</p>
+<p>
+  Wir nutzen Cookies ausschließlich für die statistische Auswertung unserer Webauftritte
+  (siehe Punkt 2.3) und erheben nur pseudonymisierte Daten.
+</p>
+<h4>2.3 Webanalysetool Matamo</h4>
+<p>
+  Für eine genauere Analyse der Besucher*innenstatistiken setzen wir das Webanalysetool
+  Matamo, ehem. Piwik, ein. Dies ist eine Anwendung der Firma Innocraft (InnoCraft Ltd,
+  150 Willis St, 6011 Wellington, New Zealand).
+</p>
+<p>
+  Das Tool kann mit Hilfe von Cookies Aktivitäten auf unserer Website nachverfolgen und
+  uns eine Auswertung erstellen. Folgende Informationen sind dadurch für uns auswertbar:
+</p>
+<ul>
+  <li>
+    Aktionen: Seitenbesuche, Linkklicks, Downloads, Eingangs- und Ausgangsseite sowie der
+    jeweilige Zeitpunkt der Aktion
+  </li>
+  <li>
+    Informationen über Benutzergeräte und Einstellungen : Hersteller/Marke,
+    Modell/Geräteversion, Gerätetyp, Bildschirmauflösung, Spracheinstellung des Browsers
+  </li>
+  <li>Informationen über den Standort: Land des Zugriffs</li>
+</ul>
+<p>
+  Matamo verarbeitet Daten pseudonymisiert. Die Daten werden von Matamo anonymisiert,
+  bevor eine Anzeige für uns erfolgt. Wir können demnach keine Rückschlüsse auf die
+  Identität der jeweiligen Nutzerin/des jeweiligen Nutzers vornehmen.
+</p>
+<p>
+  Zweck der Erhebung ist es, innerhalb der Webpräsenz mögliche Fehler zu erkennen und zu
+  lösen sowie den Inhalt den Bedürfnissen unserer Besucher*innen anzupassen und zu
+  optimieren. Diese Interessen sind nach Art. 6. Abs 1 S.1. lit f DSGVO berechtigt. Nur
+  die Technologiestiftung Berlin hat Zugriff auf diese Daten. Eine Weitergabe an Dritte
+  erfolgt nicht.
+</p>
+<p>
+  Neben den unter 2.2 aufgeführten Möglichkeiten, Cookies über die Browsereinstellungen zu
+  verweigern, können Sie auch direkt beim Webanalysetool eine Opt-Out-Möglichkeit wählen:
+</p>
+<iframe
+  title="Optout Screen"
+  id="optout"
+  style="border: 0; height: 200px; width: 600px;"
+  src="https://piwik.technologiestiftung-berlin.de/index.php?module=CoreAdminHome&amp;action=optOut&amp;language=de"
+/>
+<p>
+  Matamo ist eine freie Open-Source-Software und setzt hohe Standards, um Datenmissbrauch
+  zu vermeiden. Mehr Informationen finden Sie <a
+    href="https://matomo.org/privacy/"
+    title="Opens internal link in current window"
+    target="_blank"
+    class="external-link-new-window">hier</a
+  >.
+</p>
+<p>
+  Kontaktieren Sie bei Nachfragen den unter 1.2 genannten Datenschutzbeauftragten der
+  Technologiestiftung Berlin.
+</p>
+<h4>2.4 Newsletterdienst Sendinblue</h4>
+<p>
+  Die Technologiestiftung Berlin informiert monatlich in Form eines E-Mails-Newsletters.
+  Für den Empfang ist eine <a
+    href="https://www.technologiestiftung-berlin.de/de/service-navi/newsletter-anmeldung/"
+    title="Opens internal link in current window"
+    target="_blank"
+    class="external-link-new-window">Anmeldung</a
+  > mit einer gültigen E-Mail-Adresse notwendig. Vor- und Nachname sind lediglich optionale
+  Angaben. Die personenbezogenen Daten werden ausschließlich für die im Anmeldeformular genannten
+  Zwecke eingesetzt.
+</p>
+<p>
+  Die <a
+    href="https://www.technologiestiftung-berlin.de/de/service-navi/newsletter-anmeldung/"
+    title="Opens internal link in current window"
+    target="_blank"
+    class="external-link-new-window">Anmeldung</a
+  > wird mit in einem sogenannten „Double-Opt-In“-Verfahren gewährleistet. Dies erfolgt über
+  ein Zwei-Faktor-Authentifizierungsverfahren. Nach Eingabe der Daten und der Bestätigung der
+  Einwilligung erhalten Sie eine Mail mit einem Link, mit dem Sie erneut bestätigen müssen,
+  dass Sie den Newsletter erhalten möchten. So ist sichergestellt, dass Sie unseren Newsletter
+  nur dann erhalten, wenn Sie es wirklich wünschen.
+</p>
+<p>
+  Sollten Sie von uns keinen Newsletter mehr erhalten wollen, können Sie jederzeit Ihre
+  Einwilligung <a
+    href="https://unsubscribe.newsletter2go.com/form.html?n2g=r9s7xtjr-bejn1pmb-1e62&amp;_ga=2.267481614.1279225158.1586155906-63168939.1575364977"
+    title="Opens internal link in current window"
+    target="_blank">widerrufen</a
+  >.
+</p>
+<p>
+  Für den Versand des Newsletters setzen wir den Newsletter-Dienst&nbsp;Sendinblue
+  (Sendinblue GmbH, Köpenickerstraße 126, 10179 Berlin, Deutschland) ein.&nbsp;
+</p>
+<p>
+  Sendinblue ist zertifizierter Partner der Certified Senders Alliance (CSA) und
+  verpflichtet sich in den <strong
+    ><a href="https://www.newsletter2go.de/agb/" target="_blank"
+      >allgemeinen Geschäftsbedingungen</a
+    ></strong
+  > ausdrücklich dem Datenschutz. Die hinterlegten Daten werden nur zweckgebunden verwendet
+  und sind so gespeichert, dass Dritte keinen Zugriff auf diese Daten haben. Mit der Nutzung
+  des Anmeldeformulars erklären Sie sich mit der Datenverarbeitung durch Sendinblue einverstanden.
+</p>
+<p>
+  Bei der Anmeldung zum Newsletter speichern wir ferner die vom Internet-Service-Provider
+  (ISP) vergebene IP-Adresse des von der betroffenen Person zum Zeitpunkt der Anmeldung
+  verwendeten Computersystems sowie das Datum und die Uhrzeit der Anmeldung. Die Erhebung
+  dieser Daten ist erforderlich, um den möglichen Missbrauch der E-Mail-Adresse einer
+  betroffenen Person zu einem späteren Zeitpunkt nachvollziehen zu können und dient
+  deshalb der rechtlichen Absicherung.&nbsp;
+</p>
+<p>
+  Um den Newsletter für Sie attraktiv zu gestalten, erfassen wir Öffnungs- und Klickzahlen
+  des Newsletters in anonymisierter Form. Die Zahlen können von uns nicht einem bestimmten
+  Empfänger oder einer bestimmten Empfängerin zugeordnet werden.
+</p>
+<p>
+  Bei Fragen und Problemen richten Sie eine E-Mail an <a
+    href="mailto:info@technologiestiftung-berlin.de"
+    title="Opens internal link in current window"
+    class="mail">info(at)technologiestiftung-berlin.de</a
+  > oder kontaktieren Sie den unter 1.2 genannten Datenschutzbeauftragten.
+</p>
+<h4>2.5 Veranstaltungseinladungen und Anmeldungen</h4>
+<p>
+  Um in den Veranstaltungsverteiler aufgenommen zu werden, senden Sie eine Mail an <a
+    href="mailto:event@technologiestiftung-berlin.de"
+    title="Opens internal link in current window"
+    class="mail">event(at)technologiestiftung-berlin.de</a
+  >. Sie erhalten dann eine Mail mit Bitte um Bestätigung. Alternativ können Sie sich auf
+  telefonisch oder im persönlichen Kontakt für den Verteiler anmelden.
+</p>
+<p>
+  Für den Versand von Einladungen und die Verwaltung der Verteilerliste nutzen wir das
+  Customer Relation Managementsystem cobra, das lokal auf unserem Server gespeichert ist.
+  Anmeldungen und Abmeldungen zum Verteiler sind wie bereits im ersten Absatz ausgeführt
+  über eine Mail an <a
+    href="mailto:event@technologiestiftung-berlin.de"
+    title="Opens internal link in current window"
+    class="mail">event(at)technologiestiftung-berlin.de</a
+  > möglich oder durch persönlichen Kontakt bei Veranstaltung, per Telefon oder Post. Eine
+  Weitergabe an Dritte erfolgt nicht.
+</p>
+<p>
+  Einige Veranstaltungsformate erlauben die Anmeldung über unsere Website. In den meisten
+  Fällen können Sie sich mit einer gültigen Mail und Ihrem Namen in einem Double-Opt-in
+  Verfahren direkt anmelden. Ausnahmen bilden themenspezifischen Fachveranstaltungen, bei
+  denen Sie zusätzlich gebeten werden, Ihre Firma oder Institution verpflichtend
+  anzugeben. Da wir in der Regel eine Einlasskontrolle durchführen, ist die Angabe von
+  Vor- und Nachname notwendig.
+</p>
+<p>
+  Durch die Anmeldung über die Website geben Sie uns die Einwilligung nach Art.6 Abs. 1
+  Lit.A DSGVO, Ihre Daten für den Zweck der Veranstaltungsorganisation zu verarbeiten. Das
+  betrifft die interne Gästeliste für die Einlasskontrolle und gegebenenfalls einen E-Mail
+  Versand bei Änderungen zur Veranstaltung wie Ortswechsel oder Absagen. Ihre Anmeldedaten
+  werden nach Ende ihres Verwendungszweckes, dem Ende der Veranstaltung, gelöscht.
+</p>
+<h4>2.6 Einbindung von Diensten und Inhalten Dritter</h4>
+<p>
+  Die Icons zu Facebook und Twitter auf unserer Hauptseite sind Verlinkungen zu unseren
+  Kanälen auf den jeweiligen Plattformen. Welche Daten dabei übermittelt werden, ist von
+  Ihren Browsereinstellungen abhängig. Eine weitere Datenübermittlung von uns an die
+  beiden Drittanbieter findet nicht statt. Sobald Sie unsere Seite über diese Links
+  verlassen, treten die dortigen Datenschutzbestimmungen in Kraft.
+</p>
+<p>
+  Zum aktuellen Zeitpunkt (Stand 23. Mai 2018) setzen wir folgende Plugins für bestimmte
+  Zwecke ein:
+</p>
+<ul>
+  <li>
+    Kontaktformular Power Mail für die Bestellung der Hacking Box und beim Projekt
+    Digitale Entwicklung des Kulturbereichs
+  </li>
+  <li>
+    Open-Street-Map-Karte zur Information über die Anfahrt sowie zur geografischen
+    Verortung von Projekten
+  </li>
+  <li>YouTube-Video-Einbindung (siehe 3.)</li>
+</ul>
+<p>
+  Durch Nutzung des <b>Power-Mail-Formular</b>s, das eine Extention unseres Content
+  Managementsystems typo3 darstellt und von uns für die Bestellung der Hacking Box
+  angeboten wird, geben Sie uns die Einwilligung nach Art.6 Abs. 1 Lit.A DSGVO, Ihre Daten
+  für den Zweck der Ausleihe zu verarbeiten. Die Daten werden ausschließlich auf unserem
+  Server verarbeitet und von uns genutzt. Nach Ende des Verleihvorgangs werden die Daten
+  gelöscht.
+</p>
+<p>
+  Um Ihnen die Anfahrt zu unseren Geschäftsräumen zu erleichtern und um Ihnen an anderen
+  Stellen eine Ortung unserer Projekte zu bieten, haben wir <b>Open-Street-Map-Karten</b> in
+  unseren Auftritt eingebunden. Hierfür nutzen wir das Application Programming Interface Open
+  Layers. Die Verbindung läuft direkt über unserer Content Managementsystem und übermittelt
+  keine persönlichen Daten an Dritte.
+</p>
+<h2>3. Besonderheiten</h2>
+<p>
+  Generell folgen alle Websites aus dem Angebot der Technologiestiftung dieser
+  Datenschutzerklärung. Aufgrund ihrer Ausrichtung haben einige Websites bzw. Subdomains
+  unseres Online-Angebots Besonderheiten, die wir hier erklären.
+</p>
+<h4>Berliner Badestellen</h4>
+<p>Zur Darstellung des Erklärvideos nutzen wir den Video Service YouTube.</p>
+<p>
+  Hauptgeschäftssitz von YouTube LLC ist in der 901 Cherry Avenue, San Bruno, CA 94066,
+  USA. YouTube wird vertreten durch Google Inc. mit Sitz in 1600 Amphitheatre Parkway,
+  Mountain View, CA 94043, USA. Die Datenschutzbestimmungen zu Googlediensten wie Youtube
+  finden sie unter <a
+    href="https://policies.google.com/privacy"
+    title="Opens internal link in current window"
+    target="_blank"
+    class="external-link-new-window">hier</a
+  >.
+</p>
+<p>
+  Für die Darstellung der Hintergrundkarte wird der Kartenanbieter Mapbox genutzt. <a
+    href="https://www.mapbox.com/legal/dpa/%22%3Eunterworfen%3C/a"
+    target="_blank">Mapbox</a
+  >
+  hat sich dem EU-US-Datenschutzschild angeschlossen. Durch die Nutzung der Mapbox Tiles
+  API können Informationen über die Benutzung dieser Website an Mapbox übertragen werden.
+  Die Karte wird von Ihrem Browser direkt vom Mapbox-Server abgerufen, entsprechend haben
+  wir keinen Einfluss auf die von Mapbox erhobenen Daten. Wenn Sie dies nicht wünschen,
+  müssen Sie JavaScript in Ihren Browsereinstellungen deaktivieren. Dies verhindert
+  allerdings auch die korrekte Darstellung der Website.<br /><a
+    href="https://www.mapbox.com/privacy"
+    target="_blank">Datenschutzbestimmung Mapbox</a
+  >
+</p>

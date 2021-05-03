@@ -6,3 +6,7 @@ app/.DS_Store
 data-server-backup
 app/config.codekit3
 TODO.md
+/public/build/
+.DS_Store
+.coverage
+.env
