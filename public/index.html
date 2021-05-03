@@ -50,6 +50,7 @@
   <meta name="twitter:description" content="Aktuelle Badegewässerqualität und Informationen rund um die Berliner Badestellen">
   <meta name="twitter:image" content="http://badestellen-demo.lab.technologiestiftung-berlin.de/images/social_media.jpg">
 
+  <link href='https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css' rel='stylesheet' />
   <link href='./assets/css/berlin_de/default.css' rel='stylesheet' />
   <link href='./assets/css/berlin_de/vendor.css' rel='stylesheet' />
   <link href='./assets/css/berlin_de/bootstrap.css' rel='stylesheet' />
@@ -975,7 +976,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
   <script>
-    window.cookieInstance = new CookieConsent({
+    window.cookieconsent.initialise({
       container: document.getElementById('cookieconsent'),
       hasTransition: false,
       cookie: {
