@@ -1,5 +1,4 @@
 module.exports = {
-  "clearMocks": true,
   "transform": {
     "^.+\\.(js|mjs)$": "babel-jest",
     "^.+\\.ts$": "ts-jest",

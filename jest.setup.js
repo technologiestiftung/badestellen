@@ -1,4 +1,6 @@
-require('jest-fetch-mock').enableMocks()
+const fetchMock = require('fetch-mock');
+fetchMock.config.sendAsJson = false;
+
 const fs = require('fs')
 
 global.__global = {
@@ -8,20 +10,16 @@ global.__global = {
   }
 }
 
-fetchMock.mockIf("https://flsshygn-lageso-berlin-prediction-merge-dev.s3.eu-central-1.amazonaws.com/app/data.csv", req => {
-  return {
-    status: 200,
-    body: fs.readFileSync('./data/data.csv', 'utf8'),
-  }
-})
+fetchMock.get(
+  'https://flsshygn-lageso-berlin-prediction-merge-dev.s3.eu-central-1.amazonaws.com/app/data.csv',
+  fs.readFileSync(__dirname + '/src/__tests__/data/data.csv', 'utf8')
+  )
 
-fetchMock.mockIf("http://localhost/assets/data/new_build.csv", req => {
-  return {
-    status: 200,
-    body: fs.readFileSync('./data/new_build.csv', 'utf8'),
-  }
-})
-
+fetchMock.get(
+  'http://localhost:5000/assets/data/new_build.csv',
+  fs.readFileSync(__dirname + '/src/__tests__/data/new_build.csv', 'utf8')
+  )
+  
 jest.mock('mapbox-gl/dist/mapbox-gl', () => {
   return {
     'default': {

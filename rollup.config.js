@@ -74,7 +74,7 @@ export default {
 		}),
 		commonjs(),
 		typescript({
-			sourceMap: !production,
+			sourceMap: true,
 			inlineSources: !production
 		}),
 
@@ -90,6 +90,7 @@ export default {
 		// instead of npm run dev), minify
 		production && terser(),
 		replace({
+			preventAssignment: true,
       // stringify the object       
       __global: JSON.stringify({
         env: {

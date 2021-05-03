@@ -93,6 +93,7 @@ export const load = (): Promise<void> => {
       .then(txt => {
         return csvParse(txt)
       }),
+    // fetch wants an absolute url
     fetch(__global.env.URL + '/assets/data/new_build.csv')
       .then(response => response.text())
       .then(txt => {
