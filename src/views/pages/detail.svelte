@@ -2,6 +2,8 @@
   import { detailId, badestelle, loaded } from '../../stores/data'
   import { link } from 'svelte-spa-router'
   import { onMount } from 'svelte'
+  import * as animateScroll from 'svelte-scrollto'
+  animateScroll.scrollTo(0)
 
   export let params = { id: null }
 
