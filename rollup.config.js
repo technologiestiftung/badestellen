@@ -74,6 +74,8 @@ export default {
 		}),
 		commonjs(),
 		typescript({
+			lib: ["es5", "es6", "dom"],
+			target: "es5",
 			sourceMap: true,
 			inlineSources: !production
 		}),

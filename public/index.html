@@ -973,7 +973,29 @@
   <!--<script src="//www.berlin.de/i9f/v4/js/bo-info.js?ts=1619621133"></script>-->
   <script src="//www.berlin.de/i9f/v4/js/bo-foot.js?ts=1619621133"></script>
 
-  <!-- <script src="/assets/js/cookieconsent.min.js"></script> -->
+  <script src="/assets/js/cookieconsent.min.js"></script>
+  <script>
+    window.cookieInstance = new CookieConsent({
+      container: document.getElementById('cookieconsent'),
+      hasTransition: false,
+      cookie: {
+        name: 'BadestellenConsentCookie',
+        domain: 'badestellen-demo.lab.technologiestiftung-berlin.de'
+      },
+      content: {
+        message: 'Zur Erhebung der Nutzer*innenzahlen werden Cookies genutzt.',
+        link: 'Sie können dies hier deaktivieren &raquo;',
+        href: '/datenschutz.html#optout',
+        dismiss: 'Akzeptieren'
+      },
+      palette: {
+        popup: { background: '#c7d9ff', color: '#253276' },
+        button: { background: '#253276', color: '#fff' }
+      },
+      revokable: false,
+      theme: 'edgeless'
+    })
+  </script>
   <!-- <script src="/assets/js/fetch.umd.js"></script>
   <script src="/assets/js/promise.polyfill.min.js"></script>-->
   <script src="build/bundle.js"></script>
