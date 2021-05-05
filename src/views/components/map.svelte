@@ -64,10 +64,12 @@
     // d3.selectAll('.marker').classed('inactive', true)
     // d3.select('#marker_' + id).classed('inactive', false)
   } else if (mounted && $loaded) {
-    map.flyTo({
-      center: center,
-      zoom: 10
-    })
+    map.fitBounds(
+      [
+        [13.0790332437, 52.3283651024],
+        [13.7700526861, 52.6876624308]
+      ]
+    )
   }
 </script>
 

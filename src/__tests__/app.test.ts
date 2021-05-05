@@ -17,12 +17,12 @@ test('should render - map case', async (done) => {
   await findByText('Übersicht Badegewässer')
   expect(container.querySelectorAll('#map')).toHaveLength(1)
 
-  const aboutLink = container.querySelectorAll('#bade-nav a')[1];
+  const aboutLink = container.querySelectorAll('.pageheader__quicklinks a')[1];
   await fireEvent.click(aboutLink)
   await findByText('Beschreibung Vorhersagemodell')
   expect(container.querySelectorAll('#map')).toHaveLength(0)
 
-  const homeLink = container.querySelectorAll('#bade-nav a')[0];
+  const homeLink = container.querySelectorAll('.pageheader__quicklinks a')[0];
   await fireEvent.click(homeLink)
   await findByText('Übersicht Badegewässer')
   expect(container.querySelectorAll('#map')).toHaveLength(1)

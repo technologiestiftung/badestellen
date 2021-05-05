@@ -2,22 +2,10 @@
  * Adaptions of the Berlin.de style
  */
 
+.textlogo a{
+  font-weight:bold;
+}
+
 #header.kiekma{
   z-index: 99;
-}
-
-.row.row-breadcrumb{
-  margin-left:0px;
-  display: block !important;
-  width:100%;
-  &>.span10{
-    margin-left:20px !important;
-    width:auto;
-  }
-}
-
-@media screen and (max-width: 370px) {
-  .row.row-breadcrumb>.span10{
-    display:none !important;
-  }  
 }

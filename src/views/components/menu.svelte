@@ -6,6 +6,8 @@
     label: string
   }[] = []
 
+  export let cssClass = ''
+
   let cLocation = ''
   $: if ($location && typeof $location === 'string') {
     cLocation = $location
@@ -13,7 +15,7 @@
 </script>
 
 {#if menu && menu.length > 0}
-  <ul>
+  <ul class={cssClass}>
     {#each menu as item}
       <li>
         <a
