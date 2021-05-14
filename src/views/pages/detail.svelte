@@ -46,8 +46,8 @@
     { key: 'eco_txt', label: 'Escherichia coli', unit: 'pro 100 ml' },
     { key: 'ente_txt', label: 'Intestinale Enterokokken', unit: 'pro 100 ml' },
     { key: 'temp_txt', label: 'Wassertemperatur', unit: '°C' },
-    { key: 'algen_txt', label: 'Erhöhtes Algenauftreten', unit: '' },
-    { key: 'cb_txt', label: 'Coliforme Bakterien', unit: 'pro 100 ml' }
+    { key: 'algen_txt', label: 'Erhöhtes Algenauftreten', unit: '' }
+    // { key: 'cb_txt', label: 'Coliforme Bakterien', unit: 'pro 100 ml' }
   ]
 
   let locationLink: string
