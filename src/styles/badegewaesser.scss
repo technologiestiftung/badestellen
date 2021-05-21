@@ -107,14 +107,14 @@ h1{
 
 /*----- TEXT PAGES -----*/
 
-.nomap h1, .nomap h2, .nomap h3, .nomap h4{
+.nomap h1, .nomap h2, .nomap h3, .nomap h4, .nomap h5{
   float:none;
   margin:0;
   padding-left:15px;
   max-width:550px;
 }
 
-.nomap p, .nomap ul{
+.nomap p, .nomap ul, .nomap ol{
   margin:20px 15px;
   max-width:550px;
   /* These are technically the same, but use both */
@@ -132,7 +132,7 @@ h1{
   hyphens: auto;
 }
 
-.nomap ul{
+.nomap ul, .nomap ol{
   padding-left:10px;
 }
 
@@ -647,7 +647,7 @@ table.measurement_table tr.row-1 th{
     font-size:12px;
   }
 
-  .nomap h1, .nomap h2, .nomap h4{
+  .nomap h1, .nomap h2, .nomap h4, .nomap h5{
     padding: 0 20px;
   }
 
@@ -695,4 +695,15 @@ table.measurement_table tr.row-1 th{
 
 .cc-window.cc-invisible{
   display:none !important;
+}
+
+/*----- STATIC LAGESO PAGES -----*/
+p.lageso{
+  margin-top:8px;
+  margin-bottom:8px;
+}
+
+.nomap ul.lageso, .nomap ol.lageso{
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
