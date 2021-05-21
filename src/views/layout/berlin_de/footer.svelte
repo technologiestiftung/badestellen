@@ -88,7 +88,7 @@
   </nav>
 
   <div class="footer__claim">
-  <p>Badegewaesser-berlin.de ist ein Angebot der Technologiestiftung Berlin im Auftrag des Landesamtes für Gesundheit und Soziales Berlin. Weitere Informationen hierzu finden Sie im <a href="https://www.technologiestiftung-berlin.de/de/impressum/">Impressum</a>.        </p>
+  <p>badegewaesser.berlin.de ist ein Angebot des Landesamtes für Gesundheit und Soziales Berlin. Weitere Informationen hierzu finden Sie im <a href="https://www.berlin.de/lageso/ueber-uns/artikel.61719.php">Impressum</a>.        </p>
   </div>
   </footer>
   <!-- END: /LANDESFOOTER -->
