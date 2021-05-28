@@ -30,7 +30,7 @@
 
 
 <h3 class="datenschutz-title" id="berlinde">Zentrale Dienste des Webportals</h3>
-<p class="lageso">Die Seite badegewaesser.berlin.de wird von der Technologiestiftung Berlin im Auftrag des Landesamtes für Gesundheit und Soziales betrieben.</p>
+<p class="lageso">Die Seite badestellen.berlin.de wird von der Technologiestiftung Berlin im Auftrag des Landesamtes für Gesundheit und Soziales betrieben.</p>
 <p class="lageso">Für den technischen Betrieb dieser Seite und alle damit einhergehenden Datenverarbeitungsvorgänge, insbesondere</p>
 <ul class="lageso">
 <li>Bereitstellung der Website und Erstellung von Logfiles</li>
@@ -60,7 +60,7 @@
 <h3 id="dsb-process">Weitere datenverarbeitende Prozesse</h3>
 <h4 class="datenschutz-title" id="cookies">Cookies und Webanalyse</h4>
 
-<p class="lageso">Der technische Betreiber von badegewaesser.berlin.de, die Technologiestiftung Berlin stellt die Webseite bereit und erhebt dabei Browserdaten (sogenannte Logfiles). Darüber hinaus kommen auch sogenannte Cookies und Webtracking zum Einsatz. Genauere Informationen hierzu und Informationen zum Abschalten der Cookies entnehmen Sie bitte der Datenschutzerklärung der Technologiestiftung Berlin, welche Sie hier finden:</p>
+<p class="lageso">Der technische Betreiber von badestellen.berlin.de, die Technologiestiftung Berlin stellt die Webseite bereit und erhebt dabei Browserdaten (sogenannte Logfiles). Darüber hinaus kommen auch sogenannte Cookies und Webtracking zum Einsatz. Genauere Informationen hierzu und Informationen zum Abschalten der Cookies entnehmen Sie bitte der Datenschutzerklärung der Technologiestiftung Berlin, welche Sie hier finden:</p>
 <p class="lageso"><a href="https://www.technologiestiftung-berlin.de/de/datenschutz/">Datenschutzerklärung der Technologiestiftung Berlin</a></p>
 
 <h4>Kartendarstellung</h4>

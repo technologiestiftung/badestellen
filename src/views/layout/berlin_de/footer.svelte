@@ -88,7 +88,7 @@
   </nav>
 
   <div class="footer__claim">
-  <p>badegewaesser.berlin.de ist ein Angebot des Landesamtes für Gesundheit und Soziales Berlin. Weitere Informationen hierzu finden Sie im <a href="https://www.berlin.de/lageso/ueber-uns/artikel.61719.php">Impressum</a>.        </p>
+  <p>badestellen.berlin.de ist ein Angebot des Landesamtes für Gesundheit und Soziales Berlin. Weitere Informationen hierzu finden Sie im <a href="https://www.berlin.de/lageso/ueber-uns/artikel.61719.php">Impressum</a>.        </p>
   </div>
   </footer>
   <!-- END: /LANDESFOOTER -->

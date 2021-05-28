@@ -79,38 +79,6 @@
   Tel.: +49 30 209 69 99-0<br />
   E-Mail: <a href="info@technologiestiftung-berlin.de" title="Link zum Postfach:info@technologiestiftung-berlin">info@technologiestiftung-berlin</a>
 </p>
-<h3>
-  ethikPool – Antragsportal der Ethik-Kommission des Landes Berlin
-</h3>
-<h4>
-  Inhaltlich Verantwortlich
-</h4>
-<p  class="lageso">
-  Abt. IV E, Antje Kettner-Ottilie<br>
-  Telefon: (030) 90229-1220<br>
-  Telefax: (030) 9028-3383<br>
-  e-mail: antje.kettner-ottilie@lageso.berlin.de<br>
-  (nicht für Dokumente mit elektronischer Signatur)
-</p>
-<h5>
-  Technischer Betrieb
-</h5>
-<p  class="lageso">
-  ethikPool ist ein Produkt der smart-Q Softwaresysteme GmbH<br>
-  BioMedizinZentrum Bochum<br>
-  Universitätsstr. 136<br>
-  44799 Bochum
-</p>
-<p  class="lageso">
-  Tel.: 0234 / 60 600 760<br>
-  Fax: 0234 / 60 600 762
-</p>
-<p  class="lageso">
-  E-Mail:<a href="mailto:info@smart-q.de" title="E-Mail an Smart q">info@smart-q.de</a>
-</p>
-<p  class="lageso">
-  weitere Informationen: <a href="https://www.smart-q.de" class=" extern" target="_blank" title="Internet smart q (Öffnet in neuem Fenster)">https://www.smart-q.de</a>
-</p>
 <h4>
   Haftungshinweis
 </h4>

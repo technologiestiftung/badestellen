@@ -1,7 +1,7 @@
 
-# Badestellen a.k.a. badegewaesser-berlin.de
+# Badestellen a.k.a. badestellen.berlin.de
 
-- [Website](https://badegewaesser-berlin.de/)
+- [Website](https://badestellen.berlin.de/)
 - [Launch-Blogpost](https://lab.technologiestiftung-berlin.de/projects/bathing-water/index.html)
 
 ## Overview

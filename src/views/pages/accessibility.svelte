@@ -18,7 +18,7 @@
   Kommunikationstechnik Berlin (BIKTG Bln) verlangt. Die technischen Anforderungen zur
   Barrierefreiheit ergeben sich aus der aktuellen BITV.<br />Diese Erklärung zur digitalen
   Barrierefreiheit gilt für das Angebot der Berliner Badestellen
-  (badegewaesser.berlin.de).
+  (badestellen.berlin.de).
 </p>
 <h3>Wann wurde die Erklärung zur Barrierefreiheit erstellt bzw. aktualisiert?</h3>
 <p>Diese Erklärung wurde am 01.06.2020 erstellt bzw. überarbeitet.</p>
