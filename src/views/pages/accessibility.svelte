@@ -6,12 +6,7 @@
 <h2>Barrierefreiheitserklärung</h2>
 <br /><br />
 <h3>Öffentliche Stelle / Geltungsbereich</h3>
-<p><b>Technologiestiftung Berlin</b></p>
-<p>
-  Grunewaldstraße 61-62<br /> 10825 Berlin<br /> Telefon +49 30 209 69 99 0<br /> E-Mail: info
-  (at) technologiestiftung-berlin.de
-</p>
-<p>Stiftungsverzeichnis Berlin: AZ 3416/464 B3<br /> USt-Id-Nr.: DE 187 459 128</p>
+<p><b>Landesamt für Gesundheit und Soziales (LAGeSo)</b></p>
 <p>
   <br />Wir bemühen uns, unseren Webauftritt barrierefrei zu gestalten. Die Erklärung zur
   digitalen Barrierefreiheit wird im Gesetz über die barrierefreie Informations- und
@@ -70,9 +65,10 @@
   Wen können Sie bei Anmerkungen oder Fragen zur digitalen Barrierefreiheit
   (Feedbackoption) kontaktieren?
 </h3>
-<p>Kontakt zur Ansprechperson:</p>
-<p>E-Mail: info(at)technologiestiftung-berlin.de</p>
-<p>Telefon: +49 30 209 69 99 0</p>
+<p>Kontakt zur Ansprechperson der öffentlichen Stelle:</p>
+<p>Name: Stefan Trautmann<br />
+E-Mail: <a href="mailto:barrierefreiheit@lageso.berlin.de">barrierefreiheit@lageso.berlin.de</a><br />
+Telefon: (030) 90229 1500 </p>
 <h3>Kontakt zur Landesbeauftragten für digitale Barrierefreiheit</h3>
 <p>
   Wenn Ihre Kontaktaufnahme mit der öffentlichen Stelle nicht erfolgreich war, können Sie
