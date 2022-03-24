@@ -11,12 +11,20 @@
   "commitConvention": "angular",
   "contributors": [
     {
+      "login": "sebastian-meier",
+      "name": "Sebastian Meier",
+      "avatar_url": "https://avatars.githubusercontent.com/u/302789?v=4",
+      "profile": "http://www.sebastianmeier.eu/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
       "login": "ff6347",
       "name": "Fabian Morón Zirfas",
       "avatar_url": "https://avatars.githubusercontent.com/u/315106?v=4",
       "profile": "https://fabianmoronzirfas.me/",
       "contributions": [
-        "code",
         "doc"
       ]
     },
@@ -45,15 +53,6 @@
       "profile": "https://github.com/fdnklg",
       "contributions": [
         "doc"
-      ]
-    },
-    {
-      "login": "sebastian-meier",
-      "name": "Sebastian Meier",
-      "avatar_url": "https://avatars.githubusercontent.com/u/302789?v=4",
-      "profile": "http://www.sebastianmeier.eu/",
-      "contributions": [
-        "code"
       ]
     }
   ],
