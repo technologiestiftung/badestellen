@@ -73,7 +73,59 @@ All data is stored in a file-based sqlite database (badestellen.db).
 
 We are part of BrowserStack's non-profit program, helping us deliver an even better user experience.
 
-<a href="https://www.browserstack.com/">
-  <img src="https://p14.zdusercontent.com/attachment/1015988/Hjnr3apa9OCplUi1GbaLiCVa7?token=eyJhbGciOiJkaXIiLCJlbmMiOiJBMTI4Q0JDLUhTMjU2In0..QA4hJSE7NQfMjFDK1w6tog.0-YOVfCRjxpeHUf5tjKutEEoQn-U5peEUgQ6ZxBZugOJrShlKGm0lCgAURhV9T8Y-dIiFS9xTpdJ0UVPzSL1k4ka4emU3lzjerjHwhHt3Yl65Fs3S4JUWOhHvmiiG9-C0DvY7PJAEpwtGMNf-auRy84MUiYSMIriQzwkTTBJ7rdm7laryRnCGntFYfhs_GgGK38QEk8ZUhmx6M45yPoGTYrwjFPN85D3YmUA1zsEYEYKpIYOE2zdWT38wtQ6yyNWFTi6GyVQZ-p8nXAGbE5ZQR8XlKU2CquvZurSDtFeWhM.BIRFSvq27MoywSgtua3tYw" height="100">
-</a>
+![[](https://www.browserstack.com/)](https://github.com/technologiestiftung/badestellen/raw/master/docs/browserstack.svg)
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://fabianmoronzirfas.me/"><img src="https://avatars.githubusercontent.com/u/315106?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Fabian Morón Zirfas</b></sub></a><br /><a href="https://github.com/technologiestiftung/CityLAB Slides/commits?author=ff6347" title="Code">💻</a> <a href="https://github.com/technologiestiftung/CityLAB Slides/commits?author=ff6347" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://vogelino.com/"><img src="https://avatars.githubusercontent.com/u/2759340?v=4?s=64" width="64px;" alt=""/><br /><sub><b>Lucas Vogel</b></sub></a><br /><a href="https://github.com/technologiestiftung/CityLAB Slides/commits?author=vogelino" title="Documentation">📖</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+
+## Content Licencing
+
+Texts and content available as [CC BY](https://creativecommons.org/licenses/by/3.0/de/). 
+
+## Credits
+
+<table>
+  <tr>
+    <td>
+      Made by <a src="https://citylab-berlin.org/de/start/">
+        <br />
+        <br />
+        <img width="200" src="https://citylab-berlin.org/wp-content/uploads/2021/05/citylab-logo.svg" />
+      </a>
+    </td>
+    <td>
+      A project by <a src="https://www.technologiestiftung-berlin.de/">
+        <br />
+        <br />
+        <img width="150" src="https://citylab-berlin.org/wp-content/uploads/2021/05/tsb.svg" />
+      </a>
+    </td>
+    <td>
+      Supported by <a src="https://www.browserstack.com/">
+        <br />
+        <br />
+        <img width="80" src="https://github.com/technologiestiftung/badestellen/raw/master/docs/browserstack.svg" />
+      </a>
+    </td>
+  </tr>
+</table>
 
