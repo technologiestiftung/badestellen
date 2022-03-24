@@ -123,6 +123,8 @@ Texts and content available as [CC BY](https://creativecommons.org/licenses/by/3
       Supported by <a src="https://www.browserstack.com/">
         <br />
         <br />
+        <img width="80" src="https://citylab-berlin.org/wp-content/uploads/2021/12/B_RBmin_Skzl_Logo_DE_V_PT_RGB-300x200.png" />
+        &amp; 
         <img width="150" src="https://github.com/technologiestiftung/badestellen/raw/master/docs/browserstack.svg" />
       </a>
     </td>
