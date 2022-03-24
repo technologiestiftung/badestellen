@@ -28,6 +28,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "tordans",
+      "name": "Tobias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/111561?v=4",
+      "profile": "http://tobiasjordans.de/",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7
