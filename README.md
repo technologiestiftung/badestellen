@@ -123,7 +123,7 @@ Texts and content available as [CC BY](https://creativecommons.org/licenses/by/3
       Supported by <a src="https://www.browserstack.com/">
         <br />
         <br />
-        <img width="80" src="https://github.com/technologiestiftung/badestellen/raw/master/docs/browserstack.svg" />
+        <img width="150" src="https://github.com/technologiestiftung/badestellen/raw/master/docs/browserstack.svg" />
       </a>
     </td>
   </tr>
