@@ -3,7 +3,6 @@
     "README.md"
   ],
   "imageSize": 100,
-  "commit": false,
   "contributors": [
     {
       "login": "ff6347",
@@ -21,5 +20,7 @@
   "projectOwner": "technologiestiftung",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commit": true,
+  "commitConvention": "angular",
 }
