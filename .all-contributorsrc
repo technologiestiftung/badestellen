@@ -13,6 +13,64 @@
         "code",
         "infra"
       ]
+    },
+    {
+      "login": "sebastian-meier",
+      "name": "Sebastian Meier",
+      "avatar_url": "https://avatars.githubusercontent.com/u/302789?v=4",
+      "profile": "http://www.sebastianmeier.eu/",
+      "contributions": [
+        "code",
+        "design",
+        "infra",
+        "review",
+        "doc"
+      ]
+    },
+    {
+      "login": "esshan",
+      "name": "esshan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/37532997?v=4",
+      "profile": "https://github.com/esshan",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "tordans",
+      "name": "Tobias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/111561?v=4",
+      "profile": "http://tobiasjordans.de/",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "fdnklg",
+      "name": "Fabian",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9034032?v=4",
+      "profile": "https://github.com/fdnklg",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "dnsos",
+      "name": "Dennis Ostendorf",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15640196?v=4",
+      "profile": "https://github.com/dnsos",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "vogelino",
+      "name": "Lucas Vogel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2759340?v=4",
+      "profile": "https://github.com/vogelino",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
@@ -22,5 +80,5 @@
   "repoHost": "https://github.com",
   "skipCi": true,
   "commit": true,
-  "commitConvention": "angular",
+  "commitConvention": "angular"
 }
