@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "tordans",
+      "name": "Tobias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/111561?v=4",
+      "profile": "http://tobiasjordans.de",
+      "contributions": [
+        "doc"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "badestellen",
+  "projectOwner": "technologiestiftung",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
