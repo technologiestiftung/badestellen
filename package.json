@@ -59,7 +59,7 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "d3-dsv": "^2.0.0",
+    "d3-dsv": "^3.0.0",
     "mapbox-gl": "^2.2.0",
     "svelte": "^3.0.0",
     "svelte-scrollto": "^0.2.0",
