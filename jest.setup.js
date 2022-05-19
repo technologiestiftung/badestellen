@@ -4,9 +4,11 @@ fetchMock.config.sendAsJson = false;
 const fs = require('fs')
 
 global.__global = {
-  env : {
+  env: {
+
+    URL: "http://localhost:5000",
     isProd: false,
-    ...require('dotenv').config().parsed
+    // ...require('dotenv').config().parsed
   }
 }
 
@@ -19,7 +21,7 @@ fetchMock.get(
   'http://localhost:5000/assets/data/new_build.csv',
   fs.readFileSync(__dirname + '/src/__tests__/data/new_build.csv', 'utf8')
   )
-  
+
 jest.mock('mapbox-gl/dist/mapbox-gl', () => {
   return {
     'default': {
