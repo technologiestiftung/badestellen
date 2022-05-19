@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Build%20with%20%E2%9D%A4%EF%B8%8F-at%20Technologiesitftung%20Berlin-blue)
+![](https://img.shields.io/badge/Built%20with%20%E2%9D%A4%EF%B8%8F-at%20Technologiestiftung%20Berlin-blue)
 
 # Badestellen a.k.a. badegewaesser-berlin.de
 
@@ -39,10 +39,7 @@ Install dependencies
 
 Update the info in config-sample.json and rename to config.json
 
-``"path" : Folder where uploads are being stored
-"export_path" : This path should lead to where the app-folder is stored, it allows the script to update the data files of the web app
-"port" : Port the service runs on
-"users" : the service requires two users one for kwb and one for bwb``
+`"path" : Folder where uploads are being stored "export_path" : This path should lead to where the app-folder is stored, it allows the script to update the data files of the web app "port" : Port the service runs on "users" : the service requires two users one for kwb and one for bwb`
 
 Start the service
 
@@ -98,10 +95,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
-
 ## Content Licencing
 
-Texts and content available as [CC BY](https://creativecommons.org/licenses/by/3.0/de/). 
+Texts and content available as [CC BY](https://creativecommons.org/licenses/by/3.0/de/).
 
 ## Credits
 
@@ -132,4 +128,3 @@ Texts and content available as [CC BY](https://creativecommons.org/licenses/by/3
     </td>
   </tr>
 </table>
-
