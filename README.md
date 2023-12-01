@@ -1,7 +1,9 @@
-
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+
 # Badestellen a.k.a. badestellen.berlin.de
 
 - [Website](https://badestellen.berlin.de/)
@@ -9,29 +11,31 @@
 
 ## Overview
 
-The repository consists of 2 folders:
+The repository consists of:
 
-### 1. material
+### 1. /material
 
 Graphic source files
 
-### 2. app
+### 2. /src
 
-The HTML web application (frontend)
+The Svelte web application (frontend)
 
-## The App
+## The Application
 
 Install dependencies
-`npm install`
+`npm ci`
 
 Run a local webserver
-`npm serve`
+`npm run dev`
 
 ESLint
-`npm lint`
 
-Build css and js files
-`npm build`
+`npm run lint` or `npm run lint:fix`
+
+Build the application
+
+`npm run build`
 
 ## Contributors ✨
 
@@ -58,7 +62,6 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
-
 
 ## Content Licencing
 
