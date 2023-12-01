@@ -6,28 +6,42 @@ env:
   URL: http://localhost:5000
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
     env:
       URL: http://localhost:5000
 
-    runs-on: ubuntu-latest
+    runs-on:
+      ubuntu-latest
 
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+      # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
-    - uses: actions/checkout@v3
-    - name: Read .nvmrc
-      run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
-      id: nvm
-    - name: Use Node.js  ${{ steps.nvm.outputs.NVMRC }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ steps.nvm.outputs.NVMRC }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+  release:
+    name: semantic-release
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - run: |
+          npm ci
+          npx semantic-release --ci
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

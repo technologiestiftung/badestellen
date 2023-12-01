@@ -18,8 +18,7 @@
   Vertretungsberechtigt
 </h4>
 <p class="lageso">
-  Präsident: N.N<br>
-  Ständiger Vertreter: Michael Thiel
+  Präsident: Herr Straßmeir
 </p>
 <h4>
   Inhaltliche Verantwortung
@@ -27,12 +26,12 @@
 <p class="lageso">
   Silvia Kostner – Z Press -<br>
   <a href="mailto:presse@lageso.berlin.de" title="E-Mail an die Pressestelle des LAGeSo">E-Mail</a><br>
-  (nicht für Dokmente mit elektronischer Signatur)
+  (nicht für Dokumente mit elektronischer Signatur)
 </p>
 <h4>
   Social Media
 </h4>
-<p class="lageso">Benjamin Ciupek – Z Press 1 – <a href="mailto:socialmedia@lageso.berlin.de" title="E-Mail an Social Media">E-Mail</a> (nicht für Dokmente mit elektronischer Signatur)</p>
+<p class="lageso">Benjamin Ciupek – Z Press 1 – <a href="mailto:socialmedia@lageso.berlin.de" title="E-Mail an Social Media">E-Mail</a> (nicht für Dokumente mit elektronischer Signatur)</p>
 <ul class="lageso">
   <li>
     <a href="https://www.berlin.de/lageso/ueber-uns/artikel.714512.php" title="Weitere Informationen">Weitere Informationen</a>
@@ -42,8 +41,8 @@
   Webmaster
 </h4>
 <p  class="lageso">
-  Sylvia Huesmann-Hendrich – ZS B 31 -<br>
-  Thorsten Busse – ZS B 32 -<br>
+  Antje Weiß – ZS B 31 -<br>
+  Detlef Köppel – ZS B 33 -<br>
   <a href="mailto:webmaster@lageso.berlin.de" title="E-Mail an die Webmaster des LAGeSo">E-Mail</a><br>
   (nicht für Dokumente mit elektronischer Signatur)
 </p>
