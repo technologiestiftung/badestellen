@@ -1,3 +1,11 @@
+## [1.0.1](https://github.com/technologiestiftung/badestellen/compare/v1.0.0...v1.0.1) (2023-12-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency mapbox-gl to v3 ([cec5d6b](https://github.com/technologiestiftung/badestellen/commit/cec5d6b3cd5d7a2c85d3df2be9e434aacdd668f0))
+* **lang:** Replace lang typeescript with ts ([37c896d](https://github.com/technologiestiftung/badestellen/commit/37c896df4cce5f137ba5eaea9489a854e831d1bc))
+
 # 1.0.0 (2023-12-01)
 
 
