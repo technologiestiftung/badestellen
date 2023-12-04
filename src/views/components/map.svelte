@@ -1,4 +1,4 @@
-<script lang="typescript">
+<script lang="ts">
   import mapbox from 'mapbox-gl'
   import { onMount } from 'svelte'
   import { badestellen, loaded, detailId, badestelle } from '../../stores/data'
