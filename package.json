@@ -40,7 +40,7 @@
     "fs": "0.0.1-security",
     "jest": "26.6.3",
     "node-fetch": "2.7.0",
-    "postcss": "8.4.33",
+    "postcss": "8.4.35",
     "prettier": "2.8.8",
     "prettier-plugin-svelte": "2.10.1",
     "rollup": "2.79.1",
