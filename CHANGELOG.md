@@ -1,3 +1,16 @@
+# [1.1.0](https://github.com/technologiestiftung/badestellen/compare/v1.0.1...v1.1.0) (2024-04-25)
+
+
+### Bug Fixes
+
+* **CORS:** Set cors headers on function ([1aa6ba7](https://github.com/technologiestiftung/badestellen/commit/1aa6ba7ddb22c128f4d313835d2c41415244fda3))
+
+
+### Features
+
+* Swim api ([663f11d](https://github.com/technologiestiftung/badestellen/commit/663f11d318d8b58f3ca733f4ef36ba27e6ee6153))
+* **swimapi:** Adds call to swimapi via functions ([240ef00](https://github.com/technologiestiftung/badestellen/commit/240ef00434304562b94d8773c6d7e5c78ae2621a))
+
 ## [1.0.1](https://github.com/technologiestiftung/badestellen/compare/v1.0.0...v1.0.1) (2023-12-04)
 
 
