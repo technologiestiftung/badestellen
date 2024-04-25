@@ -1,5 +1,5 @@
 [[headers]]
-for = "/*"
+  for = "/*"
 
-[headers.values]
-Access-Control-Allow-Origin = "*"
+    [headers.values]
+    Access-Control-Allow-Origin = "*"
