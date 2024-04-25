@@ -30,6 +30,9 @@ export default async (req: Request, context: Context) => {
     })
     return new Response(JSON.stringify(alteredData), {
       headers: {
+        'Access-Control-Allow-Origin': '*', // Allow from anywhere
+        'Access-Control-Allow-Methods': 'GET', // Allow these HTTP methods
+        'Access-Control-Allow-Headers': 'Content-Type', // Allow Content-Type header
         'content-type': 'application/json'
       }
     })
