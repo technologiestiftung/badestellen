@@ -23,7 +23,12 @@ export default async (req: Request, context: Context) => {
       })
     }
     const data = await response.json()
-    return new Response(JSON.stringify(data), {
+    const alteredData = data.map((m: any) => {
+      const { id, badestellen_id } = m
+      const item = { ...m, id: badestellen_id, swim_id: id }
+      return item
+    })
+    return new Response(JSON.stringify(alteredData), {
       headers: {
         'content-type': 'application/json'
       }
