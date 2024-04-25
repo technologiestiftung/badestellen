@@ -26,38 +26,38 @@
   }
 </script>
 
-
-<div class="skyscraper palm-hide hidden-phone"></div>
-<div id="page-wrapper" class=" container-content "> 
-  <div class="container-wrapper container-portal-header" style="display:none !important"></div>
+<div class="skyscraper palm-hide hidden-phone" />
+<div id="page-wrapper" class=" container-content">
+  <div
+    class="container-wrapper container-portal-header"
+    style="display:none !important"
+  />
   <BerlinHeader />
   <div role="main" id="layout-grid" class="template-land_start">
     <div id="container">
       <div id="innercontainer">
         <div id="app">
-
-{#if !$loaded}
-  <Splash />
-{:else}
-  {#if $location === '/' || $location.indexOf('detail/') >= 0}
-    <Map />
-  {/if}
-  <main>
-    <div
-      id="content"
-      class:nomap={$location !== '/' && $location.indexOf('detail/') === -1}
-    >
-      <div id="home">
-        {#if $location === '/'}
-          <Legend />
-        {/if}
-        <Router {routes} />
-      </div>
-    </div>
-  </main>
-{/if}
-<Footer />
-
+          {#if !$loaded}
+            <Splash />
+          {:else}
+            {#if $location === '/' || $location.indexOf('detail/') >= 0}
+              <Map />
+            {/if}
+            <main>
+              <div
+                id="content"
+                class:nomap={$location !== '/' && $location.indexOf('detail/') === -1}
+              >
+                <div id="home">
+                  {#if $location === '/'}
+                    <Legend />
+                  {/if}
+                  <Router {routes} />
+                </div>
+              </div>
+            </main>
+          {/if}
+          <Footer />
         </div>
       </div>
     </div>

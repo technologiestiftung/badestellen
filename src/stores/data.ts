@@ -86,13 +86,9 @@ export const badestelle: Readable<Badestelle | null> = derived(
 export const load = (): Promise<void> => {
   loading.set(true)
   return Promise.all([
-    fetch(
-      'https://flsshygn-lageso-berlin-prediction-merge-dev.s3.eu-central-1.amazonaws.com/app/data.csv'
-    )
-      .then(response => response.text())
-      .then(txt => {
-        return csvParse(txt)
-      }),
+    fetch(`${__global.env.URL}/.netlify/functions/swimapi`).then(response =>
+      response.json()
+    ),
     // fetch wants an absolute url
     fetch(__global.env.URL + '/assets/data/new_build.csv')
       .then(response => response.text())
@@ -101,7 +97,6 @@ export const load = (): Promise<void> => {
       })
   ]).then(([measurements, info]) => {
     const loadBadestellen: Badestelle[] = []
-
     measurements.forEach(m => {
       let loadBadestelle = createBadestelle()
 
@@ -135,13 +130,12 @@ export const load = (): Promise<void> => {
       // find corresponding data item
       let match: DSVRowString
       info.forEach(i => {
-        if (i.detail_id === m.detail_id) {
+        if (i.detail_id === `${m.detail_id}`) {
           match = i
         }
       })
       if (match) {
         loadBadestelle = addFields(loadBadestelle, match, ['id'], 'integer')
-
         loadBadestelle = addFields(loadBadestelle, match, ['lat', 'lng'], 'float')
 
         loadBadestelle = addFields(
@@ -186,7 +180,6 @@ export const load = (): Promise<void> => {
 
       loadBadestellen.push(loadBadestelle)
     })
-
     badestellen.set(loadBadestellen)
 
     loaded.set(true)
@@ -255,7 +248,11 @@ const addFields = (
   fieldType: 'integer' | 'string' | 'float'
 ): Badestelle => {
   fields.forEach(f => {
-    let value: number | string = objSource[f]
+    let value: number | string | null = objSource[f]
+
+    if (value === null) {
+      return null
+    }
     if (fieldType === 'integer') {
       value = parseInt(value.toString())
     } else if (fieldType === 'float') {
