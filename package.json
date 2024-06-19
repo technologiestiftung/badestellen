@@ -48,7 +48,7 @@
     "rollup-plugin-css-only": "3.1.0",
     "rollup-plugin-livereload": "2.0.5",
     "rollup-plugin-svelte": "7.2.2",
-    "rollup-plugin-terser": "7.0.2",
+    "@rollup/plugin-terser": "0.1.0",
     "sass": "1.77.6",
     "semantic-release": "22.0.12",
     "sirv-cli": "2.0.2",
