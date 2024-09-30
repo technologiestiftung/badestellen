@@ -61,12 +61,12 @@
     "typescript": "3.9.10"
   },
   "dependencies": {
-    "@netlify/functions": "2.6.0",
+    "@netlify/functions": "2.8.2",
     "d3-dsv": "2.0.0",
-    "mapbox-gl": "3.0.0",
+    "mapbox-gl": "3.7.0",
     "svelte": "3.49.0",
     "svelte-scrollto": "0.2.0",
-    "svelte-spa-router": "3.1.0"
+    "svelte-spa-router": "3.3.0"
   },
   "author": "sebastian-meier",
   "license": "MIT"
