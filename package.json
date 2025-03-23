@@ -61,7 +61,7 @@
     "typescript": "3.9.10"
   },
   "dependencies": {
-    "@netlify/functions": "2.6.0",
+    "@netlify/functions": "3.0.4",
     "d3-dsv": "2.0.0",
     "mapbox-gl": "3.0.0",
     "svelte": "3.49.0",
